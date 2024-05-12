@@ -5,6 +5,18 @@
           <li class="nav-item active"><a href="{{ route('admin.dashboard') }}"><i class="la la-home"></i><span
               class="menu-title" data-i18n="nav.add_on_drag_drop.main">الرئيسية </span></a>
           </li>
+          <li class="nav-item active"><a href=""><i class="icon-users"></i>
+              <span class="menu-title" data-i18n="nav.dash.main">العملاء</span>
+              <span
+                  class="badge badge badge-info badge-pill float-right mr-2">{{ App\Models\Admin\Customer::count() }}</span>
+            </a>
+              <ul class="menu-content">
+                  <li class=""><a class="menu-item" href="{{ route('admin.index.customer') }}" data-i18n="nav.dash.ecommerce"> عرض كل العملاء </a>
+                  </li>
+                  <li class=""><a class="menu-item" href="{{ route('admin.create.customer') }}" data-i18n="nav.dash.ecommerce">إضافة عميل</a>
+                  </li>
+              </ul>
+          </li>
           <li class="nav-item active"><a href=""><i class="la la-truck"></i>
               <span class="menu-title" data-i18n="nav.dash.main">المعدات</span>
               <span

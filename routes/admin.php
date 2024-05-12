@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CardsController;
 use App\Http\Controllers\Admin\CostController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HoursController;
 use App\Http\Controllers\Admin\MaintenanceController;
@@ -29,6 +30,16 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'auth:admi
     Route::get('edit-personal-password','CpanelController@edit_pass')->name('admin.edit.pass.data');
     Route::post('edit-personal-password','CpanelController@update_pass')->name('admin.update.pass.data');
     Route::get('logout','LoginController@logout')->name('admin.logout');
+        ################################# Start Customer Route ###################################
+Route::group(['prefix'=>'Customers'],function(){
+    Route::get('/','CustomerController@index')->name('admin.index.customer');
+    Route::get('/create','CustomerController@create')->name('admin.create.customer');
+    Route::post('/store','CustomerController@store')->name('admin.store.customer');
+    Route::get('/edit/{id}','CustomerController@edit')->name('admin.edit.customer');
+    Route::post('/update/{id}','CustomerController@update')->name('admin.update.customer');
+    Route::get('/delete/{id}','CustomerController@delete')->name('admin.delete.customer');
+});
+        ################################# End Customer Route ###################################
         ################################# Start cards Route ###################################
 Route::group(['prefix'=>'Identification_Cards'],function(){
     Route::get('/','CardsController@index')->name('admin.index.cards');
