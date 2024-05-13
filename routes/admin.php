@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CardsController;
 use App\Http\Controllers\Admin\CostController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -30,7 +31,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','middleware'=>'auth:admi
     Route::get('edit-personal-password','CpanelController@edit_pass')->name('admin.edit.pass.data');
     Route::post('edit-personal-password','CpanelController@update_pass')->name('admin.update.pass.data');
     Route::get('logout','LoginController@logout')->name('admin.logout');
-        ################################# Start Customer Route ###################################
+        ################################# Start Customers Route ###################################
 Route::group(['prefix'=>'Customers'],function(){
     Route::get('/','CustomerController@index')->name('admin.index.customer');
     Route::get('/create','CustomerController@create')->name('admin.create.customer');
@@ -39,7 +40,17 @@ Route::group(['prefix'=>'Customers'],function(){
     Route::post('/update/{id}','CustomerController@update')->name('admin.update.customer');
     Route::get('/delete/{id}','CustomerController@delete')->name('admin.delete.customer');
 });
-        ################################# End Customer Route ###################################
+        ################################# End Customers Route ###################################
+        ################################# Start accounts Route ###################################
+Route::group(['prefix'=>'Accounts'],function(){
+    Route::get('/{id}','AccountController@index')->name('admin.index.account');
+    Route::get('/create/{id}','AccountController@create')->name('admin.create.account');
+    Route::post('/store/{id}','AccountController@store')->name('admin.store.account');
+    Route::get('/edit/{id}','AccountController@edit')->name('admin.edit.account');
+    Route::post('/update/{id}','AccountController@update')->name('admin.update.account');
+    Route::get('/delete/{id}','AccountController@delete')->name('admin.delete.account');
+});
+        ################################# End accounts Route ###################################
         ################################# Start cards Route ###################################
 Route::group(['prefix'=>'Identification_Cards'],function(){
     Route::get('/','CardsController@index')->name('admin.index.cards');

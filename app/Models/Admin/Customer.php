@@ -19,4 +19,7 @@ class Customer extends Model
         'created_at',
         'updated_at'
     ];
+    public function Accounts(){
+        return $this->hasMany('App\Models\Admin\Account');
+    }
 }

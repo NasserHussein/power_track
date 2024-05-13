@@ -69,7 +69,9 @@
                                                     <td><div style="word-wrap: break-word;width:150px;">{{ $customer->company_address }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">{{ $customer->date_of_contract }}</div></td>
                                                     <td>
-                                                        <a href="#">حساب العميل</a>
+                                                        <div><a style="color: rgb(124, 0, 207);border: 1.5px solid rgba(255, 0, 0, 0.404);border-radius: 8px;" href="{{ route('admin.index.account',$customer->id) }}">حساب العميل</a></div>
+                                                    </br>
+                                                       <div><a style="color: rgb(255, 0, 0);border: 1.5px solid rgba(27, 175, 84, 0.61);border-radius: 8px;" href="{{ route('admin.create.account',$customer->id) }}">أضافة فاتورة</a></div>
                                                     </td>
                                                     <td>
                                                             <a class="btn mr-1 mb-1 btn-outline-info btn-sm" href="{{ route('admin.edit.customer',$customer->id) }}" >تعديل</a>
