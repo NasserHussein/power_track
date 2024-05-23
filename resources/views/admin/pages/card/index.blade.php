@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('title')
+@if($name == 0)
 المعدات
+@endif
+@if($name == 1)
+{{ $cards_name }}
+@endif
 @endsection
 @section('content')
 <div class="app-content content">
@@ -14,6 +19,10 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
                             <li class="breadcrumb-item active"> المعدات
+                            </li>
+                            @if($name == 1)
+                            <li class="breadcrumb-item active"> {{ $cards_name }}
+                            @endif
                             </li>
                         </ol>
                     </div>
@@ -48,9 +57,9 @@
                                         <tr>
                                             <th>رقم المعدة</th>
                                             <th>إسم المعدة</th>
-                                            <th>النوع والموديل</th>
-                                            <th>الرقم المسلسل</th>
-                                            <th>السعة</th>
+                                            <th>موديل المعدة</th>
+                                            <th>رقم الشاسية</th>
+                                            <th>حمولة المعدة</th>
                                             <th>تفاصيل</th>
                                             <th>الأجرائات</th>
                                         </tr>
@@ -59,11 +68,11 @@
                                             @isset($cards)
                                             @foreach ($cards as $card)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->code }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->card_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:150px;">{{ $card->name }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->model }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:150px">{{ $card->serial_no }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->capacity }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_model }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px">{{ $card->chassis_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_load }}</div></td>
                                                     <td>
                                                         <button data-toggle="modal" data-target="#card-details{{ $card->id }}" class="btn mr-1 mb-1 btn-outline-secondary btn-sm">
                                                             المزيد من التفاصيل
@@ -85,72 +94,60 @@
                                                                                     <thead>
                                                                                     <tbody>
                                                                                         <tr>
+                                                                                            <th scope="row">اسم المعدة</th>
+                                                                                            <td>{{ $card->name }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
                                                                                             <th scope="row">القسم</th>
                                                                                             <td>{{ $card->part }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">تاريخ التشغيل</th>
-                                                                                            <td>{{ $card->date_of_start }}</td>
+                                                                                            <th scope="row">موديل المعدة</th>
+                                                                                            <td>{{ $card->card_model }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">عداد المعدة الحالي بالساعات</th>
                                                                                             <td>{{ $card->card_hours }} ساعة</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">الوزن</th>
-                                                                                            <td>{{ $card->weight }}</td>
+                                                                                            <th scope="row">موديل السنة</th>
+                                                                                            <td>{{ $card->model_year }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">إسم الصانع</th>
-                                                                                            <td>{{ $card->maker }}</td>
+                                                                                            <th scope="row">أسم البراند</th>
+                                                                                            <td>{{ $card->brand_name }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">رقم الرسم</th>
-                                                                                            <td>{{ $card->drg_no }}</td>
+                                                                                            <th scope="row">نوع الماست</th>
+                                                                                            <td>{{ $card->mast_type }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">الأبعاد</th>
-                                                                                            <td>{{ $card->dimensions }}</td>
+                                                                                            <th scope="row">نوع الاطارات</th>
+                                                                                            <td>{{ $card->tire_type }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">إسم المورد</th>
-                                                                                            <td>{{ $card->supplier }}</td>
+                                                                                            <th scope="row">حمولة المعدة</th>
+                                                                                            <td>{{ $card->card_load }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">بيان كتالوج التشغيل</th>
-                                                                                            <td>{{ $card->inst_bk_no }}</td>
+                                                                                            <th scope="row">رقم الشاسية</th>
+                                                                                            <td>{{ $card->chassis_no }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">القدرة  ك.وات / حصان</th>
-                                                                                            <td>{{ $card->power }}</td>
+                                                                                            <th scope="row">سيفتي</th>
+                                                                                            <td>{{ $card->safety }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">رقم أمر التصنيع</th>
-                                                                                            <td>{{ $card->mfg_order_no }}</td>
+                                                                                            <th scope="row">بطارية</th>
+                                                                                            <td>{{ $card->battery }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">بيان كتالوجات الصيانة</th>
-                                                                                            <td>{{ $card->maintenance_bk_no }}</td>
+                                                                                            <th scope="row">شاحن</th>
+                                                                                            <td>{{ $card->charger }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">فولت التحكم </th>
-                                                                                            <td>{{ $card->control_voltage }}</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <th scope="row">رقم أمر الشراء</th>
-                                                                                            <td>{{ $card->purchase_order_no }}</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <th scope="row">الامبير الكلي</th>
-                                                                                            <td>{{ $card->total_amperage }}</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <th scope="row">المعدن</th>
-                                                                                            <td>{{ $card->material }}</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <th scope="row">بيانات ومعلومات أضافية </th>
-                                                                                            <td>{{ $card->additional_data }}</td>
+                                                                                            <th scope="row">فيشة شحن</th>
+                                                                                            <td>{{ $card->charging_plug }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>

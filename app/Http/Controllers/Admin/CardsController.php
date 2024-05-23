@@ -14,12 +14,53 @@ class CardsController extends Controller
 {
     public function index(){
         $cards = Card::all();
-        return view('admin.pages.card.index',compact('cards'));
+        $name = 0;
+        return view('admin.pages.card.index',compact(['cards','name']));
     }
     //////////////////// Start Cards Types /////////////////
-    public function index_digger(){
-        $cards = Card::where('name' , 'حفار')->get();
-        return view('admin.pages.card.types.digger',compact('cards'));
+    public function index_types($id){
+        $name = 1;
+        if($id == 1){
+            $cards = Card::where('name' , 'ستاكر كهراباء')->get();
+            $cards_name = 'ستاكر كهراباء';
+        }elseif($id == 2){
+            $cards = Card::where('name' , 'باور بالت')->get();
+            $cards_name = 'باور بالت';
+        }elseif($id == 3){
+            $cards = Card::where('name' , 'ريتش تراك')->get();
+            $cards_name = 'ريتش تراك';
+        }elseif($id == 4){
+            $cards = Card::where('name' , 'هاند بالت')->get();
+            $cards_name ='هاند بالت';
+        }elseif($id == 5){
+            $cards = Card::where('name' , 'ونش شوكة كهرباء')->get();
+            $cards_name = 'ونش شوكة كهرباء';
+        }elseif($id == 6){
+            $cards = Card::where('name' , 'ونش شوكة ديزل')->get();
+            $cards_name = 'ونش شوكة ديزل';
+        }elseif($id == 7){
+            $cards = Card::where('name' , 'أوردر بيكر')->get();
+            $cards_name = 'أوردر بيكر';
+        }elseif($id == 8){
+            $cards = Card::where('name' , 'سيزر ليفت')->get();
+            $cards_name = 'سيزر ليفت';
+        }elseif($id == 9){
+            $cards = Card::where('name' , 'مان ليفت')->get();
+            $cards_name = 'مان ليفت';
+        }elseif($id == 10){
+            $cards = Card::where('name' , 'حضان')->get();
+            $cards_name = 'حضان';
+        }elseif($id == 11){
+            $cards = Card::where('name' , 'بطاريات')->get();
+            $cards_name = 'بطاريات';
+        }elseif($id == 12){
+            $cards = Card::where('name' , 'تنجر شحن')->get();
+            $cards_name = 'تنجر شحن';
+        }elseif($id == 13){
+            $cards = Card::where('name' , 'أطارات')->get();
+            $cards_name = 'أطارات';
+        }
+        return view('admin.pages.card.index',compact(['cards','name','cards_name']));
     }
     public function index_loader(){
         $cards = Card::where('name' , 'لودر')->get();
