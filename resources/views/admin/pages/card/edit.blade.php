@@ -86,12 +86,19 @@ label[required]:after {content:'*';color:red;}
                                                     <label for="projectinput1" required>إذا كنت ترغب في تعديل أسم المعدة</label>
                                                     <select name="name" id="profession" class="form-control">
                                                         <option value="" disabled selected>قم بإختر نوع المعدة</option>
-                                                        <option @if($card->name == 'حفار') selected @endif value="حفار">حفار</option>
-                                                        <option @if($card->name == 'لودر') selected @endif value="لودر">لودر</option>
-                                                        <option @if($card->name == 'مولد') selected @endif value="مولد">مولد</option>
-                                                        <option @if($card->name == 'كسارة') selected @endif value="كسارة">كسارة</option>
-                                                        <option @if($card->name == 'كمبريسور') selected @endif value="كمبريسور">كمبريسور</option>
-                                                        <option @if($card->name == 'ماكينة ابحاث') selected @endif value="ماكينة ابحاث">ماكينة ابحاث</option>
+                                                        <option @if($card->name == 'ستاكر كهراباء') selected @endif value="ستاكر كهراباء">ستاكر كهراباء</option>
+                                                        <option @if($card->name == 'باور بالت') selected @endif value="باور بالت">باور بالت</option>
+                                                        <option @if($card->name == 'ريتش تراك') selected @endif value="ريتش تراك">ريتش تراك</option>
+                                                        <option @if($card->name == 'هاند بالت') selected @endif value="هاند بالت">هاند بالت</option>
+                                                        <option @if($card->name == 'ونش شوكة كهرباء') selected @endif value="ونش شوكة كهرباء">ونش شوكة كهرباء</option>
+                                                        <option @if($card->name == 'ونش شوكة ديزل') selected @endif value="ونش شوكة ديزل">ونش شوكة ديزل</option>
+                                                        <option @if($card->name == 'أوردر بيكر') selected @endif value="أوردر بيكر">أوردر بيكر</option>
+                                                        <option @if($card->name == 'سيزر ليفت') selected @endif value="سيزر ليفت">سيزر ليفت</option>
+                                                        <option @if($card->name == 'مان ليفت') selected @endif value="مان ليفت">مان ليفت</option>
+                                                        <option @if($card->name == 'حضان') selected @endif value="حضان">حضان</option>
+                                                        <option @if($card->name == 'بطاريات') selected @endif value="بطاريات">بطاريات</option>
+                                                        <option @if($card->name == 'تنجر شحن') selected @endif value="تنجر شحن">تنجر شحن</option>
+                                                        <option @if($card->name == 'أطارات') selected @endif value="أطارات">أطارات</option>
                                                     </select>
                                                     @error('name')
                                                                <span class="text-danger">{{ $message }}</span>
@@ -104,246 +111,12 @@ label[required]:after {content:'*';color:red;}
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">رقم المعدة :Equip. Code</label>
-                                                        <input type="text" value="{{ $card->code }}" id="code"
+                                                        <label for="projectinput1">رقم المعدة</label>
+                                                        <input type="text" value="{{ $card->card_no }}" id="card_no"
                                                                class="form-control"
-
-                                                               name="code">
-                                                               @error('code')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">النوع والموديل Type / Model</label>
-                                                        <input type="text" value="{{ $card->model }}" id="model"
-                                                               class="form-control"
-
-                                                               name="model">
-                                                               @error('model')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">تاريخ التشغيل Date Of Start</label>
-                                                        <input type="date" value="{{ $card->date_of_start }}" id="date_of_start"
-                                                               class="form-control"
-
-                                                               name="date_of_start">
-                                                               @error('date_of_start')
-                                                               <span class="text-danger">{{ $message }}<br></span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">الوزن  Weight</label>
-                                                        <input type="text" value="{{ $card->weight }}" id="weight"
-                                                               class="form-control"
-
-                                                               name="weight">
-                                                               @error('weight')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">إسم الصانع Manufacturer</label>
-                                                        <input type="text" value="{{ $card->maker }}" id="maker"
-                                                               class="form-control"
-
-                                                               name="maker">
-                                                               @error('maker')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">رقم الرسم DRG. No</label>
-                                                        <input type="text" value="{{ $card->drg_no }}" id="drg_no"
-                                                               class="form-control"
-
-                                                               name="drg_no">
-                                                               @error('drg_no')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">الأبعاد  Dimensions</label>
-                                                        <input type="text" value="{{ $card->dimensions }}" id="dimensions"
-                                                               class="form-control"
-
-                                                               name="dimensions">
-                                                               @error('dimensions')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">إسم المورد Supplier</label>
-                                                        <input type="text" value="{{ $card->supplier }}" id="supplier"
-                                                               class="form-control"
-
-                                                               name="supplier">
-                                                               @error('supplier')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">بيان كتالوج التشغيل Inst. BK. No.</label>
-                                                        <input type="text" value="{{ $card->inst_bk_no }}" id="inst_bk_no"
-                                                               class="form-control"
-
-                                                               name="inst_bk_no">
-                                                               @error('inst_bk_no')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">القدرة  ك.وات / حصان HP/KW</label>
-                                                        <input type="text" value="{{ $card->power }}" id="power"
-                                                               class="form-control"
-
-                                                               name="power">
-                                                               @error('power')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">رقم أمر التصنيع MFG order No.</label>
-                                                        <input type="text" value="{{ $card->mfg_order_no }}" id="mfg_order_no"
-                                                               class="form-control"
-
-                                                               name="mfg_order_no">
-                                                               @error('mfg_order_no')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">بيان كتالوجات الصيانة Maintenance BK No.</label>
-                                                        <input type="text" value="{{ $card->maintenance_bk_no }}" id="maintenance_bk_no"
-                                                               class="form-control"
-
-                                                               name="maintenance_bk_no">
-                                                               @error('maintenance_bk_no')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">فولت التحكم Control Voltage</label>
-                                                        <input type="text" value="{{ $card->control_voltage }}" id="control_voltage"
-                                                               class="form-control"
-
-                                                               name="control_voltage">
-                                                               @error('control_voltage')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">رقم أمر الشراء Purchase Order No.</label>
-                                                        <input type="text" value="{{ $card->purchase_order_no }}" id="purchase_order_no"
-                                                               class="form-control"
-
-                                                               name="purchase_order_no">
-                                                               @error('purchase_order_no')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">السعة Capacity / Output</label>
-                                                        <input type="text" value="{{ $card->capacity }}" id="capacity"
-                                                               class="form-control"
-
-                                                               name="capacity">
-                                                               @error('capacity')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">الامبير الكلي Total Amperage</label>
-                                                        <input type="text" value="{{ $card->total_amperage }}" id="total_amperage"
-                                                               class="form-control"
-
-                                                               name="total_amperage">
-                                                               @error('total_amperage')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">الرقم المسلسل Serial No.</label>
-                                                        <input type="text" value="{{ $card->serial_no }}" id="serial_no"
-                                                               class="form-control"
-
-                                                               name="serial_no">
-                                                               @error('serial_no')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">المعدن Material</label>
-                                                        <input type="text" value="{{ $card->material }}" id="material"
-                                                               class="form-control"
-
-                                                               name="material">
-                                                               @error('material')
-                                                               <span class="text-danger">{{ $message }}</span>
-                                                               @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">بيانات ومعلومات أضافية Additional Data</label>
-                                                        <input type="text" value="{{ $card->additional_data }}" id="additional_data"
-                                                               class="form-control"
-
-                                                               name="additional_data">
-                                                               @error('additional_data')
+                                                               placeholder="أدخل رقم المعدة"
+                                                               name="card_no">
+                                                               @error('card_no')
                                                                <span class="text-danger">{{ $message }}</span>
                                                                @enderror
                                                     </div>
@@ -353,9 +126,153 @@ label[required]:after {content:'*';color:red;}
                                                         <label for="projectinput1">القسم</label>
                                                         <input type="text" value="{{ $card->part }}" id="part"
                                                                class="form-control"
-
+                                                               placeholder="أدخل القسم"
                                                                name="part">
                                                                @error('part')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">موديل المعدة</label>
+                                                        <input type="text" value="{{ $card->card_model }}" id="card_model"
+                                                               class="form-control"
+                                                               placeholder="أدخل موديل المعدة"
+                                                               name="card_model">
+                                                               @error('card_model')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">موديل السنة</label>
+                                                        <input type="text" value="{{ $card->model_year }}" id="model_year"
+                                                               class="form-control"
+                                                               placeholder="أدخل موديل السنة"
+                                                               name="model_year">
+                                                               @error('model_year')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">أسم البراند</label>
+                                                        <input type="text" value="{{ $card->brand_name }}" id="brand_name"
+                                                               class="form-control"
+                                                               placeholder="أدخل أسم البراند"
+                                                               name="brand_name">
+                                                               @error('brand_name')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">نوع الماست</label>
+                                                        <input type="text" value="{{ $card->mast_type }}" id="mast_type"
+                                                               class="form-control"
+                                                               placeholder="أدخل نوع الماست"
+                                                               name="mast_type">
+                                                               @error('mast_type')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">نوع الاطارات</label>
+                                                        <input type="text" value="{{ $card->tire_type }}" id="tire_type"
+                                                               class="form-control"
+                                                               placeholder="أدخل نوع الاطارات"
+                                                               name="tire_type">
+                                                               @error('tire_type')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">حمولة المعدة</label>
+                                                        <input type="text" value="{{ $card->card_load }}" id="card_load"
+                                                               class="form-control"
+                                                               placeholder="أدخل حمولة المعدة"
+                                                               name="card_load">
+                                                               @error('card_load')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">رقم الشاسية</label>
+                                                        <input type="text" value="{{ $card->chassis_no }}" id="chassis_no"
+                                                               class="form-control"
+                                                               placeholder="أدخل رقم الشاسية"
+                                                               name="chassis_no">
+                                                               @error('chassis_no')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">سيفتي</label>
+                                                        <input type="text" value="{{ $card->safety }}" id="safety"
+                                                               class="form-control"
+                                                               placeholder="أدخل سيفتي"
+                                                               name="safety">
+                                                               @error('safety')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">بطارية</label>
+                                                        <input type="text" value="{{ $card->battery }}" id="battery"
+                                                               class="form-control"
+                                                               placeholder="أدخل بطارية"
+                                                               name="battery">
+                                                               @error('battery')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">شاحن</label>
+                                                        <input type="text" value="{{ $card->charger }}" id="charger"
+                                                               class="form-control"
+                                                               placeholder="أدخل شاحن"
+                                                               name="charger">
+                                                               @error('charger')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">فيشة شحن</label>
+                                                        <input type="text" value="{{ $card->charging_plug }}" id="charging_plug"
+                                                               class="form-control"
+                                                               placeholder="أدخل فيشة شحن"
+                                                               name="charging_plug">
+                                                               @error('charging_plug')
                                                                <span class="text-danger">{{ $message }}</span>
                                                                @enderror
                                                     </div>
