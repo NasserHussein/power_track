@@ -62,26 +62,6 @@ class CardsController extends Controller
         }
         return view('admin.pages.card.index',compact(['cards','name','cards_name']));
     }
-    public function index_loader(){
-        $cards = Card::where('name' , 'لودر')->get();
-        return view('admin.pages.card.types.loader',compact('cards'));
-    }
-    public function index_generator(){
-        $cards = Card::where('name' , 'مولد')->get();
-        return view('admin.pages.card.types.generator',compact('cards'));
-    }
-    public function index_crusher(){
-        $cards = Card::where('name' , 'كسارة')->get();
-        return view('admin.pages.card.types.crusher',compact('cards'));
-    }
-    public function index_compressor(){
-        $cards = Card::where('name' , 'كمبريسور')->get();
-        return view('admin.pages.card.types.compressor',compact('cards'));
-    }
-    public function index_research_machine(){
-        $cards = Card::where('name' , 'ماكينة ابحاث')->get();
-        return view('admin.pages.card.types.research_machine',compact('cards'));
-    }
     //////////////////// End Cards Types /////////////////
     public function create(){
         return view('admin.pages.card.create');
@@ -89,26 +69,19 @@ class CardsController extends Controller
     public function store(CardsRequest $request){
         Card::create([
             'name' => $request['name'],
-            'code' => $request['code'],
+            'card_no' => $request['card_no'],
             'part' => $request['part'],
-            'model' => $request['model'],
-            'date_of_start' => $request['date_of_start'],
-            'weight' => $request['weight'],
-            'maker' => $request['maker'],
-            'drg_no' => $request['drg_no'],
-            'dimensions' => $request['dimensions'],
-            'supplier' => $request['supplier'],
-            'inst_bk_no' => $request['inst_bk_no'],
-            'power' => $request['power'],
-            'mfg_order_no' => $request['mfg_order_no'],
-            'maintenance_bk_no' => $request['maintenance_bk_no'],
-            'control_voltage' => $request['control_voltage'],
-            'purchase_order_no' => $request['purchase_order_no'],
-            'capacity' => $request['capacity'],
-            'total_amperage' => $request['total_amperage'],
-            'serial_no' => $request['serial_no'],
-            'material' => $request['material'],
-            'additional_data' => $request['additional_data'],
+            'card_model' => $request['card_model'],
+            'model_year' => $request['model_year'],
+            'brand_name' => $request['brand_name'],
+            'mast_type' => $request['mast_type'],
+            'tire_type' => $request['tire_type'],
+            'card_load' => $request['card_load'],
+            'chassis_no' => $request['chassis_no'],
+            'safety' => $request['safety'],
+            'battery' => $request['battery'],
+            'charger' => $request['charger'],
+            'charging_plug' => $request['charging_plug']
         ]);
         return redirect()->route('admin.index.cards')->with(['success' => 'تم تسجيل المعدة بنجاح']);
     }

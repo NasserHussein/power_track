@@ -23,26 +23,19 @@ class CardsRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'code' => 'max:255',
+            'card_no' => 'max:255',
             'part' => 'max:255',
-            'model' => 'max:255',
-            'date_of_start' => 'max:255',
-            'weight' => 'max:255',
-            'maker' => 'max:255',
-            'drg_no' => 'max:255',
-            'dimensions' => 'max:255',
-            'supplier' => 'max:255',
-            'inst_bk_no' => 'max:255',
-            'power' => 'max:255',
-            'mfg_order_no' => 'max:255',
-            'maintenance_bk_no' => 'max:255',
-            'control_voltage' => 'max:255',
-            'purchase_order_no' => 'max:255',
-            'capacity' => 'max:255',
-            'total_amperage' => 'max:255',
-            'serial_no' => 'max:255',
-            'material' => 'max:255',
-            'additional_data' => 'max:255',
+            'card_model' => 'max:255',
+            'model_year' => 'max:255',
+            'brand_name' => 'max:255',
+            'mast_type' => 'max:255',
+            'tire_type' => 'max:255',
+            'card_load' => 'max:255',
+            'chassis_no' => 'max:255',
+            'safety' => 'max:255',
+            'battery' => 'max:255',
+            'charger' => 'max:255',
+            'charging_plug' => 'max:255'
         ];
     }
     public function messages()
