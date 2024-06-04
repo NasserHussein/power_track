@@ -25,6 +25,25 @@
         <div class="content-body">
             <!-- DOM - jQuery events table -->
             <section id="dom">
+                                <div class="card-body card-dashboard">
+                                    <table class="display nowrap table-striped table-bordered "  style="width:900px;height: 100px;text-align: center">
+                                        <thead>
+                                        <tr style="height: 40px" class="bg-primary white">
+                                            <th>مدين</th>
+                                            <th>دائن</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                                <tr>
+                                                    <td><div style="font-size: 30px;color: rgb(15, 73, 3)">{{ $accounts->where('status', 0)->sum('invoice_value') }} ج.م</div></td>
+                                                    <td><div style="font-size: 30px;color: rgb(15, 73, 3)">0 ج.م</div></td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="justify-content-center d-flex">
+                                    </div>
+                                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -45,7 +64,7 @@
                             @include('admin.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
-                                    <table class=" display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
+                                    <table class="display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
                                         <thead>
                                         <tr style="height: 40px" class="bg-success white">
                                             <th>id</th>
