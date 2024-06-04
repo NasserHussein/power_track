@@ -12,7 +12,7 @@
     <title>تسجيل الدخول</title>
 {{--     <link rel="apple-touch-icon" href="{{asset('assets/admin/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/admin/images/ico/favicon.ico')}}"> --}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/images/logo/alwadi.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/images/logo/power_track.png') }}">
     <link rel="apple-touch-icon" href="{{asset('assets/front/img/png.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/img/png.png')}}">
     <link
@@ -62,7 +62,7 @@
                             <div class="card-title text-center">
                                 <div class="p-1">
                                     {{-- <img src="{{asset('assets/admin/images/logo/logo.png')}}" alt="LOGO"/> --}}
-                                    <img style="width: 130px;height: 100px;" src="{{asset('assets/admin/images/logo/alwadi.png')}}" alt="LOGO"/>
+                                    <img style="width: 240px;height: 170px;" src="{{asset('assets/admin/images/logo/power_track.png')}}" alt="LOGO"/>
 
                                 </div>
                             </div>

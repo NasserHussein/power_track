@@ -8,9 +8,9 @@
                     class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
                     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
-                        <img class="brand-logo" alt="modern admin logo"
-                             src="{{ asset('assets/admin/images/logo/alwadi.png') }}">
-                        <h1 class="brand-text">ALWADI</h1>
+                        <img class="brand-logo" alt="modern admin logo" style="width: 30px;height: 30px;"
+                             src="{{ asset('assets/admin/images/logo/power_track.png') }}">
+                        <h1 class="brand-text">POWER TRACK</h1>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
