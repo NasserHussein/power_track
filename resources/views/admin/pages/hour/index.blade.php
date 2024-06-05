@@ -14,24 +14,37 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
                             <li class="breadcrumb-item"><a href="
-                                        @if($card->name == 'حفار')
-                                            {{ route('admin.hour.digger.cards') }}
+                                        @if($card->name == 'ستاكر كهراباء')
+                                            {{ route('admin.index.hour.cards',1) }}
                                         @endif
-                                        @if($card->name == 'لودر')
-                                            {{ route('admin.hour.loader.cards') }}
+                                        @if($card->name == 'باور بالت')
+                                            {{ route('admin.index.hour.cards',2) }}
                                         @endif
-                                        @if($card->name == 'مولد')
-                                            {{ route('admin.hour.generator.cards') }}
+                                        @if($card->name == 'ريتش تراك')
+                                            {{ route('admin.index.hour.cards',3) }}
                                         @endif
-                                        @if($card->name == 'كسارة')
-                                            {{ route('admin.hour.crusher.cards') }}
+                                        @if($card->name == 'هاند بالت')
+                                            {{ route('admin.index.hour.cards',4) }}
                                         @endif
-                                        @if($card->name == 'كمبريسور')
-                                            {{ route('admin.hour.compressor.cards') }}
+                                        @if($card->name == 'ونش شوكة كهرباء')
+                                            {{ route('admin.index.hour.cards',5) }}
                                         @endif
-                                        @if($card->name == 'ماكينة ابحاث')
-                                           {{ route('admin.hour.research.machine.cards') }}
+                                        @if($card->name == 'ونش شوكة ديزل')
+                                            {{ route('admin.index.hour.cards',6) }}
                                         @endif
+                                        @if($card->name == 'أوردر بيكر')
+                                            {{ route('admin.index.hour.cards',7) }}
+                                        @endif
+                                        @if($card->name == 'سيزر ليفت')
+                                            {{ route('admin.index.hour.cards',8) }}
+                                        @endif
+                                        @if($card->name == 'مان ليفت')
+                                            {{ route('admin.index.hour.cards',9) }}
+                                        @endif
+                                        @if($card->name == 'حضان')
+                                            {{ route('admin.index.hour.cards',10) }}
+                                        @endif
+
                                 ">تحديث عداد ال{{ $card->name }}</a>
                             </li>
                             <li class="breadcrumb-item active"> فترة تشغيل ال{{ $card->name }}
@@ -67,8 +80,8 @@
                                     <table class=" display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
                                         <thead>
                                         <tr style="height: 40px" class="bg-success white">
-                                            <th>رقم ال{{ $card->name }}</th>
-                                            <th>النوع والموديل</th>
+                                            <th>رقم المعدة</th>
+                                            <th>موديل المعدة</th>
                                             <th>قراءات العداد</th>
                                             <th>تاريخ قراءة العداد</th>
                                             <th>مدة تشغيل المعدة</th>
@@ -79,8 +92,8 @@
                                             @isset($hours)
                                             @foreach ($hours as $hour)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:120px;">{{ $card->code }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:150px;">{{ $card->model }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:120px;">{{ $card->card_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px;">{{ $card->card_model }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:160px">{{ $hour->card_hours }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:140px;">{{ $hour->date }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:140px;">{{ $hour->count }}</div></td>

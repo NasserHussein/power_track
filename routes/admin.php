@@ -71,13 +71,8 @@ Route::group(['prefix'=>'Identification_Cards'],function(){
 });
         ################################# End cards Route ###################################
         ################################# Start Hours cards Route ###################################
-Route::group(['prefix'=>'Hours_Equipment'],function(){
-    Route::get('/digger','HoursController@index_hour_digger')->name('admin.hour.digger.cards');
-    Route::get('/loader','HoursController@index_hour_loader')->name('admin.hour.loader.cards');
-    Route::get('/generator','HoursController@index_hour_generator')->name('admin.hour.generator.cards');
-    Route::get('/crusher','HoursController@index_hour_crusher')->name('admin.hour.crusher.cards');
-    Route::get('/compressor','HoursController@index_hour_compressor')->name('admin.hour.compressor.cards');
-    Route::get('/research_machin','HoursController@index_hour_research_machine')->name('admin.hour.research.machine.cards');
+Route::group(['prefix'=>'Hours_Cards'],function(){
+    Route::get('/{id}','HoursController@index')->name('admin.index.hour.cards');
     Route::post('/store/{id}','HoursController@store')->name('admin.store.hour.cards');
     Route::get('/MachineCycle/{id}','HoursController@index_machine_cycle')->name('admin.machine.cycle.cards');
     Route::get('/delete_all_hours/{id}','HoursController@delete_all_hours')->name('admin.delete_all_hours.cycle.cards');

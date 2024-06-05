@@ -108,7 +108,7 @@
                                             </fieldset>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-info btn-lg btn-block button-prevent-multiple-submits"><i class="ft-unlock"></i>
+                                    <button type="submit" class="btn btn-warning btn-lg btn-block button-prevent-multiple-submits"><i class="ft-unlock"></i>
                                         دخول
                                         <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
                                     </button>

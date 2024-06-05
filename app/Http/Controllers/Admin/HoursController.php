@@ -11,30 +11,41 @@ use Illuminate\Http\Request;
 class HoursController extends Controller
 {
      //////////////////// Start Hours Cards Types /////////////////
-    public function index_hour_digger(){
-        $cards = Card::where('name' , 'حفار')->get();
-        return view('admin.pages.hour.types.digger',compact('cards'));
+    public function index($id){
+        if($id == 1){
+            $cards = Card::where('name' , 'ستاكر كهراباء')->get();
+            $cards_name = 'ستاكر كهراباء';
+        }elseif($id == 2){
+            $cards = Card::where('name' , 'باور بالت')->get();
+            $cards_name = 'باور بالت';
+        }elseif($id == 3){
+            $cards = Card::where('name' , 'ريتش تراك')->get();
+            $cards_name = 'ريتش تراك';
+        }elseif($id == 4){
+            $cards = Card::where('name' , 'هاند بالت')->get();
+            $cards_name ='هاند بالت';
+        }elseif($id == 5){
+            $cards = Card::where('name' , 'ونش شوكة كهرباء')->get();
+            $cards_name = 'ونش شوكة كهرباء';
+        }elseif($id == 6){
+            $cards = Card::where('name' , 'ونش شوكة ديزل')->get();
+            $cards_name = 'ونش شوكة ديزل';
+        }elseif($id == 7){
+            $cards = Card::where('name' , 'أوردر بيكر')->get();
+            $cards_name = 'أوردر بيكر';
+        }elseif($id == 8){
+            $cards = Card::where('name' , 'سيزر ليفت')->get();
+            $cards_name = 'سيزر ليفت';
+        }elseif($id == 9){
+            $cards = Card::where('name' , 'مان ليفت')->get();
+            $cards_name = 'مان ليفت';
+        }elseif($id == 10){
+            $cards = Card::where('name' , 'حضان')->get();
+            $cards_name = 'حضان';
+        }
+        return view('admin.pages.hour.index_cards',compact(['cards','cards_name']));
     }
-    public function index_hour_loader(){
-        $cards = Card::where('name' , 'لودر')->get();
-        return view('admin.pages.hour.types.loader',compact('cards'));
-    }
-    public function index_hour_generator(){
-        $cards = Card::where('name' , 'مولد')->get();
-        return view('admin.pages.hour.types.generator',compact('cards'));
-    }
-    public function index_hour_crusher(){
-        $cards = Card::where('name' , 'كسارة')->get();
-        return view('admin.pages.hour.types.crusher',compact('cards'));
-    }
-    public function index_hour_compressor(){
-        $cards = Card::where('name' , 'كمبريسور')->get();
-        return view('admin.pages.hour.types.compressor',compact('cards'));
-    }
-    public function index_hour_research_machine(){
-        $cards = Card::where('name' , 'ماكينة ابحاث')->get();
-        return view('admin.pages.hour.types.research_machine',compact('cards'));
-    }
+
      //////////////////// End Hours Cards Types /////////////////
      //////////////////// Start Update Hours Card /////////////////
     public function store(HourCardRequest $request , $id){
@@ -88,22 +99,34 @@ class HoursController extends Controller
             'card_id' => $id,
             'count' => $count
         ]);
-        if($card->name == 'حفار'){
-            return redirect()->route('admin.hour.digger.cards')->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
-        }else if($card->name == 'لودر'){
-            return redirect()->route('admin.hour.loader.cards')->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        if($card->name == 'ستاكر كهراباء'){
+            return redirect()->route('admin.index.hour.cards',1)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        }else if($card->name == 'باور بالت'){
+            return redirect()->route('admin.index.hour.cards',2)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
         }
-        else if($card->name == 'مولد'){
-            return redirect()->route('admin.hour.generator.cards')->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        else if($card->name == 'ريتش تراك'){
+            return redirect()->route('admin.index.hour.cards',3)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
         }
-        else if($card->name == 'كسارة'){
-            return redirect()->route('admin.hour.crusher.cards')->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        else if($card->name == 'هاند بالت'){
+            return redirect()->route('admin.index.hour.cards',4)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
         }
-        else if($card->name == 'كمبريسور'){
-            return redirect()->route('admin.hour.compressor.cards')->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        else if($card->name == 'ونش شوكة كهرباء'){
+            return redirect()->route('admin.index.hour.cards',5)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
         }
-        else if($card->name == 'ماكينة ابحاث'){
-            return redirect()->route('admin.hour.research.machine.cards')->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        else if($card->name == 'ونش شوكة ديزل'){
+            return redirect()->route('admin.index.hour.cards',6)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        }
+        else if($card->name == 'أوردر بيكر'){
+            return redirect()->route('admin.index.hour.cards',7)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        }
+        else if($card->name == 'سيزر ليفت'){
+            return redirect()->route('admin.index.hour.cards',8)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        }
+        else if($card->name == 'مان ليفت'){
+            return redirect()->route('admin.index.hour.cards',9)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        }
+        else if($card->name == 'حضان'){
+            return redirect()->route('admin.index.hour.cards',10)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
         }
     }
      //////////////////// End Update Hours Card  /////////////////
