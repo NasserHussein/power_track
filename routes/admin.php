@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HoursController;
 use App\Http\Controllers\Admin\MaintenanceController;
+use App\Http\Controllers\Admin\TechnicianController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,16 @@ Route::group(['prefix'=>'Customers'],function(){
     Route::get('/delete/{id}','CustomerController@delete')->name('admin.delete.customer');
 });
         ################################# End Customers Route ###################################
+        ################################# Start Technicians Route ###################################
+Route::group(['prefix'=>'Technicians'],function(){
+    Route::get('/','TechnicianController@index')->name('admin.index.technician');
+    Route::get('/create','TechnicianController@create')->name('admin.create.technician');
+    Route::post('/store','TechnicianController@store')->name('admin.store.technician');
+    Route::get('/edit/{id}','TechnicianController@edit')->name('admin.edit.technician');
+    Route::post('/update/{id}','TechnicianController@update')->name('admin.update.technician');
+    Route::get('/delete/{id}','TechnicianController@delete')->name('admin.delete.technician');
+});
+        ################################# End Technicians Route ###################################
         ################################# Start accounts Route ###################################
 Route::group(['prefix'=>'Accounts'],function(){
     Route::get('/{id}','AccountController@index')->name('admin.index.account');
