@@ -18,6 +18,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.create.cards') }}">إضافة معدة</a>
+                            </li>
                             <li class="breadcrumb-item active"> المعدات
                             </li>
                             @if($name == 1)

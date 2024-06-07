@@ -13,6 +13,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.create.customer') }}">إضافة عميل</a>
+                            </li>
                             <li class="breadcrumb-item active">العملاء
                             </li>
                         </ol>
