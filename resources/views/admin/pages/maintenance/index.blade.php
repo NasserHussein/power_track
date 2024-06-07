@@ -1,11 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-@if($card->name !== 'ماكينة ابحاث')
-سجل حياة ال{{ $card->name }}
-@endif
-@if($card->name == 'ماكينة ابحاث')
-سجيل حياة ماكينة الأبحاث
-@endif
+سجل حياة معدة
 @endsection
 @section('content')
 <style>
@@ -15,15 +10,15 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">صيانات @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif</h3>
+                <h3 class="content-header-title"> صيانات ال{{ $card->name }}</h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.maintenance.cards.index.cards',$code) }}">متابعة صيانة @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.maintenance.cards.index.cards',$code) }}">متابعة  صيانات ال{{ $card->name }}</a>
                             </li>
-                            <li class="breadcrumb-item active"> صيانات @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif
+                            <li class="breadcrumb-item active"> صيانات ال{{ $card->name }}
                             </li>
                         </ol>
                     </div>
@@ -57,7 +52,7 @@
                                         <thead>
                                         <tr>
 
-                                            <th>رقم @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif</th>
+                                            <th>رقم ال{{ $card->name }}</th>
                                             <th>ما تم في <br>الصيانة</th>
                                             <th>قطع الغيار<br>المستخدمة</th>
                                             <th>تكلفة<br>الصيانة</th>
@@ -71,7 +66,7 @@
                                             @isset($maintenances)
                                             @foreach ($maintenances as $maintenance)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->code }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->card_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:180px;">{{ $maintenance->maintenance }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:130px;">{{ $maintenance->spare_parts }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:50px">{{ $maintenance->cost }}</div></td>

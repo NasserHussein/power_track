@@ -20,7 +20,11 @@ class Maintenance extends Model
         'updated_at',
         'card_id'
     ];
+    protected $hidden = ['pivot'];
     public function card(){
         return $this->belongsTo('App\Models\Admin\Card');
+    }
+    public function technicians(){
+        return $this->belongsToMany('App\Models\Admin\Technician','technician_maintenance');
     }
 }

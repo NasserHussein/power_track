@@ -21,4 +21,8 @@ class Technician extends Model
         'created_at',
         'updated_at'
     ];
+    protected $hidden = ['pivot'];
+    public function maintenances(){
+        return $this->belongsToMany('App\Models\Admin\Maintenance','technician_maintenance');
+    }
 }

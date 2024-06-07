@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-صيانات {{ $name }}
+صيانة {{ $cards_name }}
 @endsection
 @section('content')
 <style>
@@ -10,13 +10,13 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">صيانات {{ $name }}</h3>
+                <h3 class="content-header-title">صيانات ال{{ $cards_name }}</h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item active"> صيانات {{ $name }}
+                            <li class="breadcrumb-item active"> صيانات ال{{ $cards_name }}
                             </li>
                         </ol>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><i class="la la-group"></i> جميع {{ $Collection }} المسجلة 22 {{ $Single }}</h4>
+                                <h4 class="card-title"><i class="la la-group"></i> جميع المعدات المسجلة المسجلة 22 {{ $cards_name }}</h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -50,9 +50,9 @@
                                         <thead>
                                         <tr>
 
-                                            <th>رقم {{ $name }}</th>
-                                            <th>النوع والموديل</th>
-                                            <th>الرقم المسلسل</th>
+                                            <th>رقم المعدة</th>
+                                            <th>موديل المعدة</th>
+                                            <th>الرقم الشاسية</th>
                                             <th>التكلفة الاجمالية للصيانات</th>
                                             <th>سجل حياة الماكينة</th>
                                             <th>تسجيل صيانة جديدة</th>
@@ -62,9 +62,9 @@
                                             @isset($cards)
                                             @foreach ($cards as $card)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->code }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->model }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:180px">{{ $card->serial_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_model }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:180px">{{ $card->chassis_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ App\Models\Admin\Maintenance::where('card_id',$card->id)->sum('cost') }}</div></td>
                                                     <td style="width:170px">
                                                         <a href="{{ route('admin.maintenance.cards.index.maintenance',$card->id) }}" class="btn btn-info btn-min-width box-shadow-3 mr-1 mb-1">
