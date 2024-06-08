@@ -1,11 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-@if($card->name !== 'ماكينة ابحاث')
 تكلفة صيانة ال{{ $card->name }}
-@endif
-@if($card->name == 'ماكينة ابحاث')
-تكلفة صيانة ماكينة الأبحاث
-@endif
 @endsection
 @section('content')
 <style>
@@ -57,7 +52,7 @@
                                         <thead>
                                         <tr>
 
-                                            <th>رقم @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif</th>
+                                            <th>رقم المعدة</th>
                                             <th>ما تم في الصيانة</th>
                                             <th>قطع الغيار المستخدمة</th>
                                             <th>تكلفة الصيانة</th>
@@ -69,7 +64,7 @@
                                             @isset($maintenances)
                                             @foreach ($maintenances as $maintenance)
                                                 <tr style="height: 50px">
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->code }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->card_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:280px;">{{ $maintenance->maintenance }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:180px;">{{ $maintenance->spare_parts }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:100px">{{ $maintenance->cost }}</div></td>

@@ -121,7 +121,6 @@ class MaintenanceController extends Controller
             return abort(404);
         }
         $card_id = $maintenance->card_id;
-        $maintenance ->technicians() ->sync($request['technicians']);
         $maintenance->update([
             'maintenance' => $request['maintenance'],
             'spare_parts' => $request['spare_parts'],
@@ -129,6 +128,7 @@ class MaintenanceController extends Controller
             'date' => $request['date'],
             'duration' => $request['duration']
         ]);
+        $maintenance ->technicians() ->sync($request['technicians']);
         return redirect()->route('admin.maintenance.cards.index.maintenance',$card_id)->with(['success' => 'تم تعديل بيانات الصيانة بنجاح']);
     }
     public function maintenanc_delete($id){
