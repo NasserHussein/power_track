@@ -95,6 +95,7 @@ Route::group(['prefix'=>'Maintenance_Equipments'],function(){
     Route::get('/{id}','MaintenanceController@index_cards')->name('admin.maintenance.cards.index.cards');
     Route::get('Machine_life_record/{id}','MaintenanceController@index_maintenance')->name('admin.maintenance.cards.index.maintenance');
     Route::post('/store/{id}','MaintenanceController@maintenanc_store')->name('admin.maintenance.cards.store.maintenance');
+    Route::get('/edit/{id}','MaintenanceController@maintenanc_edit')->name('admin.maintenance.cards.edit.maintenance');
     Route::post('/update/{id}','MaintenanceController@maintenanc_update')->name('admin.maintenance.cards.update.maintenance');
     Route::get('/delete/{id}','MaintenanceController@maintenanc_delete')->name('admin.maintenance.cards.delete.maintenance');
 });

@@ -115,6 +115,18 @@ class MaintenanceController extends Controller
         $maintenances = Maintenance::where('card_id' , $id)->get()->sortByDesc('date');
         return view('admin.pages.maintenance.index',compact(['card','maintenances','code','technician1s']));
     }
+    public function maintenanc_edit($id){
+        $maintenance = Maintenance::find($id);
+        $technician1s = Technician::all();
+        $card_id = $maintenance->card_id;
+        if(!$maintenance){
+            return abort(404);
+        }
+        foreach($maintenance->technicians as $te){
+        $technicians_id[] = $te->id;
+        }
+        return view('admin.pages.maintenance.edit',compact(['technicians_id','maintenance','technician1s','card_id']));
+    }
     public function maintenanc_update(AdminMaintenanceRequest $request ,$maintenanc_id){
         $maintenance = Maintenance::find($maintenanc_id);
         if(!$maintenance){

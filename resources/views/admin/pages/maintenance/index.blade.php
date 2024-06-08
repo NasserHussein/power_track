@@ -6,14 +6,6 @@
 <style>
     label[required]:after {content:'*';color:red;}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
- $(document).ready(function () {
-      $('select').selectize({
-          sortField: 'text'
-      });
-  });
-</script>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -124,125 +116,9 @@
                                                         {{-- ----End Modal---- --}}
                                                     </td>
                                                     <td>
-                                                        <button type="button" data-toggle="modal" data-target="#maintenance{{ $maintenance->id }}" class="btn mr-1 mb-1 btn-success btn-sm">
+                                                        <a href="{{ route('admin.maintenance.cards.edit.maintenance',$maintenance->id) }}" class="btn mr-1 mb-1 btn-success btn-sm">
                                                             تعديل
-                                                        </button>
-                                                        {{-- ----Start Modal---- --}}
-                                                        <div class="modal fade text-left" id="maintenance{{ $maintenance->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
-                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel43">تعديل بيانات الصيانة</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">×</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.maintenance.cards.update.maintenance',$maintenance->id) }}" method="POST"
-                                                                        enctype="multipart/form-data">
-                                                                        @csrf
-                                                                        <div class="modal-body">
-                                                                            <h5>من فضلك أملا البيانات المطلوبة</h5>
-                                                                            <hr>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label required for="projectinput1">الأعطال وعمليات الإصلاح / الصيانة الدورية</label>
-                                                                                        <textarea type="text" id="maintenance"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل الأعطال وعمليات الإصلاح / الصيانة الدورية"
-                                                                                            name="maintenance">{{ $maintenance->maintenance }}</textarea>
-                                                                                            @error('maintenance')
-                                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                                            @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label required for="projectinput1">تاريخ الصيانة</label>
-                                                                                        <input type="date" value="{{ $maintenance->date }}" id="date"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل تاريخ الصيانة"
-                                                                                            name="date">
-                                                                                            @error('date')
-                                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                                            @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="projectinput1">قطع الغيار Spare Parts</label>
-                                                                                        <input type="text" value="{{ $maintenance->spare_parts }}" id="spare_parts"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل قطع الغيار Spare Parts"
-                                                                                            name="spare_parts">
-                                                                                            @error('spare_parts')
-                                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                                            @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label required for="projectinput1">تكاليف الاصلاح</label>
-                                                                                        <input type="text" value="{{ $maintenance->cost }}" id="cost"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل تكاليف الاصلاح"
-                                                                                            name="cost">
-                                                                                            @error('cost')
-                                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                                            @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label for="projectinput1">زمن الآصلاح عامل . ساعة M.HR</label>
-                                                                                        <input type="text" value="{{ $maintenance->duration }}" id="duration"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل زمن الآصلاح عامل . ساعة M.HR"
-                                                                                            name="duration">
-                                                                                            @error('duration')
-                                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                                            @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label required for="projectinput1">القائم بالإصلاح By</label>
-                                                                                        <select name="technicians[]" id="profession" class="form-control authes" style="width: 370px" multiple>
-                                                                                            <option  disabled>أختر الفنيين</option>
-                                                            <?php
-                                                            foreach ($maintenance->technicians as $te) {
-                                                                $technicians_id[]=$te->id;
-                                                            }
-                                                            ?>
-                                                                                            @foreach ($technician1s as $technician)
-                                                                                            <option value="{{$technician->id }}" @if(is_array($technicians_id) && in_array($technician->id , $technicians_id)) selected @endif >{{ $technician->name }}</option>
-                                                                                            @endforeach
-
-                                                                                            </select>
-                                                                                            @error('technicians')
-                                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                                            @enderror
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1" data-dismiss="modal">إغلاق</button>
-                                                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">تحديث البيانات المطلوبة <i class="ft-save"></i>
-                                                                                <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                        </div>
-
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----End Modal---- --}}
+                                                        </a>
                                                         <a href="{{ route('admin.maintenance.cards.delete.maintenance',$maintenance->id) }}" class="btn mr-1 mb-1 btn-danger btn-sm">
                                                             حذف
                                                         </a>
@@ -263,10 +139,4 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('.authes').select2({})
-})
-</script>
 @endsection
