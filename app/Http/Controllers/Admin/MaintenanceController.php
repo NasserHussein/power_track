@@ -121,6 +121,7 @@ class MaintenanceController extends Controller
             return abort(404);
         }
         $card_id = $maintenance->card_id;
+        $maintenance ->technicians() ->sync($request['technicians']);
         $maintenance->update([
             'maintenance' => $request['maintenance'],
             'spare_parts' => $request['spare_parts'],

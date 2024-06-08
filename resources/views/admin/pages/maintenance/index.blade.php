@@ -213,10 +213,13 @@
                                                                                         <label required for="projectinput1">القائم بالإصلاح By</label>
                                                                                         <select name="technicians[]" id="profession" class="form-control authes" style="width: 370px" multiple>
                                                                                             <option  disabled>أختر الفنيين</option>
-
+                                                            <?php
+                                                            foreach ($maintenance->technicians as $te) {
+                                                                $technicians_id[]=$te->id;
+                                                            }
+                                                            ?>
                                                                                             @foreach ($technician1s as $technician)
-                                                                                            <option value="{{$technician->id }}" @if(is_array($maintenance->technicians) && in_array($technician->id , $maintenance->technicians)) selected @endif >{{ $technician->name }}</option>
-
+                                                                                            <option value="{{$technician->id }}" @if(is_array($technicians_id) && in_array($technician->id , $technicians_id)) selected @endif >{{ $technician->name }}</option>
                                                                                             @endforeach
 
                                                                                             </select>
@@ -229,7 +232,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1" data-dismiss="modal">إغلاق</button>
-                                                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">حفظ البيانات المطلوبة <i class="ft-save"></i>
+                                                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">تحديث البيانات المطلوبة <i class="ft-save"></i>
                                                                                 <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
                                                                             </button>
                                                                         </div>
