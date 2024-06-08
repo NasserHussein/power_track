@@ -6,6 +6,14 @@
 <style>
     label[required]:after {content:'*';color:red;}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -72,7 +80,49 @@
                                                     <td><div style="word-wrap: break-word;width:50px">{{ $maintenance->cost }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px">{{ $maintenance->date }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:70px">{{ $maintenance->duration }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $maintenance->technician_name }}</div></td>
+                                                    <td>
+                                                        <button type="button" class="btn mr-1 mb-1 btn-outline-secondary btn-sm" data-toggle="modal" data-target="#technicians{{ $maintenance->id }}">
+                                                            القائمون بالأصلاح
+                                                        </button>
+                                                        {{-- ----Start Modal---- --}}
+                                                        <div class="modal fade text-left" id="technicians{{ $maintenance->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel20" style="display: none;" aria-hidden="true">
+                                                            <div class="modal-dialog modal-xs" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="myModalLabel20">الفنيون القائمون بالأصلاح</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h5>الفنيين</h5>
+                                                                        <ul class="list-group">
+                                                                            @foreach (App\Models\Admin\Maintenance::find($maintenance->id) -> technicians->where('technical_skills' , 0)   as $technicians)
+                                                                            <li class="list-group-item bg-blue-grey white">{{ $technicians->name }}</li>
+                                                                            @endforeach
+                                                                            @if(App\Models\Admin\Maintenance::find($maintenance->id) -> technicians->where('technical_skills' , 0)->count() <= 0)
+                                                                            <li class="list-group-item bg-pink white">لا يوجد فنيين</li>
+                                                                            @endif
+                                                                        </ul>
+                                                                        <hr>
+                                                                        <h5>المساعدين</h5>
+                                                                        <ul class="list-group">
+                                                                            @foreach (App\Models\Admin\Maintenance::find($maintenance->id) -> technicians->where('technical_skills' , 1)   as $technicians)
+                                                                            <li class="list-group-item bg-blue-grey white">{{ $technicians->name }}</li>
+                                                                            @endforeach
+                                                                            @if(App\Models\Admin\Maintenance::find($maintenance->id) -> technicians->where('technical_skills' , 1)->count() <= 0)
+                                                                            <li class="list-group-item bg-pink white">لا يوجد مساعدين</li>
+                                                                            @endif
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">إغلاق</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{-- ----End Modal---- --}}
+                                                    </td>
                                                     <td>
                                                         <button type="button" data-toggle="modal" data-target="#maintenance{{ $maintenance->id }}" class="btn mr-1 mb-1 btn-success btn-sm">
                                                             تعديل
@@ -161,11 +211,16 @@
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label required for="projectinput1">القائم بالإصلاح By</label>
-                                                                                        <input type="text" value="{{ $maintenance->technician_name }}" id="technician_name"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل القائم بالإصلاح By"
-                                                                                            name="technician_name">
-                                                                                            @error('technician_name')
+                                                                                        <select name="technicians[]" id="profession" class="form-control authes" style="width: 370px" multiple>
+                                                                                            <option  disabled>أختر الفنيين</option>
+
+                                                                                            @foreach ($technician1s as $technician)
+                                                                                            <option value="{{$technician->id }}" @if(is_array($maintenance->technicians) && in_array($technician->id , $maintenance->technicians)) selected @endif >{{ $technician->name }}</option>
+
+                                                                                            @endforeach
+
+                                                                                            </select>
+                                                                                            @error('technicians')
                                                                                             <span class="text-danger">{{ $message }}</span>
                                                                                             @enderror
                                                                                     </div>
@@ -205,4 +260,10 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.authes').select2({})
+})
+</script>
 @endsection

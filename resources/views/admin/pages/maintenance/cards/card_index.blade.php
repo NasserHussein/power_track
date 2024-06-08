@@ -6,6 +6,14 @@
 <style>
     label[required]:after {content:'*';color:red;}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -161,11 +169,15 @@
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label required for="projectinput1">القائم بالإصلاح By</label>
-                                                                                        <input type="text" value="{{ old('technician_name') }}" id="technician_name"
-                                                                                            class="form-control"
-                                                                                            placeholder="أدخل القائم بالإصلاح By"
-                                                                                            name="technician_name">
-                                                                                            @error('technician_name')
+                                                                                        <select name="technicians[]" id="profession" class="form-control authes" style="width: 370px" multiple>
+                                                                                            <option  disabled>أختر الفنيين</option>
+                                                                                            @isset($technicians)
+                                                                                            @foreach ($technicians as $technician)
+                                                                                            <option @if( collect(old('technicians'))->contains($technician->id)) selected @endif  value="{{ $technician->id }}">{{ $technician->name }}</option>
+                                                                                            @endforeach
+                                                                                            @endisset
+                                                                                            </select>
+                                                                                            @error('technicians')
                                                                                             <span class="text-danger">{{ $message }}</span>
                                                                                             @enderror
                                                                                     </div>
@@ -202,4 +214,10 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.authes').select2({})
+})
+</script>
 @endsection

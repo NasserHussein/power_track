@@ -15,7 +15,6 @@ class Maintenance extends Model
         'cost',
         'date',
         'duration',
-        'technician_name',
         'created_at',
         'updated_at',
         'card_id'

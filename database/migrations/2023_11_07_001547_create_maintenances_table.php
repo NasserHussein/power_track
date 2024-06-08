@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('cost');
             $table->date('date');
             $table->string('duration')->nullable();
-            $table->string('technician_name');
             $table->timestamps();
             $table->bigInteger('card_id')->unsigned();
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');

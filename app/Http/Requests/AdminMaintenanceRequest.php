@@ -27,7 +27,7 @@ class AdminMaintenanceRequest extends FormRequest
             'cost' => 'numeric|required',
             'date' => 'date|required',
             'duration' => 'numeric|nullable',
-            'technician_name' => 'required'
+            'technicians' => 'required'
         ];
     }
     public function messages()
