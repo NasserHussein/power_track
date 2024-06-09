@@ -1,5 +1,5 @@
 <?php
-//سعاد سيد سليمان
+
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CardsController;
 use App\Http\Controllers\Admin\CostController;
