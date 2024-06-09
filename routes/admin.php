@@ -50,6 +50,7 @@ Route::group(['prefix'=>'Technicians'],function(){
     Route::get('/edit/{id}','TechnicianController@edit')->name('admin.edit.technician');
     Route::post('/update/{id}','TechnicianController@update')->name('admin.update.technician');
     Route::get('/delete/{id}','TechnicianController@delete')->name('admin.delete.technician');
+    Route::post('/business/{id}','TechnicianController@business')->name('admin.business.technician');
 });
         ################################# End Technicians Route ###################################
         ################################# Start accounts Route ###################################

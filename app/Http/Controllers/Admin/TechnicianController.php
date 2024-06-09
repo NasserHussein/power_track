@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminCostRequest;
 use App\Http\Requests\TechnicianRequest;
 use App\Models\Admin\Technician;
 use Illuminate\Http\Request;
@@ -60,5 +61,22 @@ class TechnicianController extends Controller
         }
         $techician->delete();
         return redirect()->route('admin.index.technician')->with(['error' => 'تم حذف بيانات الفني بنجاح']);
+    }
+    public function business(AdminCostRequest $request , $id){
+        $techician = Technician::find($id);
+        if(!$techician){
+            return abort(404);
+        }
+        $start = $request['start'];
+        $end = $request['end'];
+        $maintenances = $techician->maintenances->whereBetween('date', [$start,$end])->sortByDesc('date');
+        $count = $maintenances->count();
+        $techician_name = $techician->name;
+        if($techician->technical_skills == 0){
+            $technical_skills = 'الفني';
+        }else{
+            $technical_skills = 'المساعد';
+        }
+        return view('admin.pages.Technician.business.index',compact(['technical_skills','start','end','maintenances','count','techician_name']));
     }
 }
