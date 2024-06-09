@@ -79,7 +79,7 @@
                                 <div class="card-body card-dashboard">
                                     <table class=" display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
                                         <thead>
-                                        <tr style="height: 40px" class="bg-success white">
+                                        <tr style="height: 40px;background-color: #f29d1e" class="white">
                                             <th>رقم المعدة</th>
                                             <th>موديل المعدة</th>
                                             <th>قراءات العداد</th>
