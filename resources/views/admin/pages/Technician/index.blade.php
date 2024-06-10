@@ -47,6 +47,18 @@
                                 <div class="card-body card-dashboard">
                                     <table class=" display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
                                         <thead>
+                                            <div class="row">
+                                                <div style="margin-right:270px;">
+                                                <div style="margin-left: 50px" class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="#"
+                                                    class="btn btn-outline-info btn-min-width btn-glow mr-1 mb-1" data-animation="tada">ترتيب الفنيين المميزين</a>
+                                                </div>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="#"
+                                                        class="btn btn-outline-success btn-min-width btn-glow mr-1 mb-1">ترتيب المساعدين المميزين</a>
+                                                </div>
+                                                </div>
+                                            </div>
                                         <tr style="height: 40px;background-color: #f29d1e" class="white">
                                             <th>id</th>
                                             <th>أسم الفني</th>
