@@ -82,12 +82,15 @@ class TechnicianController extends Controller
     public function business_technician(AdminCostRequest $request){
         $start = $request['start'];
         $end = $request['end'];
+        $technical_skills = 'فني';
         $techicians = Technician::where('technical_skills','0')->get();
-
+        return view('admin.pages.Technician.business.technician_rate',compact(['start','end','technical_skills','techicians']));
     }
     public function business_assistant(AdminCostRequest $request){
         $start = $request['start'];
         $end = $request['end'];
+        $technical_skills = 'مساعد';
         $techicians = Technician::where('technical_skills','1')->get();
+        return view('admin.pages.Technician.business.technician_rate',compact(['start','end','technical_skills','techicians']));
     }
 }

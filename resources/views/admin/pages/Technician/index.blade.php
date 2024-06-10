@@ -50,12 +50,126 @@
                                             <div class="row">
                                                 <div style="margin-right:270px;">
                                                 <div style="margin-left: 50px" class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="#"
-                                                    class="btn btn-outline-info btn-min-width btn-glow mr-1 mb-1" data-animation="tada">ترتيب الفنيين المميزين</a>
+                                                    <button type="button" data-toggle="modal" data-target="#business_technician" class="btn btn-outline-info btn-min-width btn-glow mr-1 mb-1">
+                                                        ترتيب الفنيين المميزين
+                                                    </button>
+                                                    {{-- ----Start Modal---- --}}
+                                                    <div class="modal fade text-left" id="business_technician" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myModalLabel43">الفترة المراد حساب التكلفة فيها</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form class="form form-prevent-multiple-submits" action="{{ route('admin.business_technician.technician') }}" method="POST"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="modal-body">
+                                                                        <h5>من فضلك أملا البيانات المطلوبة</h5>
+                                                                        <hr>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label required for="projectinput1">بداية الفترة</label>
+                                                                                    <input type="date" value="{{ old('start') }}" id="start"
+                                                                                        class="form-control"
+                                                                                        placeholder="أدخل تاريخ الصيانة"
+                                                                                        name="start">
+                                                                                        @error('start')
+                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        @enderror
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label required for="projectinput1">نهاية الفترة</label>
+                                                                                    <input type="date" value="{{ old('end') }}" id="end"
+                                                                                        class="form-control"
+                                                                                        placeholder="أدخل تاريخ الصيانة"
+                                                                                        name="end">
+                                                                                        @error('end')
+                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        @enderror
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1" data-dismiss="modal">إغلاق</button>
+                                                                        <button type="submit" class="btn btn-warning btn-min-width mr-1 mb-1">اتمام البحث <i class="ft-save"></i>
+                                                                            <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- ----End Modal---- --}}
                                                 </div>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="#"
-                                                        class="btn btn-outline-success btn-min-width btn-glow mr-1 mb-1">ترتيب المساعدين المميزين</a>
+                                                    <button type="button" data-toggle="modal" data-target="#business_assistant" class="btn btn-outline-success btn-min-width btn-glow mr-1 mb-1">
+                                                        ترتيب المساعدين المميزين
+                                                    </button>
+                                                    {{-- ----Start Modal---- --}}
+                                                    <div class="modal fade text-left" id="business_assistant" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myModalLabel43">الفترة المراد حساب التكلفة فيها</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form class="form form-prevent-multiple-submits" action="{{ route('admin.business_assistant.technician') }}" method="POST"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="modal-body">
+                                                                        <h5>من فضلك أملا البيانات المطلوبة</h5>
+                                                                        <hr>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label required for="projectinput1">بداية الفترة</label>
+                                                                                    <input type="date" value="{{ old('start') }}" id="start"
+                                                                                        class="form-control"
+                                                                                        placeholder="أدخل تاريخ الصيانة"
+                                                                                        name="start">
+                                                                                        @error('start')
+                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        @enderror
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label required for="projectinput1">نهاية الفترة</label>
+                                                                                    <input type="date" value="{{ old('end') }}" id="end"
+                                                                                        class="form-control"
+                                                                                        placeholder="أدخل تاريخ الصيانة"
+                                                                                        name="end">
+                                                                                        @error('end')
+                                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                                        @enderror
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1" data-dismiss="modal">إغلاق</button>
+                                                                        <button type="submit" class="btn btn-warning btn-min-width mr-1 mb-1">اتمام البحث <i class="ft-save"></i>
+                                                                            <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- ----End Modal---- --}}
                                                 </div>
                                                 </div>
                                             </div>
@@ -86,11 +200,11 @@
                                                     <td><div style="word-wrap: break-word;width:80px;">{{ $techician->previous_experience }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">@if($techician->technical_skills == '0')فني@endif @if($techician->technical_skills == '1')مساعد@endif</div>
                                                     <br>
-                                                        <button type="button" data-toggle="modal" data-target="#cost{{ $techician->id }}" class="btn mr-1 mb-1 btn-primary btn-sm">
+                                                        <button type="button" data-toggle="modal" data-target="#business{{ $techician->id }}" class="btn mr-1 mb-1 btn-primary btn-sm">
                                                          أعمال @if($techician->technical_skills == '0')الفني@endif @if($techician->technical_skills == '1')المساعد@endif
                                                         </button>
                                                         {{-- ----Start Modal---- --}}
-                                                        <div class="modal fade text-left" id="cost{{ $techician->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
+                                                        <div class="modal fade text-left" id="business{{ $techician->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
                                                             <div class="modal-dialog modal-lg" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">

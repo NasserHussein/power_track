@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-أعمال {{ $technical_skills }} {{ $techician_name }}
+ترتيب ال{{ $technical_skills }}ين من حيث عدد الصيانات
 @endsection
 @section('content')
 <style>
@@ -10,7 +10,7 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">أعمال {{ $technical_skills }} {{ $techician_name }}</h3>
+                <h3 class="content-header-title">ترتيب ال{{ $technical_skills }}ين من حيث عدد الصيانات</h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
@@ -18,7 +18,7 @@
                             </li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.index.technician') }}">الفنيين</a>
                             </li>
-                            <li class="breadcrumb-item active"> أعمال {{ $technical_skills }} {{ $techician_name }}
+                            <li class="breadcrumb-item active">ترتيب ال{{ $technical_skills }}ين من حيث عدد الصيانات
                             </li>
                         </ol>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><i class="la la-wrench"></i> جميع أعمال {{ $technical_skills }} {{ $techician_name }} من الفترة <span style="color: red">{{ $start }}</span> إلي <span style="color: red">{{ $end }}</span> = <span style="color: green;font-size: 20px;background-color: yellow;font-weight: bold">{{ $count }} عمليات صيانة</span></h4>
+                                <h4 class="card-title"><i class="la la-wrench"></i> جميع أعمال ال{{ $technical_skills }}ين من الفترة <span style="color: red">{{ $start }}</span> إلي <span style="color: red">{{ $end }}</span></h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -52,30 +52,27 @@
                                         <thead>
                                         <tr>
 
-                                            <th>نوع المعدة</th>
-                                            <th>رقم المعدة</th>
-                                            <th>موديل المعدة</th>
-                                            <th>رقم الشاسية</th>
-                                            <th>ما تم في الصيانة</th>
-                                            <th>قطع الغيار المستخدمة</th>
-                                            <th>تاريخ الصيانة</th>
+                                            <th>أسم ال{{ $technical_skills }}</th>
+                                            <th>تليفون ال{{ $technical_skills }}</th>
+                                            <th>E-Mail ال{{ $technical_skills }}</th>
+                                            <th>تاريخ توظيف ال{{ $technical_skills }}</th>
+                                            <th>عدد الصيانات</th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @isset($maintenances)
-                                            @foreach ($maintenances as $maintenance)
+                                            @isset($techicians)
+                                            @foreach ($techicians as $techician)
                                                 <tr style="height: 50px">
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ App\Models\Admin\Card::find($maintenance->card_id)->name }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:50px;">{{ App\Models\Admin\Card::find($maintenance->card_id)->card_no }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ App\Models\Admin\Card::find($maintenance->card_id)->card_model }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:120px">{{ App\Models\Admin\Card::find($maintenance->card_id)->chassis_no }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:190px">{{ $maintenance->maintenance }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:190px">{{ $maintenance->spare_parts }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $maintenance->date }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:200px;">{{ $techician->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px;">{{ $techician->phone_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:200px;">{{ $techician->email }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px">{{ $techician->date_of_employment }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px">{{ $techician->maintenances->count() }}</div></td>
                                                 </tr>
                                             @endforeach
                                             @endisset
+
                                         </tbody>
                                     </table>
                                     <div class="justify-content-center d-flex">

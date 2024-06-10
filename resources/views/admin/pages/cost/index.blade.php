@@ -10,15 +10,15 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">تكلفة صيانات @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif</h3>
+                <h3 class="content-header-title">تكلفة صيانات ال{{ $card->name }}</h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.index.cards',$code) }}">حساب تكلفة @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.index.cards',$code) }}">حساب تكلفة ال{{ $card->name }}</a>
                             </li>
-                            <li class="breadcrumb-item active"> تكلفة صيانة @if($card->name !== 'ماكينة ابحاث')ال{{ $card->name }}@endif @if($card->name == 'ماكينة ابحاث')ماكينة الأبحاث@endif
+                            <li class="breadcrumb-item active">تكلفة صيانات ال{{ $card->name }}
                             </li>
                         </ol>
                     </div>
