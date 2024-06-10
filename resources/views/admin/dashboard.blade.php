@@ -186,7 +186,7 @@
                             <tr>
                                 <th>نوع المعدة</th>
                                 <th>رقم المعدة</th>
-                                <th>رقم المسلسل الخاص بالمعدة</th>
+                                <th>رقم الشاسية</th>
                                 <th>بداية تاريخ المحاسبة</th>
                                 <th>نهاية تاريخ المحاسبة</th>
                                 <th>التكلفة الكلية<br>لصيانة المعدة</th>
@@ -196,9 +196,9 @@
                                 @foreach (App\Models\Admin\Card::all() as $card_cost)
                                 @if($card_cost->Maintenances->sum('cost') !== 0)
                             <tr>
-                                <td style="color: blue">{{ $card_cost->name }}</td>
-                                <td style="font-size: 20px" class="warning">{{ $card_cost->code }}</td>
-                                <td style="font-size: 15px" class="success">{{ $card_cost->serial_no }}</td>
+                                <td style="color: blue"><div style="word-wrap: break-word;width:110px;">{{ $card_cost->name }}</div></td>
+                                <td style="font-size: 20px" class="warning"><div style="word-wrap: break-word;width:40px;">{{ $card_cost->card_no }}</div></td>
+                                <td style="font-size: 18px" class="success"><div style="word-wrap: break-word;width:110px;">{{ $card_cost->chassis_no }}</div></td>
                                 <td style="font-size: 20px" class="info">{{ $card_cost->Maintenances->min('date') }}</td>
                                 <td style="font-size: 20px" class="info">{{ $card_cost->Maintenances->max('date') }}</td>
                                 <td style="font-size: 20px" class="danger">{{ $card_cost->Maintenances->sum('cost') }} $</td>
@@ -315,6 +315,88 @@
                 </div>
             </div>
   --}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 style="font-size: 20px"  class="card-title">ترتيب الفنيين المميزين علي مدار فترة العمل</h1>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div style="font-size: 20px" class="heading-elements">
+                        <p class="text-muted">اجمالي عدد الفنيين : <span style="color: red">{{ $techicians->count() }} </span>فني</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="table-responsive">
+                        <table class="display nowrap table-striped table-bordered scroll-horizontal table table-de mb-0" style="width:auto;text-align: center">
+                            <thead>
+                            <tr>
+                                <th>أسم الفني</th>
+                                <th>تليفون الفني</th>
+                                <th>بداية تاريخ المحاسبة</th>
+                                <th>نهاية تاريخ المحاسبة</th>
+                                <th>عدد الصيانات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @isset($techicians)
+                                @foreach ($techicians as $techician)
+                            <tr>
+                                <td style="color: blue"><div style="word-wrap: break-word;width:150px;">{{ $techician->name }}</div></td>
+                                <td style="font-size: 20px" class="warning">{{ $techician->phone_no }}</td>
+                                <td style="font-size: 20px" class="info">{{ $techician->maintenances->min('date') }}</td>
+                                <td style="font-size: 20px" class="info">{{ $techician->maintenances->max('date') }}</td>
+                                <td style="font-size: 20px" class="danger">{{ $techician->maintenances->count() }}</td>
+                            </tr>
+                                @endforeach
+                                @endisset
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 style="font-size: 20px"  class="card-title">ترتيب المساعدين المميزين علي مدار فترة العمل</h1>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div style="font-size: 20px" class="heading-elements">
+                        <p class="text-muted">اجمالي عدد المساعدين : <span style="color: red">{{ $assistants->count() }} </span>مساعد</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="table-responsive">
+                        <table class="display nowrap table-striped table-bordered scroll-horizontal table table-de mb-0" style="width:auto;text-align: center">
+                            <thead>
+                            <tr>
+                                <th>أسم المساعد</th>
+                                <th>تليفون المساعد</th>
+                                <th>بداية تاريخ المحاسبة</th>
+                                <th>نهاية تاريخ المحاسبة</th>
+                                <th>عدد الصيانات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @isset($assistants)
+                                @foreach ($assistants as $assistant)
+                            <tr>
+                                <td style="color: blue"><div style="word-wrap: break-word;width:150px;">{{ $assistant->name }}</div></td>
+                                <td style="font-size: 20px" class="warning">{{ $assistant->phone_no }}</td>
+                                <td style="font-size: 20px" class="info">{{ $assistant->maintenances->min('date') }}</td>
+                                <td style="font-size: 20px" class="info">{{ $assistant->maintenances->max('date') }}</td>
+                                <td style="font-size: 20px" class="danger">{{ $assistant->maintenances->count() }}</td>
+                            </tr>
+                                @endforeach
+                                @endisset
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
