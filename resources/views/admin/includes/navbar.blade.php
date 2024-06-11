@@ -100,10 +100,10 @@
                             @endforeach
                         </ul>
                     </li>
-{{--                     <li class="dropdown dropdown-notification nav-item">
+                    <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i
                             class="ficon ft-mail"> </i>
-                             <span class="badge badge-pill badge-default badge-warning badge-default badge-up badge-glow notif-count" data-count=""></span>
+                             <span class="badge badge-pill badge-default badge-info badge-default badge-up badge-glow notif-count" data-count="">5</span>
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
@@ -116,20 +116,19 @@
                             </li>
                             <li class="scrollable-container media-list w-100">
 
-                                <a href="">
+                                <a href="#">
                                     <div class="media">
                                         <div class="media-left">
-                        <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src=""
+                        <span style="width: 55px !important;"  class="avatar avatar-sm avatar-online rounded-circle">
+                          <img src="{{ asset('assets/admin/images/chatboot.png') }}"
                                alt="avatar"><i></i></span>
                                         </div>
                                         <div class="media-body">
-                                            <h6 class="media-heading"></h6>
-                                            <p class="notification-text font-small-3 text-muted"><div style="word-wrap: break-word;width:260px;"></div></p>
+                                            <h6 class="media-heading">dsadasdsaddasd</h6>
+                                            <p class="notification-text font-small-3 text-muted"><div style="word-wrap: break-word;width:260px;">adasdasdasdd dasdas dsa dasdas sadsadsadsadsadsadsadsadasdasd sadsadsadsadsadsadsadsadasdasd sadsadsadsadsadsadsadsadasdasd</div></p>
                                             <small>
                                                 <time class="media-meta text-muted"
-                                                      datetime="2015-06-11T18:29:20+08:00">
-                                                </time>
+                                                      datetime="2015-06-11T18:29:20+08:00">11-06-2024
                                             </small>
                                         </div>
                                     </div>
@@ -140,7 +139,7 @@
                                                                 href="">عرض كل الرسائل النشطة</a></li>
                         </ul>
 
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
         </div>

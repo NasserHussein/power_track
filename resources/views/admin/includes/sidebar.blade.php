@@ -207,7 +207,6 @@
 
             </a>
               <ul class="menu-content">
-
                     <li class="nav-item"><a href=""><i class="icon-list"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">أختر نوع المعدة</span>
                      </a>
@@ -292,6 +291,8 @@
 
                     </ul>
                   </li>
+                    <li class=""><a class="menu-item" href="{{ route('admin.index.customer') }}" data-i18n="nav.dash.ecommerce"> عرض كل العملاء </a>
+                    </li>
               </ul>
           </li>
           <li class="nav-item active"><a href=""><i class="la la-credit-card"></i>

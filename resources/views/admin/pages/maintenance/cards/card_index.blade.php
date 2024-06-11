@@ -197,6 +197,9 @@
                                                             </div>
                                                         </div>
                                                         {{-- ----End Modal---- --}}
+                                                        <button type="button" data-toggle="modal" data-target="#maintenance{{ $card->id }}" class="btn btn-warning round btn-min-width mr-1 mb-1">
+                                                            تحديد موعد زيارة اخري
+                                                        </button>
                                                     </td>
                                                 </tr>
                                         @endforeach
