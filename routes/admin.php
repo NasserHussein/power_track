@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HoursController;
 use App\Http\Controllers\Admin\MaintenanceController;
+use App\Http\Controllers\Admin\NotifieController;
 use App\Http\Controllers\Admin\TechnicianController;
 use Illuminate\Support\Facades\Route;
 
@@ -103,6 +104,11 @@ Route::group(['prefix'=>'Maintenance_Equipments'],function(){
     Route::get('/delete/{id}','MaintenanceController@maintenanc_delete')->name('admin.maintenance.cards.delete.maintenance');
 });
         ################################# End Maintenance cards Route ###################################
+        ################################# Start Notifie cards Route ###################################
+Route::group(['prefix'=>'Maintenance_Notifie'],function(){
+    Route::post('/store/{id}','NotifieController@store')->name('admin.maintenance_Notifie.store');
+});
+        ################################# End Notifie cards Route ###################################
         ################################# Start Cost cards Route ###################################
 Route::group(['prefix'=>'Cost_Equipments'],function(){
     Route::get('/{id}','CostController@index_cards')->name('admin.cost.cards.index.cards');

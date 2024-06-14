@@ -52,13 +52,14 @@
                                         <thead>
                                         <tr>
 
-                                            <th>رقم ال{{ $card->name }}</th>
+                                            <th>رقم<br>المعدة</th>
                                             <th>ما تم في <br>الصيانة</th>
                                             <th>قطع الغيار<br>المستخدمة</th>
                                             <th>تكلفة<br>الصيانة</th>
                                             <th>تاريخ الصيانة</th>
-                                            <th>الزمن المستغرق<br>في الصيانة</th>
+                                            <th>الزمن<br>المستغرق</th>
                                             <th>القائم<br>بالإصلاح</th>
+                                            <th>تحديد<br>موعد</th>
                                             <th>الإجرائات</th>
                                         </tr>
                                         </thead>
@@ -66,15 +67,15 @@
                                             @isset($maintenances)
                                             @foreach ($maintenances as $maintenance)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $card->card_no }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:180px;">{{ $maintenance->maintenance }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:130px;">{{ $maintenance->spare_parts }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:50px;">{{ $card->card_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px;">{{ $maintenance->maintenance }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $maintenance->spare_parts }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:50px">{{ $maintenance->cost }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px">{{ $maintenance->date }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:70px">{{ $maintenance->duration }}</div></td>
                                                     <td>
                                                         <button type="button" class="btn mr-1 mb-1 btn-outline-secondary btn-sm" data-toggle="modal" data-target="#technicians{{ $maintenance->id }}">
-                                                            القائمون بالأصلاح
+                                                            القائمون<br>بالأصلاح
                                                         </button>
                                                         {{-- ----Start Modal---- --}}
                                                         <div class="modal fade text-left" id="technicians{{ $maintenance->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel20" style="display: none;" aria-hidden="true">
@@ -110,6 +111,80 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">إغلاق</button>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{-- ----End Modal---- --}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group" role="group"
+                                                        aria-label="Basic example">
+                                                        <button type="button" data-toggle="modal" data-target="#notifie{{ $maintenance->id }}" class="btn mr-1 mb-1 btn-outline-primary btn-sm">
+                                                            تحديد موعد<br>أخر للصيانة
+                                                        </button>
+                                                        {{-- ----Start Modal---- --}}
+                                                        <div class="modal fade text-left" id="notifie{{ $maintenance->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="myModalLabel43">تحديد موعد أخر للصيانة</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.maintenance_Notifie.store',$maintenance->id) }}" method="POST"
+                                                                        enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <h5>من فضلك أملا البيانات المطلوبة</h5>
+                                                                            <hr>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="projectinput1" required>قطع الغيار التي تحتاجها للصيانة القادمة</label>
+                                                                                        <input type="text" value="{{ old('spare_parts') }}" id="spare_parts"
+                                                                                            class="form-control"
+                                                                                            placeholder="أدخل قطع الغيار التي تحتاجها للصيانة القادمة"
+                                                                                            name="spare_parts">
+                                                                                            @error('spare_parts')
+                                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                                            @enderror
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label required for="projectinput1">تاريخ الأخطار بالصيانة</label>
+                                                                                        <input type="date" value="{{ old('notification_date') }}" id="notification_date"
+                                                                                            class="form-control"
+                                                                                            placeholder="أدخل تاريخ الصيانة"
+                                                                                            name="notification_date">
+                                                                                            @error('notification_date')
+                                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                                            @enderror
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="projectinput1">ملاحظات</label>
+                                                                                        <textarea type="text" id="notes"class="form-control" name="notes" placeholder="أدخل ملاحظاتك هنا.....">{{ old('notes') }}</textarea>
+                                                                                            @error('notes')
+                                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                                            @enderror
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1" data-dismiss="modal">إغلاق</button>
+                                                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">حفظ البيانات المطلوبة <i class="ft-save"></i>
+                                                                                <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        </div>
+
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>

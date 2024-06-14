@@ -291,7 +291,7 @@
 
                     </ul>
                   </li>
-                    <li class=""><a class="menu-item" href="{{ route('admin.index.customer') }}" data-i18n="nav.dash.ecommerce"> عرض كل العملاء </a>
+                    <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض كل الاخطارت السابقة </a>
                     </li>
               </ul>
           </li>
