@@ -26,4 +26,7 @@ class Maintenance extends Model
     public function technicians(){
         return $this->belongsToMany('App\Models\Admin\Technician','technician_maintenance');
     }
+    public function notifies(){
+        return $this->hasMany('App\Models\Admin\Notifie');
+    }
 }

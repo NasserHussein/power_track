@@ -18,4 +18,7 @@ class Notifie extends Model
         'created_at',
         'updated_at'
     ];
+    public function maintenance(){
+        return $this->belongsTo('App\Models\Admin\Maintenance');
+    }
 }

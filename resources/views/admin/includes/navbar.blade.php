@@ -103,7 +103,7 @@
                     <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i
                             class="ficon ft-mail"> </i>
-                             <span class="badge badge-pill badge-default badge-info badge-default badge-up badge-glow notif-count" data-count="">5</span>
+                             <span class="badge badge-pill badge-default badge-info badge-default badge-up badge-glow notif-count" data-count="">{{ App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->count() }}</span>
 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
@@ -114,8 +114,9 @@
                                 <span
                                     class="notification-tag badge badge-default badge-success float-right m-0">جديد</span>
                             </li>
+                            @if(App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->get()->sortBy('notification_date')->count() > '0')
+                            @foreach (App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->get()->sortBy('notification_date') as $notifie)
                             <li class="scrollable-container media-list w-100">
-
                                 <a href="#">
                                     <div class="media">
                                         <div class="media-left">
@@ -124,17 +125,18 @@
                                alt="avatar"><i></i></span>
                                         </div>
                                         <div class="media-body">
-                                            <h6 class="media-heading">dsadasdsaddasd</h6>
-                                            <p class="notification-text font-small-3 text-muted"><div style="word-wrap: break-word;width:260px;">adasdasdasdd dasdas dsa dasdas sadsadsadsadsadsadsadsadasdasd sadsadsadsadsadsadsadsadasdasd sadsadsadsadsadsadsadsadasdasd</div></p>
+                                            <h6 class="media-heading">{{ $notifie->maintenance->card->name }} رقم {{ $notifie->maintenance->card->card_no }}</h6>
+                                            <p class="notification-text font-small-3 text-muted"><div style="font-size: 17px;word-wrap: break-word;width:260px;">يحتاج لتغيير {{ $notifie->spare_parts }}</div></p>
                                             <small>
                                                 <time class="media-meta text-muted"
-                                                      datetime="2015-06-11T18:29:20+08:00">11-06-2024
+                                                      datetime="2015-06-11T18:29:20+08:00">تاريخ الزيارة @if($notifie->notification_date <= Carbon\Carbon::now('Asia/Baghdad')->toDateString()) <span style="color : red;"> @endif {{ $notifie->notification_date }} @if($notifie->notification_date <= Carbon\Carbon::now('Asia/Baghdad')->toDateString())</span> @endif
                                             </small>
                                         </div>
                                     </div>
-
                                 </a>
                             </li>
+                            @endforeach
+                            @endif
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
                                                                 href="">عرض كل الرسائل النشطة</a></li>
                         </ul>
