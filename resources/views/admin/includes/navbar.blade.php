@@ -117,7 +117,7 @@
                             @if(App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->get()->sortBy('notification_date')->count() > '0')
                             @foreach (App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->get()->sortBy('notification_date') as $notifie)
                             <li class="scrollable-container media-list w-100">
-                                <a href="#">
+                                <a href="{{ route('admin.maintenance_Notifie.edit',$notifie->id) }}">
                                     <div class="media">
                                         <div class="media-left">
                         <span style="width: 55px !important;"  class="avatar avatar-sm avatar-online rounded-circle">
@@ -138,7 +138,7 @@
                             @endforeach
                             @endif
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
-                                                                href="">عرض كل الرسائل النشطة</a></li>
+                                                                href="">عرض كل الرسائل الغير نشطة</a></li>
                         </ul>
 
                     </li>

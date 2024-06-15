@@ -107,6 +107,9 @@ Route::group(['prefix'=>'Maintenance_Equipments'],function(){
         ################################# Start Notifie cards Route ###################################
 Route::group(['prefix'=>'Maintenance_Notifie'],function(){
     Route::post('/store/{id}','NotifieController@store')->name('admin.maintenance_Notifie.store');
+    Route::get('/edit/{id}','NotifieController@edit')->name('admin.maintenance_Notifie.edit');
+    Route::post('/update/{id}','NotifieController@update')->name('admin.maintenance_Notifie.update');
+    Route::get('/delete/{id}','NotifieController@delete')->name('admin.maintenance_Notifie.delete');
 });
         ################################# End Notifie cards Route ###################################
         ################################# Start Cost cards Route ###################################

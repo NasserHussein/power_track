@@ -23,4 +23,37 @@ class NotifieController extends Controller
         ]);
         return redirect()->route('admin.maintenance.cards.index.maintenance',$card_id)->with(['success' => 'تم تحديد موعد جديد للصيانة بنجاح']);
     }
+    public function edit($id){
+        $notifie = Notifie::find($id);
+        if(!$notifie){
+            return abort(404);
+        }
+        return view('admin.pages.notifie.edit',compact('notifie'));
+    }
+    public function update(NotifieRequest $request , $id){
+        $notifie = Notifie::find($id);
+        if(!$notifie){
+            return abort(404);
+        }
+        if($request['status'] !== '1'){
+            $status = '0';
+        }else{
+            $status = '1';
+        }
+        $notifie->update([
+            'spare_parts' => $request['spare_parts'],
+            'notification_date' => $request['notification_date'],
+            'notes' => $request['notes'],
+            'status' => $status
+        ]);
+        return redirect()->route('admin.maintenance_Notifie.edit',$notifie->id)->with(['success' => 'تم تعديل الاخطار بنجاح']);
+    }
+    public function delete($id){
+        $notifie = Notifie::find($id);
+        if(!$notifie){
+            return abort(404);
+        }
+        $notifie->delete();
+        return redirect()->route('admin.dashboard');
+    }
 }
