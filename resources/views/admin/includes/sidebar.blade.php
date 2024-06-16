@@ -291,8 +291,6 @@
 
                     </ul>
                   </li>
-                    <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض كل الاخطارت السابقة </a>
-                    </li>
               </ul>
           </li>
           <li class="nav-item active"><a href=""><i class="la la-credit-card"></i>

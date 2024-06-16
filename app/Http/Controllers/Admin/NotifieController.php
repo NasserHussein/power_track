@@ -6,10 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\NotifieRequest;
 use App\Models\Admin\Maintenance;
 use App\Models\Admin\Notifie;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class NotifieController extends Controller
 {
+    public function index_de(){
+        $notifies_de = Notifie::where('status','0')->get();
+        return view('admin.pages.notifie.index_de',compact('notifies_de'));
+    }
+    public function index_ac(){
+        $notifies_ac = Notifie::where('status','1')->get();
+        return view('admin.pages.notifie.index_ac',compact('notifies_ac'));
+    }
     public function store(NotifieRequest $request , $id){
         $card_id = Maintenance::find($id)->card->id;
         if(!$card_id){

@@ -138,7 +138,7 @@
                             @endforeach
                             @endif
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
-                                                                href="">عرض كل الرسائل الغير نشطة</a></li>
+                                    href="{{ route('admin.maintenance_Notifie.index_de') }}">عرض كل الرسائل الغير نشطة</a></li>
                         </ul>
 
                     </li>
