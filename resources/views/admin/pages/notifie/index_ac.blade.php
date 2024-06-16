@@ -52,6 +52,7 @@
                                         <thead>
                                         <tr>
 
+                                            <th>ID</th>
                                             <th>رقم<br>المعدة</th>
                                             <th>نوع <br>المعدة</th>
                                             <th>ما تم في <br>الصيانة</th>
@@ -64,10 +65,11 @@
                                             @isset($notifies_ac)
                                             @foreach ($notifies_ac as $notifie_ac)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $notifie_ac->maintenance->card->card_no }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:110px;">{{ $notifie_ac->maintenance->card->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:50px;">{{ $notifie_ac->id }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $notifie_ac->maintenance->card->card_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $notifie_ac->maintenance->card->name }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:200px;">{{ $notifie_ac->maintenance->maintenance }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:200px">{{ $notifie_ac->spare_parts }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:190px">{{ $notifie_ac->spare_parts }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:100px">{{ $notifie_ac->notification_date }}</div></td>
                                                     <td>
                                                         <a href="{{ route('admin.maintenance_Notifie.edit',$notifie_ac->id) }}" class="btn mr-1 mb-1 btn-success btn-sm">
