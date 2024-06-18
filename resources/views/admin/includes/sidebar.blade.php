@@ -18,6 +18,19 @@
               </ul>
           </li>
 
+          <li class="nav-item active"><a href=""><i class="la la-truck"></i>
+              <span class="menu-title" data-i18n="nav.dash.main">معدات العملاء</span>
+              <span
+                  class="badge badge badge-danger badge-pill float-right mr-2">1.2K</span>
+            </a>
+              <ul class="menu-content">
+                  <li class=""><a class="menu-item" href="{{ route('jhbuvbysbfgeyhwrvfetwvf') }}" data-i18n="nav.dash.ecommerce"> عرض كل معدات العملاء </a>
+                  </li>
+                  <li class=""><a class="menu-item" href="{{ route('sadasfasfasdfasdf') }}" data-i18n="nav.dash.ecommerce">إضافة معدة</a>
+                  </li>
+              </ul>
+          </li>
+
           <li class="nav-item active"><a href=""><i class="la la-pied-piper-alt"></i>
               <span class="menu-title" data-i18n="nav.dash.main">الفنيين</span>
               <span

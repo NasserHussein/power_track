@@ -85,6 +85,17 @@ Route::group(['prefix'=>'Identification_Cards'],function(){
                 ###### End Cards Oil Gearbox Registration Route ######
 });
         ################################# End cards Route ###################################
+        ################################# Start Customer_Card Route ###################################
+/* Route::group(['prefix'=>'Customer_Card'],function(){
+
+}); */
+Route::get('/Customer_Card',function(){
+    return view('admin.pages.customer_card.index');
+})->name('jhbuvbysbfgeyhwrvfetwvf');
+Route::get('/Customer_Cardsadasdasd',function(){
+    return view('admin.pages.customer_card.create');
+})->name('sadasfasfasdfasdf');
+        ################################# End Customer_Card Route ###################################
         ################################# Start Hours cards Route ###################################
 Route::group(['prefix'=>'Hours_Cards'],function(){
     Route::get('/{id}','HoursController@index')->name('admin.index.hour.cards');
