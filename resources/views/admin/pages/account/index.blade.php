@@ -15,6 +15,8 @@
                             </li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.index.customer') }}">العملاء</a>
                             </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.create.account',$customer->id) }}">إضافة فاتورة</a>
+                            </li>
                             <li class="breadcrumb-item active">حساب <mark>{{ $customer->company_name }}</mark>
                             </li>
                         </ol>

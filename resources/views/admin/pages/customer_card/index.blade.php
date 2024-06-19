@@ -67,34 +67,51 @@
                                                     <td><div style="word-wrap: break-word;width:110px;">1545145151515151</div></td>
                                                     <td><div style="word-wrap: break-word;width:110px;">1515155asd4545485485</div></td>
                                                     <td><div style="word-wrap: break-word;width:75px">25-01-2024</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;"><a class="btn mr-1 mb-1 btn-outline-secondary btn-sm">الصيانات </a><a class="btn mr-1 mb-1 btn-outline-secondary btn-sm">أضف صيانة</a></div></td>
+                                                    <td>
+                                                        <div style="word-wrap: break-word;width:100px;">
+                                                            <a href="#" class="btn mr-1 mb-1 btn-outline-secondary btn-sm">الصيانات </a>
+                                                            <a href="#" class="btn mr-1 mb-1 btn-outline-secondary btn-sm">أضف صيانة</a>
+                                                        </div>
+                                                    </td>
                                                     <td><div style="word-wrap: break-word;width:90px;">
-                                                        <button data-toggle="modal" data-target="#card-details" class="btn mr-1 mb-1 btn-outline-secondary btn-sm">
+                                                        <button type="button" class="btn mr-1 mb-1 btn-outline-warning btn-sm" data-toggle="modal" data-target="#Customer">
                                                             بيانات</br>العميل
                                                         </button>
                                                         {{-- ----Start Modal---- --}}
-                                                            <div class="modal fade text-left" id="card-details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" style="display: none;" aria-hidden="true">
-                                                                <div class="modal-dialog modal-xl" role="document">
+                                                            <div class="modal fade text-left" id="Customer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel12" style="display: none;" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title" id="myModalLabel16">تفاصيل إضافية عن المعدة</h4>
+                                                                        <div class="modal-header bg-warning white">
+                                                                            <h4 class="modal-title white" id="myModalLabel12"><i class="icon-notebook"></i> بيانات العميل</h4>
                                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                 <span aria-hidden="true">×</span>
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <h5>تفاصيل إضافية عن المعدة</h5>
+                                                                            <h5><i class="la la-arrow-right"></i> بيانات العميل</h5>
                                                                             <div class="table-responsive">
                                                                                 <table class="table">
                                                                                     <thead>
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <th scope="row">اسم المعدة</th>
-                                                                                            <td>سشيشسي</td>
+                                                                                            <th scope="row">اسم العميل</th>
+                                                                                            <td>محمد عماد</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th scope="row">القسم</th>
+                                                                                            <th scope="row">رقم الهاتف</th>
                                                                                             <td>01123040964</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">البريد الالكتروني</th>
+                                                                                            <td>svadahsd@jdsgfbsadf.afha</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">العنوان</th>
+                                                                                            <td>يشلاليشسايا</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">الشركة 'اذا كان العميل شركة'</th>
+                                                                                            <td>يشلاليشسايا</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
