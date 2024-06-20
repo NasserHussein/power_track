@@ -95,6 +95,18 @@ Route::get('/Customer_Card',function(){
 Route::get('/Customer_Cardsadasdasd',function(){
     return view('admin.pages.customer_card.create');
 })->name('sadasfasfasdfasdf');
+Route::get('/ahdbashdbgsahdbsad',function(){
+    return view('admin.pages.customer_card.edit');
+})->name('asdjajisdhadhasdasdsd');
+Route::get('/jahdgasdyhgasd',function(){
+    return view('admin.pages.customer_card.maintenance.index');
+})->name('asdjajiajadjiahduawdsdhadhasdasdsd');
+Route::get('/sdadashdjasdsad',function(){
+    return view('admin.pages.customer_card.maintenance.edit');
+})->name('dsafsfdsfyusdfsdf');
+Route::get('/ubgdsfbsydhfgv',function(){
+    return view('admin.pages.customer_card.maintenance.create');
+})->name('nzjgdyqadjadbajvdyuad');
         ################################# End Customer_Card Route ###################################
         ################################# Start Hours cards Route ###################################
 Route::group(['prefix'=>'Hours_Cards'],function(){
