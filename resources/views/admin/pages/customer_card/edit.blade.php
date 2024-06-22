@@ -77,7 +77,7 @@ label[required]:after {content:'*';color:red;}
                             @include('admin.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.store.cards') }}" method="POST"
+                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.update.customer.Card',$customer_card->id) }}" method="POST"
                                           enctype="multipart/form-data">
                                           @csrf
                                         <div class="form-body">
@@ -86,7 +86,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>نوع المعدة</label>
-                                                        <input type="text" value="{{ old('name') }}" id="name"
+                                                        <input type="text" value="{{ $customer_card->name }}" id="name"
                                                                class="form-control"
                                                                placeholder="أدخل نوع المعدة"
                                                                name="name">
@@ -98,7 +98,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>الرقم التسلسلي</label>
-                                                        <input type="text" value="{{ old('serial_no') }}" id="serial_no"
+                                                        <input type="text" value="{{ $customer_card->serial_no }}" id="serial_no"
                                                                class="form-control"
                                                                placeholder="أدخل الرقم التسلسلي"
                                                                name="serial_no">
@@ -112,7 +112,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>رقم الشاسية</label>
-                                                        <input type="text" value="{{ old('chassis_no') }}" id="chassis_no"
+                                                        <input type="text" value="{{ $customer_card->chassis_no }}" id="chassis_no"
                                                                class="form-control"
                                                                placeholder="أدخل رقم الشاسية"
                                                                name="chassis_no">
@@ -124,7 +124,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>موديل المعدة</label>
-                                                        <input type="text" value="{{ old('card_model') }}" id="card_model"
+                                                        <input type="text" value="{{ $customer_card->card_model }}" id="card_model"
                                                                class="form-control"
                                                                placeholder="أدخل موديل المعدة"
                                                                name="card_model">
@@ -138,7 +138,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">تاريخ الشراء</label>
-                                                        <input type="date" value="{{ old('date_of_purchase') }}" id="date_of_purchase"
+                                                        <input type="date" value="{{ $customer_card->date_of_purchase }}" id="date_of_purchase"
                                                                class="form-control"
                                                                placeholder="أدخل تاريخ الشراء"
                                                                name="date_of_purchase">
@@ -150,7 +150,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">تفاصيل اضافية</label>
-                                                        <input type="text" value="{{ old('notes') }}" id="notes"
+                                                        <input type="text" value="{{ $customer_card->notes }}" id="notes"
                                                                class="form-control"
                                                                placeholder="أدخل تفاصيل اضافية"
                                                                name="notes">
@@ -165,7 +165,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>أسم العميل</label>
-                                                        <input type="text" value="{{ old('customer_name') }}" id="customer_name"
+                                                        <input type="text" value="{{ $customer_card->customer_name }}" id="customer_name"
                                                                class="form-control"
                                                                placeholder="أدخل أسم العميل"
                                                                name="customer_name">
@@ -177,7 +177,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>رقم الهاتف</label>
-                                                        <input type="text" value="{{ old('phone_no') }}" id="phone_no"
+                                                        <input type="text" value="{{ $customer_card->phone_no }}" id="phone_no"
                                                                class="form-control"
                                                                placeholder="أدخل رقم الهاتف"
                                                                name="phone_no">
@@ -191,7 +191,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">البريد الالكتروني</label>
-                                                        <input type="email" value="{{ old('email') }}" id="email"
+                                                        <input type="email" value="{{ $customer_card->email }}" id="email"
                                                                class="form-control"
                                                                placeholder="أدخل البريد الالكتروني"
                                                                name="email">
@@ -203,7 +203,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">عنوان العميل ان وجد</label>
-                                                        <input type="text" value="{{ old('address') }}" id="address"
+                                                        <input type="text" value="{{ $customer_card->address }}" id="address"
                                                                class="form-control"
                                                                placeholder="أدخل عنوان العميل ان وجد"
                                                                name="address">
@@ -217,7 +217,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">أسم الشركة إذا كان العميل شركة</label>
-                                                        <input type="text" value="{{ old('company_name') }}" id="company_name"
+                                                        <input type="text" value="{{ $customer_card->company_name }}" id="company_name"
                                                                class="form-control"
                                                                placeholder="أدخل أسم الشركة إذا كان العميل شركة"
                                                                name="company_name">

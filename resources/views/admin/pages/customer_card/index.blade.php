@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><i class="la la-group"></i> جميع المعدات المسجلة 100 معدة</h4>
+                                <h4 class="card-title"><i class="la la-group"></i> جميع المعدات المسجلة {{ $customer_cards->count() }} معدة</h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -49,24 +49,27 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>نوع المعدة</th>
-                                            <th>رقم الشاسية</th>
+                                            <th>نوع<br>المعدة</th>
+                                            <th>موديل<br>المعدة</th>
                                             <th>رقم التسلسلي</th>
+                                            <th>رقم الشاسية</th>
                                             <th>تاريخ الشراء</th>
                                             <th>صيانات المعدة</th>
-                                            <th>بيانات العميل</th>
-                                            <th>تفاصيل اضافية</th>
+                                            <th>بيانات<br>العميل</th>
+                                            <th>تفاصيل<br>اضافية</th>
                                             <th>الأجرائات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                            @isset($customer_cards)
+                                            @foreach ($customer_cards as $customer_card)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:50px;">5158</div></td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">ونش شوكة ديزل</div></td>
-                                                    <td><div style="word-wrap: break-word;width:110px;">1545145151515151</div></td>
-                                                    <td><div style="word-wrap: break-word;width:110px;">1515155asd4545485485</div></td>
-                                                    <td><div style="word-wrap: break-word;width:75px">25-01-2024</div></td>
+                                                    <td><div style="word-wrap: break-word;width:40px;">{{ $customer_card->id }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $customer_card->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $customer_card->card_model }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:110px;">{{ $customer_card->serial_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:110px;">{{ $customer_card->chassis_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:75px">{{ $customer_card->date_of_purchase }}</div></td>
                                                     <td>
                                                         <div style="word-wrap: break-word;width:100px;">
                                                         <button type="button" data-toggle="modal" data-target="#maintenance" class="btn mr-1 mb-1 btn-outline-secondary btn-sm">
@@ -156,7 +159,7 @@
                                                             <a href="{{ route('asdjajiajadjiahduawdsdhadhasdasdsd') }}" class="btn mr-1 mb-1 btn-outline-success btn-sm">الصيانات </a>
                                                         </div>
                                                     </td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">
+                                                    <td><div style="word-wrap: break-word;width:70px;">
                                                         <button type="button" class="btn mr-1 mb-1 btn-outline-warning btn-sm" data-toggle="modal" data-target="#Customer">
                                                             بيانات</br>العميل
                                                         </button>
@@ -178,23 +181,23 @@
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <th scope="row">اسم العميل</th>
-                                                                                            <td>محمد عماد</td>
+                                                                                            <td>{{ $customer_card->customer_name }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">رقم الهاتف</th>
-                                                                                            <td>01123040964</td>
+                                                                                            <td>{{ $customer_card->phone_no }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">البريد الالكتروني</th>
-                                                                                            <td>svadahsd@jdsgfbsadf.afha</td>
+                                                                                            <td>{{ $customer_card->email }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">العنوان</th>
-                                                                                            <td>يشلاليشسايا</td>
+                                                                                            <td>{{ $customer_card->address }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">الشركة 'اذا كان العميل شركة'</th>
-                                                                                            <td>يشلاليشسايا</td>
+                                                                                            <td>{{ $customer_card->company_name }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -208,10 +211,10 @@
                                                             </div>
                                                         {{-- ----End Modal---- --}}
                                                     </div></td>
-                                                    <td><div style="word-wrap: break-word;width:113px;">1515155asd4545485485</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;">
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $customer_card->notes }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:80px;">
 
-                                                        <a href="{{ route('asdjajisdhadhasdasdsd') }}" class="btn mr-1 mb-1 btn-outline-primary btn-sm">
+                                                        <a href="{{ route('admin.edit.customer.Card',$customer_card->id) }}" class="btn mr-1 mb-1 btn-outline-primary btn-sm">
                                                             تعديل
                                                         </a>
 
@@ -233,7 +236,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">لا , تراجع</button>
-                                                                        <a href="#" class="btn btn-outline-danger">نعم متأكد , قم بالحذف</a>
+                                                                        <a href="{{ route('admin.delete.customer.Card',$customer_card->id) }}" class="btn btn-outline-danger">نعم متأكد , قم بالحذف</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -242,7 +245,8 @@
 
                                                     </div></td>
                                                 </tr>
-
+                                            @endforeach
+                                            @endisset
                                         </tbody>
                                     </table>
                                     <div class="justify-content-center d-flex">

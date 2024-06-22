@@ -77,7 +77,7 @@ label[required]:after {content:'*';color:red;}
                             @include('admin.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.store.cards') }}" method="POST"
+                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.store.customer.Card') }}" method="POST"
                                           enctype="multipart/form-data">
                                           @csrf
                                         <div class="form-body">
@@ -111,7 +111,7 @@ label[required]:after {content:'*';color:red;}
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1" required>رقم الشاسية</label>
+                                                        <label for="projectinput1">رقم الشاسية</label>
                                                         <input type="text" value="{{ old('chassis_no') }}" id="chassis_no"
                                                                class="form-control"
                                                                placeholder="أدخل رقم الشاسية"
@@ -123,7 +123,7 @@ label[required]:after {content:'*';color:red;}
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1" required>موديل المعدة</label>
+                                                        <label for="projectinput1">موديل المعدة</label>
                                                         <input type="text" value="{{ old('card_model') }}" id="card_model"
                                                                class="form-control"
                                                                placeholder="أدخل موديل المعدة"

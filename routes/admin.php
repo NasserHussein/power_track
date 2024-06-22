@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CardsController;
 use App\Http\Controllers\Admin\CostController;
+use App\Http\Controllers\Admin\Customer_CardController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HoursController;
@@ -86,18 +87,14 @@ Route::group(['prefix'=>'Identification_Cards'],function(){
 });
         ################################# End cards Route ###################################
         ################################# Start Customer_Card Route ###################################
-/* Route::group(['prefix'=>'Customer_Card'],function(){
-
-}); */
-Route::get('/Customer_Card',function(){
-    return view('admin.pages.customer_card.index');
-})->name('jhbuvbysbfgeyhwrvfetwvf');
-Route::get('/Customer_Cardsadasdasd',function(){
-    return view('admin.pages.customer_card.create');
-})->name('sadasfasfasdfasdf');
-Route::get('/ahdbashdbgsahdbsad',function(){
-    return view('admin.pages.customer_card.edit');
-})->name('asdjajisdhadhasdasdsd');
+Route::group(['prefix'=>'Customer_Card'],function(){
+    Route::get('/index','Customer_CardController@index')->name('admin.index.customer.Card');
+    Route::get('/create','Customer_CardController@create')->name('admin.create.customer.Card');
+    Route::post('/store','Customer_CardController@store')->name('admin.store.customer.Card');
+    Route::get('/edit/{id}','Customer_CardController@edit')->name('admin.edit.customer.Card');
+    Route::post('/update/{id}','Customer_CardController@update')->name('admin.update.customer.Card');
+    Route::get('/delete/{id}','Customer_CardController@delete')->name('admin.delete.customer.Card');
+});
 Route::get('/jahdgasdyhgasd',function(){
     return view('admin.pages.customer_card.maintenance.index');
 })->name('asdjajiajadjiahduawdsdhadhasdasdsd');
