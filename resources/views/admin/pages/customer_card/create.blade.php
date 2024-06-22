@@ -45,7 +45,7 @@ label[required]:after {content:'*';color:red;}
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">معدات العملاء</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index.customer.Card') }}">معدات العملاء</a>
                             </li>
                             <li class="breadcrumb-item active">إضافة بيانات معدة وعميل
                             </li>
