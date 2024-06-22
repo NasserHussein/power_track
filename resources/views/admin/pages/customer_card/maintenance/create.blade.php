@@ -36,6 +36,14 @@ input[type="date"]::-webkit-datetime-edit-day-field{
 
 label[required]:after {content:'*';color:red;}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -187,6 +195,34 @@ label[required]:after {content:'*';color:red;}
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        <label required for="projectinput1">القائم بالإصلاح By</label>
+                                                        <select name="technicians[]" id="profession" class="form-control authes" style="width: 435px" multiple>
+                                                            <option  disabled>أختر الفنيين</option>
+
+                                                            <option value="">شيهشسياشعسي</option>
+
+                                                            </select>
+                                                            @error('technicians')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1" required>تاريخ التسليم</label>
+                                                        <input type="date" value="{{ old('delivery_date') }}" id="delivery_date"
+                                                               class="form-control"
+                                                               placeholder="أدخل التسليم"
+                                                               name="delivery_date">
+                                                               @error('delivery_date')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
                                                         <label for="projectinput1">تكلفة الصيانة</label>
                                                         <input type="text" value="{{ old('maintenance_cost') }}" id="maintenance_cost"
                                                                class="form-control"
@@ -219,4 +255,10 @@ label[required]:after {content:'*';color:red;}
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.authes').select2({})
+})
+</script>
 @endsection
