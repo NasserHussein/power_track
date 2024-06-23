@@ -223,13 +223,7 @@ class CardsController extends Controller
     ]);
     //////// End register hour /////////////////////
     /////////////////////////////  change OOOOOile   ///////////////////////////////////////////////
-    if($card->name == 'كسارة'){
-        $duration_of_oil =1000;
-    }elseif($card->name == 'ماكينة ابحاث'){
-        $duration_of_oil =200;
-    }else{
-    $duration_of_oil =120;
-    }
+        $duration_of_oil = 150;
     /////////////////////////////  change OOOOOile   ///////////////////////////////////////////////
     $card->update([
         'date_of_oil' => $request['date_of_oil'],
@@ -238,24 +232,7 @@ class CardsController extends Controller
         'hours_used' => 0,
         'remaining_hours' => $duration_of_oil
     ]);
-        if($card->name == 'حفار'){
-            return redirect()->route('admin.digger.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-        }else if($card->name == 'لودر'){
-            return redirect()->route('admin.loader.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-        }
-        else if($card->name == 'مولد'){
-            return redirect()->route('admin.generator.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-        }
-        else if($card->name == 'كسارة'){
-            return redirect()->route('admin.crusher.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-        }
-        else if($card->name == 'كمبريسور'){
-            return redirect()->route('admin.compressor.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-        }
-        else if($card->name == 'ماكينة ابحاث'){
-            return redirect()->route('admin.research.machine.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-        }
-        return redirect()->route('admin.index.cards')->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
+        return redirect()->route('admin.types.cards',6)->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
     }
     ////////////////Cards Oil Gearbox Registration/////////////////
     public function oil_registration_gearbox(CardsOilGearboxRequest $request, $id){

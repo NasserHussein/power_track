@@ -53,7 +53,7 @@
 
                     <li class="dropdown dropdown-notification nav-item dropdown-notifications">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
-                            <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow notif-count" data-count="">{{ App\Models\Admin\Card::where('remaining_hours', '<=' , 0)->count() +  App\Models\Admin\Card::where('remaining_hours_gearbox', '<=' , 0)->count() }}</span>
+                            <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow notif-count" data-count="">{{ App\Models\Admin\Card::where('remaining_hours', '<=' , 0)->count() }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
@@ -70,28 +70,11 @@
                                         <div class="media-left align-self-center"><i style="background-color: #FFC107"
                                             class="ft-filter icon-bg-circle "></i></div>
                                         <div class="media-body">
-                                            <h5 style="color: blue" class="media-heading">{{ $card_oil->name }} رقم {{ $card_oil->code }}</h5>
-                                            <p>تحتاج تغيير زيت ضروري</p>
+                                            <h5 style="color: blue" class="media-heading">{{ $card_oil->name }} رقم {{ $card_oil->card_no }}</h5>
+                                            <p>يحتاج تغيير زيت ضروري</p>
                                             <small>
                                                 <time style="font-size: 15px" class="media-meta text-muted danger"
                                                       datetime="2015-06-11T18:29:20+08:00">{{ $card_oil->remaining_hours }} ساعة
-                                                </time>
-                                            </small>
-                                        </div>
-                                    </div>
-                            </li>
-                            @endforeach
-                            @foreach ( App\Models\Admin\Card::where('remaining_hours_gearbox', '<=' , 0)->get()->sortBy('remaining_hours_gearbox')  as $card_oil_gearbox)
-                            <li class="scrollable-container media-list w-100">
-                                    <div class="media">
-                                        <div class="media-left align-self-center"><i style="background-color: #FFC107"
-                                            class="ft-filter icon-bg-circle "></i></div>
-                                        <div class="media-body">
-                                            <h5 style="color: blue" class="media-heading">لودر رقم {{ $card_oil_gearbox->code }}</h5>
-                                            <p>يحتاج تغيير زيت الفتيس ضروري</p>
-                                            <small>
-                                                <time style="font-size: 15px" class="media-meta text-muted danger"
-                                                      datetime="2015-06-11T18:29:20+08:00">{{ $card_oil_gearbox->remaining_hours_gearbox }} ساعة
                                                 </time>
                                             </small>
                                         </div>

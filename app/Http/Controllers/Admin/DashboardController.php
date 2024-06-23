@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $cards_oils_gearbox = Card::where('remaining_hours_gearbox', '<=' , 100)->get()->sortBy('remaining_hours_gearbox');
         $techicians = Technician::where('technical_skills','0')->get();
         $assistants = Technician::where('technical_skills','1')->get();
         $customer_maintenances = Customer_maintenance::where('delivery_date', null)->get();
-    return view('admin.dashboard',compact(['cards_oils_gearbox','techicians','assistants','customer_maintenances']));
+    return view('admin.dashboard',compact(['techicians','assistants','customer_maintenances']));
     }
 }

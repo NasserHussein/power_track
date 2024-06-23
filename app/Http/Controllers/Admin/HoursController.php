@@ -65,19 +65,10 @@ class HoursController extends Controller
         $count = $request['card_hours'] - $last_hour;
         }
     /////////////////////////////  change OOOOOile   ///////////////////////////////////////////////
-    if($card->name == 'كسارة'){
-        $duration_of_oil =1000;
-    }elseif($card->name == 'ماكينة ابحاث'){
-        $duration_of_oil =200;
-    }else{
-    $duration_of_oil =120;
-    }
-    $duration_of_oil_gearbox =2200;
+        $duration_of_oil = 150;
     /////////////////////////////  change OOOOOile   ///////////////////////////////////////////////
         $hours_used = $request['card_hours'] - $card->oil_hours;
         $remaining_hours = $duration_of_oil - $hours_used;
-        $hours_used_gearbox = $request['card_hours'] - $card->oil_hours_gearbox;
-        $remaining_hours_gearbox = $duration_of_oil_gearbox - $hours_used_gearbox;
         $card->update([
             'card_hours' => $request['card_hours']
         ]);
@@ -85,12 +76,6 @@ class HoursController extends Controller
         $card->update([
             'hours_used' => $hours_used,
             'remaining_hours' => $remaining_hours
-        ]);
-        }
-        if($card->oil_hours_gearbox !== NULL){
-        $card->update([
-            'hours_used_gearbox' => $hours_used_gearbox,
-            'remaining_hours_gearbox' => $remaining_hours_gearbox
         ]);
         }
         Hour::create([

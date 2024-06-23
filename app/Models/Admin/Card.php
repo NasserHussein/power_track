@@ -29,10 +29,6 @@ class Card extends Model
         'oil_hours',
         'hours_used',
         'remaining_hours',
-        'date_of_oil_gearbox',
-        'oil_hours_gearbox',
-        'hours_used_gearbox',
-        'remaining_hours_gearbox',
         'created_at',
         'updated_at'
 ];

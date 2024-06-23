@@ -162,6 +162,7 @@
                                                                 </div>
                                                             </div>
                                                         {{-- ----End Modal---- --}}
+                                                        @if($card->name == 'ونش شوكة ديزل')
                                                         @if($card->date_of_oil !== NULL)
                                                         <button data-toggle="modal" data-target="#oil-details{{ $card->id }}" class="btn mr-1 mb-1 btn-primary btn-sm">معلومات عن الزيت</button>
                                                         {{-- ----Start Modal---- --}}
@@ -180,7 +181,7 @@
                                                                                 <tbody>
                                                                                     <tr>
                                                                                         <td>أخر تاريخ لتغيير الزيت</td>
-                                                                                        <td>{{ $card->date_of_oil }}</td>
+                                                                                        <td style="color: red">{{ $card->date_of_oil }}</td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td>عداد المعدة بالساعات عند تغيير الزيت</td>
@@ -196,56 +197,7 @@
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td>عدد الساعات المتبقية لتغيير الزيت</td>
-                                                                                        <td>{{ $card->remaining_hours }} ساعة</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">إغلاق</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----End Modal---- --}}
-                                                        @endif
-                                                        @if($card->name == 'لودر')
-                                                        @if($card->date_of_oil_gearbox !== NULL)
-                                                        <button data-toggle="modal" data-target="#oil-details-gearbox{{ $card->id }}" class="btn mr-1 mb-1 btn-warning btn-sm">زمن زيت الفتيس</button>
-                                                        {{-- ----Start Modal---- --}}
-                                                        <div class="modal animated swing text-left" id="oil-details-gearbox{{ $card->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel42" style="display: none;" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel42">معلومات عن تغيير زيت الفتيس</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">×</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-striped bg-info mb-0 white">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td>أخر تاريخ لتغيير زيت الفتيس</td>
-                                                                                        <td>{{ $card->date_of_oil_gearbox }}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>عداد المعدة بالساعات عند تغيير زيت الفتيس</td>
-                                                                                        <td>{{ $card->oil_hours_gearbox }} ساعة</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>عداد المعدة بالساعات حاليا</td>
-                                                                                        <td>{{ $card->card_hours }} ساعة</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>عدد الساعات المستهلكة بعد تغيير زيت الفتيس</td>
-                                                                                        <td>{{ $card->hours_used_gearbox }} ساعة</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>عدد الساعات المتبقية لتغيير زيت الفتيس</td>
-                                                                                        <td>{{ $card->remaining_hours_gearbox }} ساعة</td>
+                                                                                        <td style="color: red">{{ $card->remaining_hours }} ساعة</td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -292,7 +244,8 @@
                                                         </div>
                                                         {{-- ----End Modal---- --}}
                                                         </div>
-                                                        <button type="button" data-toggle="modal" data-target="#OilRegistration{{ $card->id }}" class="btn mr-1 mb-1 btn-success btn-sm round">تم تغيير زيت للمعدة</button>
+                                                        @if($card->name == 'ونش شوكة ديزل')
+                                                        <button type="button" data-toggle="modal" data-target="#OilRegistration{{ $card->id }}" class="btn mr-1 mb-1 btn-warning btn-sm round">تغيير زيت للمعدة</button>
                                                         {{-- ----Start Modal---- --}}
                                                         <div class="modal animated tada text-left" id="OilRegistration{{ $card->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel43" style="display: none;" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
@@ -330,62 +283,6 @@
                                                                                         placeholder="أدخل عداد المعدة بالساعات"
                                                                                         name="oil_hours">
                                                                                         @error('oil_hours')
-                                                                                        <span class="text-danger">{{ $message }}</span>
-                                                                                        @enderror
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">إغلاق</button>
-                                                                        <button type="submit" class="btn btn-outline-primary button-prevent-multiple-submits">تسجيل بيانات تغيير الزيت
-                                                                            <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----End Modal---- --}}
-                                                        @if($card->name == 'لودر')
-                                                        <button type="button" data-toggle="modal" data-target="#OilRegistrationGearbox{{ $card->id }}" class="btn mr-1 mb-1 btn-dark btn-sm round">تم تغيير زيت الفتيس</button>
-                                                        {{-- ----Start Modal---- --}}
-                                                        <div class="modal animated tada text-left" id="OilRegistrationGearbox{{ $card->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel43" style="display: none;" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel43">تغير زيت الفتيس للودر</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">×</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.cards.oil.gearbox.registration',$card->id) }}" method="POST"
-                                                                        enctype="multipart/form-data">
-                                                                        @csrf
-                                                                    <div class="modal-body">
-                                                                        <h5>من فضلك أملا البيانات المطلوبة</h5>
-                                                                        <hr>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="projectinput1">تاريخ تغيير زيت الفتيس</label>
-                                                                                    <input type="date" value="{{ old('date_of_oil_gearbox') }}" id="date_of_oil_gearbox"
-                                                                                        class="form-control"
-                                                                                        placeholder="أدخل تاريخ تغيير الفتيس"
-                                                                                        name="date_of_oil_gearbox">
-                                                                                        @error('date_of_oil_gearbox')
-                                                                                        <span class="text-danger">{{ $message }}</span>
-                                                                                        @enderror
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label for="projectinput1">عداد المعدة بالساعات</label>
-                                                                                    <input type="text" value="{{ old('oil_hours_gearbox') }}" id="oil_hours_gearbox"
-                                                                                        class="form-control"
-                                                                                        placeholder="أدخل عداد المعدة بالساعات"
-                                                                                        name="oil_hours_gearbox">
-                                                                                        @error('oil_hours_gearbox')
                                                                                         <span class="text-danger">{{ $message }}</span>
                                                                                         @enderror
                                                                                 </div>

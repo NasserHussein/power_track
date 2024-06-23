@@ -142,7 +142,7 @@
                     <h4 class="card-title">الوقت المتبقي للمعدة لتغيير الزيت</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
-                        <p class="text-muted">عدد المعداد المقتربة لتغيير الزيت: <span style="color: rgb(236, 6, 160);font-size:17px">{{ App\Models\Admin\Card::where('remaining_hours', '<=' , 50)->count() }}</span></p>
+                        <p class="text-muted">عدد المعداد المقتربة لتغيير الزيت: <span style="color: rgb(236, 6, 160);font-size:17px">{{ App\Models\Admin\Card::where('remaining_hours', '<=' , 20)->count() }}</span></p>
                     </div>
                 </div>
                 <div class="card-content">
@@ -159,7 +159,7 @@
                                 @foreach ( App\Models\Admin\Card::where('remaining_hours', '<=' , 20)->get()->sortBy('remaining_hours')  as $card_oil)
                             <tr @if($card_oil->remaining_hours <= 0) class="bg-danger bg-lighten-5" @endif>
                                 <td>{{ $card_oil->name }}</td>
-                                <td>{{ $card_oil->code }}</td>
+                                <td>{{ $card_oil->card_no }}</td>
                                 <td @if($card_oil->remaining_hours <= 0) style="color: red" @endif style="color: blue">{{ $card_oil->remaining_hours }} ساعة</td>
                             </tr>
                                 @endforeach
