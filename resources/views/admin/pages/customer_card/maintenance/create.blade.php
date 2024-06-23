@@ -53,7 +53,7 @@ label[required]:after {content:'*';color:red;}
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">صيانات المعدة</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index.customer.maintenance',$customer_maintenance->customer_card_id ) }}">صيانات المعدة</a>
                             </li>
                             <li class="breadcrumb-item active">إضافة تقرير صيانة
                             </li>
@@ -85,7 +85,7 @@ label[required]:after {content:'*';color:red;}
                             @include('admin.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form form-prevent-multiple-submits" action="#" method="POST"
+                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.update_report.customer.maintenance',$customer_maintenance->id) }}" method="POST"
                                           enctype="multipart/form-data">
                                           @csrf
                                         <div class="form-body">
@@ -94,7 +94,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">حالة المعدة عند الأستلام</label>
-                                                        <input type="text" value="{{ old('card_state') }}" id="card_state"
+                                                        <input type="text" value="{{ $customer_maintenance->card_state }}" id="card_state"
                                                                class="form-control"
                                                                placeholder="أدخل حالة المعدة عند الأستلام"
                                                                name="card_state" readonly>
@@ -106,7 +106,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">وصف المشكلة التي تحتاجها المعدة</label>
-                                                        <input type="text" value="{{ old('problem_description') }}" id="problem_description"
+                                                        <input type="text" value="{{ $customer_maintenance->problem_description }}" id="problem_description"
                                                                class="form-control"
                                                                placeholder="أدخل وصف المشكلة التي تحتاجها المعدة"
                                                                name="problem_description" readonly>
@@ -120,7 +120,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">ملاحظات</label>
-                                                        <textarea type="text" id="notes"class="form-control" name="notes" placeholder="أدخل ملاحظاتك هنا....." readonly>{{ old('notes') }}</textarea>
+                                                        <textarea type="text" id="notes"class="form-control" name="notes" placeholder="أدخل ملاحظاتك هنا....." readonly>{{ $customer_maintenance->notes }}</textarea>
                                                             @error('notes')
                                                             <span class="text-danger">{{ $message }}</span>
                                                             @enderror
@@ -129,7 +129,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">تاريخ الاستلام</label>
-                                                        <input type="date" value="{{ old('received_date') }}" id="received_date"
+                                                        <input type="date" value="{{ $customer_maintenance->received_date }}" id="received_date"
                                                                class="form-control"
                                                                placeholder="أدخل تاريخ الاستلام"
                                                                name="received_date" readonly>
@@ -144,7 +144,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>حالة المعدة بعد الصيانة</label>
-                                                        <input type="text" value="{{ old('card_state_after_maintenance') }}" id="card_state_after_maintenance"
+                                                        <input type="text" value="{{ $customer_maintenance->card_state_after_maintenance }}" id="card_state_after_maintenance"
                                                                class="form-control"
                                                                placeholder="أدخل حالة المعدة بعد الصيانة"
                                                                name="card_state_after_maintenance">
@@ -156,7 +156,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>تفاصيل العمل الذي تم في المعدة</label>
-                                                        <input type="text" value="{{ old('work_details') }}" id="work_details"
+                                                        <input type="text" value="{{ $customer_maintenance->work_details }}" id="work_details"
                                                                class="form-control"
                                                                placeholder="أدخل تفاصيل العمل الذي تم في المعدة"
                                                                name="work_details">
@@ -170,7 +170,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">قطع الغيار التي تم تغييرها</label>
-                                                        <input type="text" value="{{ old('spare_parts') }}" id="spare_parts"
+                                                        <input type="text" value="{{ $customer_maintenance->spare_parts }}" id="spare_parts"
                                                                class="form-control"
                                                                placeholder="أدخل قطع الغيار التي تم تغييرها"
                                                                name="spare_parts">
@@ -182,7 +182,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1" required>تاريخ الانتهاء من الصيانة</label>
-                                                        <input type="date" value="{{ old('date_of_finishing') }}" id="date_of_finishing"
+                                                        <input type="date" value="{{ $customer_maintenance->date_of_finishing }}" id="date_of_finishing"
                                                                class="form-control"
                                                                placeholder="أدخل تاريخ الانتهاء من الصيانة"
                                                                name="date_of_finishing">
@@ -198,9 +198,9 @@ label[required]:after {content:'*';color:red;}
                                                         <label required for="projectinput1">القائم بالإصلاح By</label>
                                                         <select name="technicians[]" id="profession" class="form-control authes" style="width: 435px" multiple>
                                                             <option  disabled>أختر الفنيين</option>
-
-                                                            <option value="">شيهشسياشعسي</option>
-
+                                                            @foreach ($techicians as $technician)
+                                                            <option value="{{$technician->id }}" @if(is_array($technicians_id) && in_array($technician->id , $technicians_id)) selected @endif >{{ $technician->name }}</option>
+                                                            @endforeach
                                                             </select>
                                                             @error('technicians')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -209,8 +209,8 @@ label[required]:after {content:'*';color:red;}
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1" required>تاريخ التسليم</label>
-                                                        <input type="date" value="{{ old('delivery_date') }}" id="delivery_date"
+                                                        <label for="projectinput1">تاريخ التسليم</label>
+                                                        <input type="date" value="{{ $customer_maintenance->delivery_date }}" id="delivery_date"
                                                                class="form-control"
                                                                placeholder="أدخل التسليم"
                                                                name="delivery_date">
@@ -224,7 +224,7 @@ label[required]:after {content:'*';color:red;}
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">تكلفة الصيانة</label>
-                                                        <input type="text" value="{{ old('maintenance_cost') }}" id="maintenance_cost"
+                                                        <input type="text" value="@if($customer_maintenance->maintenance_cost == null){{ old('maintenance_cost') }}@endif @if($customer_maintenance->maintenance_cost !== null){{ $customer_maintenance->maintenance_cost }}@endif" id="maintenance_cost"
                                                                class="form-control"
                                                                placeholder="أدخل تكلفة الصيانة"
                                                                name="maintenance_cost">

@@ -26,9 +26,9 @@ class Customer_maintenance extends Model
     ];
     protected $hidden = ['pivot'];
     public function customer_card(){
-        return $this->belongsTo('App\Models\Customer_card');
+        return $this->belongsTo('App\Models\Admin\Customer_card');
     }
     public function technicians(){
-        return $this->belongsToMany('App\Models\Technician','technician_customer_maintenance');
+        return $this->belongsToMany('App\Models\Admin\Technician','technician_customer_maintenance');
     }
 }

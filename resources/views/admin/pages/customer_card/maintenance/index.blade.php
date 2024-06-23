@@ -13,7 +13,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">معدات العملاء</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index.customer.Card') }}">معدات العملاء</a>
                             </li>
                             <li class="breadcrumb-item active"> صيانات المعدة
                             </li>
@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><i class="la la-group"></i> جميع الصيانات المسجلة للمعدة 100 صيانة</h4>
+                                <h4 class="card-title"><i class="la la-group"></i> جميع الصيانات المسجلة للمعدة {{ $customer_maintenances->count() }} صيانة</h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -59,14 +59,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                            @isset($customer_maintenances)
+                                            @foreach ($customer_maintenances as $customer_maintenance)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:50px;">5158</div></td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">ونش شوكة ديزل</div></td>
-                                                    <td><div style="word-wrap: break-word;width:75px">25-01-2024</div></td>
-                                                    <td><div style="word-wrap: break-word;width:150px;">بشعيلاشسيلاشس يعلالاشسيلاشسيلاش سيلاسشيشسلايا</div></td>
-                                                    <td><div style="word-wrap: break-word;width:208px;">سشيلاشسايلاغاعشسيللاشسسس غيشس يلاشسغ ليشسي شسغيل غش س يسشغيل شسغي</div></td>
-                                                    <td><div style="word-wrap: break-word;width:113px;">1515155asd4545485485</div></td>
+                                                    <td><div style="word-wrap: break-word;width:50px;">{{ $customer_maintenance->id }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $customer_maintenance->customer_card->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:75px">{{ $customer_maintenance->received_date }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px;">{{ $customer_maintenance->card_state }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:208px;">{{ $customer_maintenance->problem_description }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:113px;">{{ $customer_maintenance->notes }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">
                                                         <button type="button" class="btn mr-1 mb-1 btn-outline-warning btn-sm" data-toggle="modal" data-target="#notes">
                                                             تفاصيل</br>إضافية
@@ -89,27 +90,27 @@
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <th scope="row">تفاصيل العمل الذي تم في المعدة</th>
-                                                                                            <td>شسنيبتعشسياشسيلاشسي سشيشسي رسشايرش سشي اش</td>
+                                                                                            <td>{{ $customer_maintenance->work_details }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">قطع الغيار التي تم تغييرها</th>
-                                                                                            <td>اغشسيلال ششسايلشسا يلشسيسشاي اشسي</td>
+                                                                                            <td>{{ $customer_maintenance->spare_parts }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">تكلفة الصيانة</th>
-                                                                                            <td>62665</td>
+                                                                                            <td>{{ $customer_maintenance->maintenance_cost }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">حالة المعدة بعد الصيانة</th>
-                                                                                            <td>شسيلاشس ايلشس غيشسيل سشيغا</td>
+                                                                                            <td>{{ $customer_maintenance->card_state_after_maintenance }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">تاريخ الانتهاء من الصيانة</th>
-                                                                                            <td>02-06-2021</td>
+                                                                                            <td>{{ $customer_maintenance->date_of_finishing }}</td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <th scope="row">تاريخ التسليم</th>
-                                                                                            <td>02-06-2021</td>
+                                                                                            <td>{{ $customer_maintenance->delivery_date }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -122,11 +123,11 @@
                                                                 </div>
                                                             </div>
                                                         {{-- ----End Modal---- --}}
-                                                        <a href="{{ route('nzjgdyqadjadbajvdyuad') }}" class="btn mr-1 mb-1 btn-outline-success btn-sm">إضافة<br>تقرير</a>
+                                                        <a href="{{ route('admin.edit_report.customer.maintenance',$customer_maintenance->id) }}" class="btn mr-1 mb-1 btn-outline-success btn-sm">إضافة<br>تقرير</a>
                                                     </div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">
 
-                                                        <a href="{{ route('dsafsfdsfyusdfsdf') }}" class="btn mr-1 mb-1 btn-outline-primary btn-sm">
+                                                        <a href="{{ route('admin.edit.customer.maintenance',$customer_maintenance->id) }}" class="btn mr-1 mb-1 btn-outline-primary btn-sm">
                                                             تعديل
                                                         </a>
 
@@ -148,7 +149,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">لا , تراجع</button>
-                                                                        <a href="#" class="btn btn-outline-danger">نعم متأكد , قم بالحذف</a>
+                                                                        <a href="{{ route('admin.delete.customer.maintenance',$customer_maintenance->id) }}" class="btn btn-outline-danger">نعم متأكد , قم بالحذف</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -157,7 +158,8 @@
 
                                                     </div></td>
                                                 </tr>
-
+                                            @endforeach
+                                            @endisset
                                         </tbody>
                                     </table>
                                     <div class="justify-content-center d-flex">

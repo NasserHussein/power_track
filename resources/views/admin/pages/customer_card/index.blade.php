@@ -3,6 +3,39 @@
 معدات العملاء
 @endsection
 @section('content')
+<style>
+    input[type="date"]::-webkit-datetime-edit, input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-clear-button {
+  color: #fff;
+  position: relative;
+}
+
+input[type="date"]::-webkit-datetime-edit-year-field{
+  position: absolute !important;
+  border-left:1px solid #8c8c8c;
+  padding: 2px;
+  color:#000;
+  left: 56px;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field{
+  position: absolute !important;
+  border-left:1px solid #8c8c8c;
+  padding: 2px;
+  color:#000;
+  left: 26px;
+}
+
+
+input[type="date"]::-webkit-datetime-edit-day-field{
+  position: absolute !important;
+  color:#000;
+  padding: 2px;
+  left: 4px;
+
+}
+
+label[required]:after {content:'*';color:red;}
+</style>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -85,7 +118,7 @@
                                                                             <span aria-hidden="true">×</span>
                                                                         </button>
                                                                     </div>
-                                                                    <form class="form form-prevent-multiple-submits" action="#" method="POST"
+                                                                    <form class="form form-prevent-multiple-submits" action="{{ route('admin.store.customer.maintenance',$customer_card->id) }}" method="POST"
                                                                         enctype="multipart/form-data">
                                                                         @csrf
                                                                         <div class="modal-body">
@@ -94,7 +127,7 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label required for="projectinput1">حالة المعدة عند الأستلام</label>
+                                                                                        <label required for="projectinput1" required>حالة المعدة عند الأستلام</label>
                                                                                         <textarea type="text" id="card_state"
                                                                                             class="form-control"
                                                                                             placeholder="أدخل حالة المعدة عند الأستلام"
@@ -106,7 +139,7 @@
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label required for="projectinput1">وصف المشكلة التي  تحتاج الي صيانة</label>
+                                                                                        <label required for="projectinput1" required>وصف المشكلة التي  تحتاج الي صيانة</label>
                                                                                         <input type="text" value="{{ old('problem_description') }}" id="problem_description"
                                                                                             class="form-control"
                                                                                             placeholder="أدخل وصف المشكلة التي  تحتاج الي صيانة"
@@ -120,7 +153,7 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label for="projectinput1">تاريخ الاستلام</label>
+                                                                                        <label for="projectinput1" required>تاريخ الاستلام</label>
                                                                                         <input type="date" value="{{ old('received_date') }}" id="received_date"
                                                                                             class="form-control"
                                                                                             placeholder="أدخل تاريخ الاستلام"
@@ -132,7 +165,7 @@
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label required for="projectinput1">ملاحظات</label>
+                                                                                        <label for="projectinput1">ملاحظات</label>
                                                                                         <textarea type="text" id="notes"
                                                                                             class="form-control"
                                                                                             placeholder="أدخل ملاحظات"
@@ -156,7 +189,7 @@
                                                             </div>
                                                         </div>
                                                         {{-- ----End Modal---- --}}
-                                                            <a href="{{ route('asdjajiajadjiahduawdsdhadhasdasdsd') }}" class="btn mr-1 mb-1 btn-outline-success btn-sm">الصيانات </a>
+                                                            <a href="{{ route('admin.index.customer.maintenance',$customer_card->id) }}" class="btn mr-1 mb-1 btn-outline-success btn-sm">الصيانات </a>
                                                         </div>
                                                     </td>
                                                     <td><div style="word-wrap: break-word;width:70px;">

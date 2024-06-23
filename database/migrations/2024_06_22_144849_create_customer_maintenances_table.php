@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('card_state_after_maintenance')->nullable();
             $table->string('spare_parts')->nullable();
             $table->integer('maintenance_cost')->nullable();
-            $table->date('date_of_finishing');
-            $table->date('delivery_date');
+            $table->date('date_of_finishing')->nullable();
+            $table->date('delivery_date')->nullable();
             $table->longText('notes')->nullable();
             $table->bigInteger('customer_card_id')->unsigned();
             $table->timestamps();
