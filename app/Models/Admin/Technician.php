@@ -26,6 +26,6 @@ class Technician extends Model
         return $this->belongsToMany('App\Models\Admin\Maintenance','technician_maintenance');
     }
     public function customer_maintenances(){
-        return $this->belongsToMany('App\Models\Customer_maintenance','technician_customer_maintenance');
+        return $this->belongsToMany('App\Models\Admin\Customer_maintenance','technician_customer_maintenance');
     }
 }

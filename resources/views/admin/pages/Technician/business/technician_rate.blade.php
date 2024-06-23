@@ -51,13 +51,11 @@
                                     <table class="display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
                                         <thead>
                                         <tr>
-
                                             <th>أسم ال{{ $technical_skills }}</th>
                                             <th>تليفون ال{{ $technical_skills }}</th>
                                             <th>E-Mail ال{{ $technical_skills }}</th>
                                             <th>تاريخ توظيف ال{{ $technical_skills }}</th>
                                             <th>عدد الصيانات</th>
-
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -68,11 +66,10 @@
                                                     <td><div style="word-wrap: break-word;width:150px;">{{ $techician->phone_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:200px;">{{ $techician->email }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:150px">{{ $techician->date_of_employment }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:150px">{{ $techician->maintenances->count() }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:150px">{{ $techician->maintenances->whereBetween('date', [$start,$end])->count() + $techician->customer_maintenances->whereBetween('date_of_finishing', [$start,$end])->count()}}</div></td>
                                                 </tr>
                                             @endforeach
                                             @endisset
-
                                         </tbody>
                                     </table>
                                     <div class="justify-content-center d-flex">

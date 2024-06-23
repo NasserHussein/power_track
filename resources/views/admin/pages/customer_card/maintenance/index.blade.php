@@ -109,6 +109,14 @@
                                                                                             <td>{{ $customer_maintenance->date_of_finishing }}</td>
                                                                                         </tr>
                                                                                         <tr>
+                                                                                            <th scope="row">القائمون علي الاصلاح</th>
+                                                                                            <td>
+                                                                                                @foreach ($customer_maintenance->technicians as $technician)
+                                                                                                - {{ $technician->name }}<br>
+                                                                                                @endforeach
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
                                                                                             <th scope="row">تاريخ التسليم</th>
                                                                                             <td>{{ $customer_maintenance->delivery_date }}</td>
                                                                                         </tr>

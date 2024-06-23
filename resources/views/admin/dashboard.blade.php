@@ -42,11 +42,11 @@
                                 <h1><i class="cc ETH blue-grey lighten-1 font-large-2" title="ETH"></i></h1>
                             </div>
                             <div class="col-5 pl-2">
-                                <h5>المعدات المقتربة</h5>
-                                <h5 class="text-muted">لتغيير الزيت</h5>
+                                <h5>معدات العملاء</h5>
+                                <h5 class="text-muted">تحت الصيانة</h5>
                             </div>
                             <div class="col-5 text-right">
-                                <h2>{{ App\Models\Admin\Card::where('remaining_hours', '<=' , 50)->count() }}</h2>
+                                <h2>{{ $customer_maintenances->count() }}</h2>
                                 <h6 class="success darken-4">12% <i class="la la-arrow-up"></i></h6>
                             </div>
                         </div>
@@ -93,10 +93,10 @@
         <div class="col-12 col-xl-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">اللوادر المقتربة لتغيير زيت الفتيس</h4>
+                    <h4 class="card-title">معدات العملاء التي لم تسلم لهم حتي الان</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
-                        <p class="text-muted">عدد اللوادر: <span style="color: red;font-size:17px">{{ $cards_oils_gearbox->count() }}</span></p>
+                        <p class="text-muted">عدد المعدات: <span style="color: red;font-size:17px">{{ $customer_maintenances->count() }}</span></p>
                     </div>
                 </div>
                 <div class="card-content">
@@ -104,19 +104,22 @@
                         <table class="table table-de mb-0">
                             <thead>
                             <tr>
-                                <th>رقم اللودر</th>
-                                <th>الزمن المتبقي</th>
-                                <th>الزمن المستخدم</th>
+                                <th>نوع المعدة</th>
+                                <th>تاريخ الاستلام</th>
+                                <th>بيانات العميل</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @isset($cards_oils_gearbox)
-                                @foreach ($cards_oils_gearbox as $card_oils_gearbox)
-                            <tr @if($card_oils_gearbox->remaining_hours_gearbox <= 0) class="bg-danger bg-lighten-5" @endif>
-                                <td style="color: rgb(226, 43, 144);font-size: 17px">لودر  <span style="color: rgb(63, 16, 233)"> {{ $card_oils_gearbox->code }}</span></td>
-                                <td  @if($card_oils_gearbox->remaining_hours_gearbox <= 0) style="color: red;font-size: 20px" @endif style="color: blue;font-size: 20px">{{ $card_oils_gearbox->remaining_hours_gearbox }} ساعة</td>
-                                <td @if($card_oils_gearbox->hours_used_gearbox > 2200) style="color: rgb(255, 153, 0);font-size: 17px" @endif style="color: rgb(17, 189, 40);font-size: 17px">{{ $card_oils_gearbox->hours_used_gearbox }} ساعة</td>
-
+                                @isset($customer_maintenances)
+                                @foreach ($customer_maintenances as $customer_maintenance)
+                            <tr>
+                                <td><a style="color: blue" href="{{ route('admin.edit_report.customer.maintenance',$customer_maintenance->id) }}">{{ $customer_maintenance->customer_card->name }}</a></td>
+                                <td style="color: red">{{ $customer_maintenance->received_date }}</td>
+                                <td style="font-size: 14px">
+                                    {{ $customer_maintenance->customer_card->customer_name }}
+                                    <br>
+                                    {{ $customer_maintenance->customer_card->phone_no }}
+                                </td>
                             </tr>
                                 @endforeach
                                 @endisset
@@ -345,9 +348,29 @@
                             <tr>
                                 <td style="color: blue"><div style="word-wrap: break-word;width:150px;">{{ $techician->name }}</div></td>
                                 <td style="font-size: 20px" class="warning">{{ $techician->phone_no }}</td>
-                                <td style="font-size: 20px" class="info">{{ $techician->maintenances->min('date') }}</td>
-                                <td style="font-size: 20px" class="info">{{ $techician->maintenances->max('date') }}</td>
-                                <td style="font-size: 20px" class="danger">{{ $techician->maintenances->count() }}</td>
+                                <td style="font-size: 20px" class="info">
+                                    @if($techician->customer_maintenances->min('date_of_finishing') < $techician->maintenances->min('date'))
+                                    {{ $techician->customer_maintenances->min('date_of_finishing') }}
+                                    @endif
+                                    @if($techician->customer_maintenances->min('date_of_finishing') > $techician->maintenances->min('date'))
+                                    {{ $techician->maintenances->min('date') }}
+                                    @endif
+                                    @if($techician->customer_maintenances->min('date_of_finishing') == $techician->maintenances->min('date'))
+                                    {{ $techician->maintenances->min('date') }}
+                                    @endif
+                                </td>
+                                <td style="font-size: 20px" class="info">
+                                    @if($techician->customer_maintenances->max('date_of_finishing') > $techician->maintenances->max('date'))
+                                    {{ $techician->customer_maintenances->max('date_of_finishing') }}
+                                    @endif
+                                    @if($techician->customer_maintenances->max('date_of_finishing') < $techician->maintenances->max('date'))
+                                    {{ $techician->maintenances->max('date') }}
+                                    @endif
+                                    @if($techician->customer_maintenances->max('date_of_finishing') == $techician->maintenances->max('date'))
+                                    {{ $techician->maintenances->max('date') }}
+                                    @endif
+                                </td>
+                                <td style="font-size: 20px" class="danger">{{ $techician->maintenances->count() + $techician->customer_maintenances->count() }}</td>
                             </tr>
                                 @endforeach
                                 @endisset
@@ -386,9 +409,29 @@
                             <tr>
                                 <td style="color: blue"><div style="word-wrap: break-word;width:150px;">{{ $assistant->name }}</div></td>
                                 <td style="font-size: 20px" class="warning">{{ $assistant->phone_no }}</td>
-                                <td style="font-size: 20px" class="info">{{ $assistant->maintenances->min('date') }}</td>
-                                <td style="font-size: 20px" class="info">{{ $assistant->maintenances->max('date') }}</td>
-                                <td style="font-size: 20px" class="danger">{{ $assistant->maintenances->count() }}</td>
+                                <td style="font-size: 20px" class="info">
+                                    @if($assistant->customer_maintenances->min('date_of_finishing') < $assistant->maintenances->min('date'))
+                                     {{ $assistant->customer_maintenances->min('date_of_finishing') }}
+                                    @endif
+                                    @if($assistant->customer_maintenances->min('date_of_finishing') > $assistant->maintenances->min('date'))
+                                     {{ $assistant->maintenances->min('date') }}
+                                    @endif
+                                    @if($assistant->customer_maintenances->min('date_of_finishing') == $assistant->maintenances->min('date'))
+                                     {{ $assistant->maintenances->min('date') }}
+                                    @endif
+                                </td>
+                                <td style="font-size: 20px" class="info">
+                                    @if($assistant->customer_maintenances->max('date_of_finishing') > $assistant->maintenances->max('date'))
+                                    {{ $assistant->customer_maintenances->max('date_of_finishing') }}
+                                    @endif
+                                    @if($assistant->customer_maintenances->max('date_of_finishing') < $assistant->maintenances->max('date'))
+                                    {{ $assistant->maintenances->max('date') }}
+                                    @endif
+                                    @if($assistant->customer_maintenances->max('date_of_finishing') == $assistant->maintenances->max('date'))
+                                    {{ $assistant->maintenances->max('date') }}
+                                    @endif
+                                </td>
+                                <td style="font-size: 20px" class="danger">{{ $assistant->maintenances->count() + $assistant->customer_maintenances->count() }}</td>
                             </tr>
                                 @endforeach
                                 @endisset

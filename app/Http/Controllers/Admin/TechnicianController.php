@@ -70,14 +70,15 @@ class TechnicianController extends Controller
         $start = $request['start'];
         $end = $request['end'];
         $maintenances = $techician->maintenances->whereBetween('date', [$start,$end])->sortByDesc('date');
-        $count = $maintenances->count();
+        $customer_maintenances = $techician->customer_maintenances->whereBetween('date_of_finishing', [$start,$end])->sortByDesc('date_of_finishing');
+        $count = $maintenances->count() + $customer_maintenances->count();
         $techician_name = $techician->name;
         if($techician->technical_skills == 0){
             $technical_skills = 'الفني';
         }else{
             $technical_skills = 'المساعد';
         }
-        return view('admin.pages.Technician.business.index',compact(['technical_skills','start','end','maintenances','count','techician_name']));
+        return view('admin.pages.Technician.business.index',compact(['technical_skills','start','end','maintenances','customer_maintenances','count','techician_name']));
     }
     public function business_technician(AdminCostRequest $request){
         $start = $request['start'];

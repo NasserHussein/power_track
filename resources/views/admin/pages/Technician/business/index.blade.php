@@ -66,13 +66,26 @@
                                             @isset($maintenances)
                                             @foreach ($maintenances as $maintenance)
                                                 <tr style="height: 50px">
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ App\Models\Admin\Card::find($maintenance->card_id)->name }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:50px;">{{ App\Models\Admin\Card::find($maintenance->card_id)->card_no }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ App\Models\Admin\Card::find($maintenance->card_id)->card_model }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:120px">{{ App\Models\Admin\Card::find($maintenance->card_id)->chassis_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $maintenance->card->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:50px;">{{ $maintenance->card->card_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $maintenance->card->card_model }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:120px">{{ $maintenance->card->chassis_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:190px">{{ $maintenance->maintenance }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:190px">{{ $maintenance->spare_parts }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:90px;">{{ $maintenance->date }}</div></td>
+                                                </tr>
+                                            @endforeach
+                                            @endisset
+                                            @isset($customer_maintenances)
+                                            @foreach ($customer_maintenances as $customer_maintenance)
+                                                <tr style="height: 50px;background-color: rgba(255, 0, 0, 0.452);color: white">
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $customer_maintenance->customer_card->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:50px;">معدة عميل</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $customer_maintenance->customer_card->card_model }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:120px">رقم السريال <br>{{ $customer_maintenance->customer_card->serial_no }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:190px">{{ $customer_maintenance->work_details }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:190px">{{ $customer_maintenance->spare_parts }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $customer_maintenance->date_of_finishing }}</div></td>
                                                 </tr>
                                             @endforeach
                                             @endisset
