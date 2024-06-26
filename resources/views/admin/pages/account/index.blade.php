@@ -69,7 +69,7 @@
                                     <table class="display nowrap table-striped table-bordered scroll-horizontal"  style="width:auto;text-align: center">
                                         <thead>
                                         <tr style="height: 40px" class="bg-success white">
-                                            <th>id</th>
+                                            <th>ID</th>
                                             <th>أسم العميل</th>
                                             <th>رقم الفاتورة</th>
                                             <th>الوصف</th>
@@ -84,9 +84,9 @@
                                             @isset($accounts)
                                             @foreach ($accounts as $account)
                                                 <tr>
-                                                    <td><div style="word-wrap: break-word;width:20px;">{{ $account->id }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:120px;">{{ $customer->company_name }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $account->invoice_number }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:50px;">{{ $account->id }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $customer->company_name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $account->invoice_number }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:120px">{{ $account->description }}</div></td>
                                                     <td>@if($account->status == 1) <s style="font-size: 18px" @endif @if($account->status == 0) <div @endif style="word-wrap: break-word;width:80px;">{{ $account->invoice_value }} ج.م @if(($account->status == 0)) </div> @endif @if(($account->status == 1)) </s> @endif @if(($account->status == 1)) </br> <span style="color: blue">تم تحصيل الرسوم</span> @endif</td>
                                                     <td><div style="word-wrap: break-word;width:120px;">
@@ -116,7 +116,7 @@
                                                     </div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">{{ $account->invoice_date }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:120px;">{{ $account->notes }}</div></td>
-                                                    <td>
+                                                    <td><div style="word-wrap: break-word;width:80px">
                                                             <a class="btn mr-1 mb-1 btn-outline-info btn-sm" href="{{ route('admin.edit.account',$account->id) }}" >تعديل</a>
                                                         <button type="button" data-toggle="modal" data-target="#delete{{ $account->id }}" class="btn mr-1 mb-1 btn-outline-danger btn-sm">
                                                             حذف
@@ -140,6 +140,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        {{-- ----End Modal---- --}}
                                                         </div>
                                                     </td>
                                                 </tr>
