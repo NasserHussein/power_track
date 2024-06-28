@@ -93,7 +93,7 @@
                                                                                         <label required for="projectinput1">بداية الفترة</label>
                                                                                         <input type="date" value="{{ old('start') }}" id="start"
                                                                                             class="form-control"
-                                                                                            placeholder="أدخل تاريخ الصيانة"
+                                                                                            placeholder="أدخل بداية الفترة"
                                                                                             name="start">
                                                                                             @error('start')
                                                                                             <span class="text-danger">{{ $message }}</span>
@@ -105,7 +105,7 @@
                                                                                         <label required for="projectinput1">نهاية الفترة</label>
                                                                                         <input type="date" value="{{ old('end') }}" id="end"
                                                                                             class="form-control"
-                                                                                            placeholder="أدخل تاريخ الصيانة"
+                                                                                            placeholder="أدخل نهاية الفترة"
                                                                                             name="end">
                                                                                             @error('end')
                                                                                             <span class="text-danger">{{ $message }}</span>

@@ -329,7 +329,8 @@
 
             </a>
               <ul class="menu-content">
-
+                  <li class=""><a class="menu-item" href="{{ route('admin.cost.cards.determine_the_duration.cards') }}" data-i18n="nav.dash.ecommerce">حساب اجمالي تكلفة الصيانة</a>
+                  </li>
                     <li class="nav-item"><a href=""><i class="icon-list"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">أختر نوع المعدة</span>
                      </a>

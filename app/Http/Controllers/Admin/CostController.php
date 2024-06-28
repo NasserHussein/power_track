@@ -58,6 +58,22 @@ class CostController extends Controller
         }
         return view('admin.pages.cost.cards.card_index',compact(['cards','cards_name']));
     }
+    public function determine_the_duration_of_all_maintenance(){
+        return view('admin.pages.cost.determine_the_duration_of_all_maintenance');
+    }
+    public function maintenance_cost_determine(AdminCostRequest $request){
+        $cards = [];
+        $start = $request['start'];
+        $end = $request['end'];
+        $maintenances = Maintenance::whereBetween('date', [$start, $end])->get();
+        $cost = $maintenances->sum('cost');
+        foreach($maintenances as $maintenance){
+            $cards[] = $maintenance->card;
+        }
+        $card_unique = array_unique($cards);
+        $count_cards = count($card_unique);
+        return view('admin.pages.cost.index_all_cost',compact(['start','end','maintenances','cost','count_cards']));
+    }
     public function cost_store(AdminCostRequest $request , $id){
         $card = Card::find($id);
         if(!$card){

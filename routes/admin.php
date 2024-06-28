@@ -136,8 +136,11 @@ Route::group(['prefix'=>'Maintenance_Notifie'],function(){
         ################################# End Notifie cards Route ###################################
         ################################# Start Cost cards Route ###################################
 Route::group(['prefix'=>'Cost_Equipments'],function(){
-    Route::get('/{id}','CostController@index_cards')->name('admin.cost.cards.index.cards');
+    Route::get('/index/{id}','CostController@index_cards')->name('admin.cost.cards.index.cards');
     Route::post('/store/{id}','CostController@cost_store')->name('dmin.cost.cards.store.maintenance');
+                            /////////////////////all/////////////////
+    Route::get('/determine_the_duration','CostController@determine_the_duration_of_all_maintenance')->name('admin.cost.cards.determine_the_duration.cards');
+    Route::post('/maintenance_cost_determine','CostController@maintenance_cost_determine')->name('admin.cost.cards.maintenance_cost_determine.maintenance');
 });
         ################################# End Cost cards Route ###################################
 });
