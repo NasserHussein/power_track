@@ -25,7 +25,7 @@ class Customer_report_maintenanceRequest extends FormRequest
             'card_state_after_maintenance' => 'required|max:255',
             'work_details' => 'required|max:255',
             'spare_parts' => 'max:255',
-            'date_of_finishing' => 'required|date',
+            'date_of_finishing' => 'nullable|date',
             'technicians' => 'required',
             'delivery_date' => 'nullable|date',
             'maintenance_cost' => 'nullable|numeric'

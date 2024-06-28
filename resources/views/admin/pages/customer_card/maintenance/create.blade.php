@@ -181,7 +181,7 @@ label[required]:after {content:'*';color:red;}
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1" required>تاريخ الانتهاء من الصيانة</label>
+                                                        <label for="projectinput1">تاريخ الانتهاء من الصيانة</label>
                                                         <input type="date" value="{{ $customer_maintenance->date_of_finishing }}" id="date_of_finishing"
                                                                class="form-control"
                                                                placeholder="أدخل تاريخ الانتهاء من الصيانة"
