@@ -23,6 +23,7 @@ class Customer_cardRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'card_no' => 'max:255',
             'serial_no' => 'required|max:255',
             'chassis_no' => 'max:255',
             'card_model' => 'max:255',

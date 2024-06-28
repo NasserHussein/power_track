@@ -98,7 +98,7 @@ label[required]:after {content:'*';color:red;}
                                             @foreach ($customer_cards as $customer_card)
                                                 <tr>
                                                     <td><div style="word-wrap: break-word;width:40px;">{{ $customer_card->id }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $customer_card->name }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:80px;">{{ $customer_card->name }} @if($customer_card->card_no !== null) ({{ $customer_card->card_no }}) @endif</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">{{ $customer_card->card_model }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:110px;">{{ $customer_card->serial_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:110px;">{{ $customer_card->chassis_no }}</div></td>

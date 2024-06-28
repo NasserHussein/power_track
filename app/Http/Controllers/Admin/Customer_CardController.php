@@ -19,6 +19,7 @@ class Customer_CardController extends Controller
     public function store(Customer_cardRequest $request){
         Customer_card::create([
             'name' => $request['name'],
+            'card_no' => $request['card_no'],
             'serial_no' => $request['serial_no'],
             'chassis_no' => $request['chassis_no'],
             'card_model' => $request['card_model'],
@@ -46,6 +47,7 @@ class Customer_CardController extends Controller
         }
         $customer_card->update([
             'name' => $request['name'],
+            'card_no' => $request['card_no'],
             'serial_no' => $request['serial_no'],
             'chassis_no' => $request['chassis_no'],
             'card_model' => $request['card_model'],

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('customer_cards', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('card_no')->nullable();
             $table->string('serial_no');
             $table->string('chassis_no')->nullable();
             $table->string('card_model')->nullable();

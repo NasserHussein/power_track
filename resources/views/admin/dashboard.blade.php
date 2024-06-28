@@ -113,7 +113,7 @@
                                 @isset($customer_maintenances)
                                 @foreach ($customer_maintenances as $customer_maintenance)
                             <tr>
-                                <td><a style="color: blue" href="{{ route('admin.edit_report.customer.maintenance',$customer_maintenance->id) }}">{{ $customer_maintenance->customer_card->name }}</a></td>
+                                <td><a style="color: blue" href="{{ route('admin.edit_report.customer.maintenance',$customer_maintenance->id) }}">{{ $customer_maintenance->customer_card->name }} @if($customer_maintenance->customer_card->card_no !== null) ({{ $customer_maintenance->customer_card->card_no }}) @endif</a></td>
                                 <td style="color: red">{{ $customer_maintenance->received_date }}</td>
                                 <td style="font-size: 14px">
                                     {{ $customer_maintenance->customer_card->customer_name }}

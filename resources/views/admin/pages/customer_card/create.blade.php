@@ -97,6 +97,20 @@ label[required]:after {content:'*';color:red;}
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        <label for="projectinput1">رقم المعدة إن وجد</label>
+                                                        <input type="text" value="{{ old('card_no') }}" id="card_no"
+                                                               class="form-control"
+                                                               placeholder="أدخل رقم المعدة إن وجد"
+                                                               name="card_no">
+                                                               @error('card_no')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
                                                         <label for="projectinput1" required>الرقم التسلسلي</label>
                                                         <input type="text" value="{{ old('serial_no') }}" id="serial_no"
                                                                class="form-control"
