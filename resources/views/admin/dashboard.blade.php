@@ -114,7 +114,11 @@
                                 @foreach ($customer_maintenances as $customer_maintenance)
                             <tr>
                                 <td><a style="color: blue" href="{{ route('admin.edit_report.customer.maintenance',$customer_maintenance->id) }}">{{ $customer_maintenance->customer_card->name }} @if($customer_maintenance->customer_card->card_no !== null) ({{ $customer_maintenance->customer_card->card_no }}) @endif</a></td>
-                                <td style="color: red">{{ $customer_maintenance->received_date }}</td>
+                                <td style="color: red">
+                                    {{ $customer_maintenance->received_date }}
+                                    @if($customer_maintenance->date_of_finishing == null) <br>"<span style="color: green"> لم يتم الانتهاء<br>من الصيانة بعد </span>"@endif
+                                    @if($customer_maintenance->date_of_finishing !== null) <br>"<span style="color: green"> تم الانتهاء من الصيانة </span>"@endif
+                                </td>
                                 <td style="font-size: 14px">
                                     {{ $customer_maintenance->customer_card->customer_name }}
                                     <br>
