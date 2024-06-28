@@ -99,6 +99,7 @@ label[required]:after {content:'*';color:red;}
                                                         <option value="بطاريات">بطاريات</option>
                                                         <option value="تنجر شحن">تنجر شحن</option>
                                                         <option value="أطارات">أطارات</option>
+                                                        <option value="سيارة">سيارة</option>
                                                     </select>
                                                     @error('name')
                                                                <span class="text-danger">{{ $message }}</span>

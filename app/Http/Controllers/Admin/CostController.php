@@ -50,6 +50,9 @@ class CostController extends Controller
         }elseif($id == 13){
             $cards = Card::where('name' , 'أطارات')->get();
             $cards_name = 'أطارات';
+        }elseif($id == 14){
+            $cards = Card::where('name' , 'سيارة')->get();
+            $cards_name = 'سيارة';
         }else{
             return abort(404);
         }
@@ -86,6 +89,8 @@ class CostController extends Controller
             $code = 12;
         }elseif($card->name == 'أطارات'){
             $code = 13;
+        }elseif($card->name == 'سيارة'){
+            $code = 14;
         }
         $start = $request['start'];
         $end = $request['end'];

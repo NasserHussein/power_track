@@ -99,6 +99,7 @@ label[required]:after {content:'*';color:red;}
                                                         <option @if($card->name == 'بطاريات') selected @endif value="بطاريات">بطاريات</option>
                                                         <option @if($card->name == 'تنجر شحن') selected @endif value="تنجر شحن">تنجر شحن</option>
                                                         <option @if($card->name == 'أطارات') selected @endif value="أطارات">أطارات</option>
+                                                        <option @if($card->name == 'سيارة') selected @endif value="سيارة">سيارة</option>
                                                     </select>
                                                     @error('name')
                                                                <span class="text-danger">{{ $message }}</span>

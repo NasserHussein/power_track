@@ -59,6 +59,9 @@ class CardsController extends Controller
         }elseif($id == 13){
             $cards = Card::where('name' , 'أطارات')->get();
             $cards_name = 'أطارات';
+        }elseif($id == 14){
+            $cards = Card::where('name' , 'سيارة')->get();
+            $cards_name = 'سيارة';
         }
         return view('admin.pages.card.index',compact(['cards','name','cards_name']));
     }
@@ -150,6 +153,8 @@ class CardsController extends Controller
         }
         else if($request['name'] == 'أطارات'){
             return redirect()->route('admin.types.cards',13)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
+        }else if($request['name'] == 'سيارة'){
+            return redirect()->route('admin.types.cards',14)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
     }
     public function delete($id){
@@ -196,6 +201,9 @@ class CardsController extends Controller
         else if($card->name == 'أطارات'){
             return redirect()->route('admin.types.cards',13)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
+        else if($card->name == 'سيارة'){
+            return redirect()->route('admin.types.cards',14)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
+        }
     }
     ////////////////Cards Oil Registration/////////////////
     public function oil_registration(CardsOilRequest $request, $id){
@@ -233,57 +241,5 @@ class CardsController extends Controller
         'remaining_hours' => $duration_of_oil
     ]);
         return redirect()->route('admin.types.cards',6)->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
-    }
-    ////////////////Cards Oil Gearbox Registration/////////////////
-    public function oil_registration_gearbox(CardsOilGearboxRequest $request, $id){
-    $card = Card::find($id);
-    if(!$card){
-        return abort(403);
-    }
-    //////// register hour /////////////////////
-    if(Hour::where('card_id' , $id)->get()->count() == 0){
-        $last_hour = 0;
-    }else{
-        $last_hour = Hour::where('card_id' , $id)->latest()->first()->card_hours;
-    }
-
-    if(!$last_hour){
-        $count =0;
-    }else{
-    $count = $request['oil_hours_gearbox'] - $last_hour;
-    }
-    Hour::create([
-    'card_hours' => $request['oil_hours_gearbox'],
-    'date' => $request['date_of_oil_gearbox'],
-    'card_id' => $id,
-    'count' => $count
-    ]);
-    //////// End register hour /////////////////////
-    $duration_of_oil_gearbox =2200;
-    $card->update([
-        'date_of_oil_gearbox' => $request['date_of_oil_gearbox'],
-        'oil_hours_gearbox' => $request['oil_hours_gearbox'],
-        'card_hours' => $request['oil_hours_gearbox'],
-        'hours_used_gearbox' => 0,
-        'remaining_hours_gearbox' => $duration_of_oil_gearbox
-    ]);
-        if($card->name == 'حفار'){
-            return redirect()->route('admin.digger.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
-        }else if($card->name == 'لودر'){
-            return redirect()->route('admin.loader.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
-        }
-        else if($card->name == 'مولد'){
-            return redirect()->route('admin.generator.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
-        }
-        else if($card->name == 'كسارة'){
-            return redirect()->route('admin.crusher.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
-        }
-        else if($card->name == 'كمبريسور'){
-            return redirect()->route('admin.compressor.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
-        }
-        else if($card->name == 'ماكينة ابحاث'){
-            return redirect()->route('admin.research.machine.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
-        }
-        return redirect()->route('admin.index.cards')->with(['success' => 'تم تسجيل بيانات تغيير زيت الفتيس الجديدة']);
     }
 }

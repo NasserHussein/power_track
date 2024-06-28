@@ -64,6 +64,10 @@ class MaintenanceController extends Controller
             $cards = Card::where('name' , 'أطارات')->get();
             $cards_name = 'أطارات';
             $technicians = Technician::all();
+        }elseif($id == 14){
+            $cards = Card::where('name' , 'سيارة')->get();
+            $cards_name = 'سيارة';
+            $technicians = Technician::all();
         }else{
             return abort(404);
         }
@@ -111,6 +115,8 @@ class MaintenanceController extends Controller
             $code = 12;
         }elseif($card->name == 'أطارات'){
             $code = 13;
+        }elseif($card->name == 'سيارة'){
+            $code = 14;
         }
         $maintenances = Maintenance::where('card_id' , $id)->get()->sortByDesc('date');
         return view('admin.pages.maintenance.index',compact(['card','maintenances','code','technician1s']));

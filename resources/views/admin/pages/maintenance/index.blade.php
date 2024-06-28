@@ -74,6 +74,7 @@
                                                     <td><div style="word-wrap: break-word;width:80px">{{ $maintenance->date }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:70px">{{ $maintenance->duration }}</div></td>
                                                     <td>
+                                                        @if($card->name !== 'سيارة')
                                                         <button type="button" class="btn mr-1 mb-1 btn-outline-secondary btn-sm" data-toggle="modal" data-target="#technicians{{ $maintenance->id }}">
                                                             القائمون<br>بالأصلاح
                                                         </button>
@@ -115,6 +116,8 @@
                                                             </div>
                                                         </div>
                                                         {{-- ----End Modal---- --}}
+                                                        @endif
+                                                        صيانة خارجية
                                                     </td>
                                                     <td>
                                                         <div class="btn-group" role="group"

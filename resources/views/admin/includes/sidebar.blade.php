@@ -136,6 +136,12 @@
                         </a>
                         </li>
 
+                        <li><a class="menu-item" href="{{ route('admin.types.cards',14) }}" data-i18n="nav.dash.crypto">سيارة
+                            <span class="badge badge badge-light badge-pill float-right mr-2">
+                                {{ App\Models\Admin\Card::where('name' , 'سيارة')->count() }}</span>
+                        </a>
+                        </li>
+
                     </ul>
                   </li>
               </ul>
@@ -208,6 +214,12 @@
                         <li><a class="menu-item" href="{{ route('admin.index.hour.cards',10) }}" data-i18n="nav.dash.crypto">حضان
                             <span class="badge badge badge-secondary badge-pill float-right mr-2">
                                 {{ App\Models\Admin\Card::where('name' , 'حضان')->count() }}</span>
+                        </a>
+                        </li>
+
+                        <li><a class="menu-item" href="{{ route('admin.index.hour.cards',14) }}" data-i18n="nav.dash.crypto">سيارة
+                            <span class="badge badge badge-light badge-pill float-right mr-2">
+                                {{ App\Models\Admin\Card::where('name' , 'سيارة')->count() }}</span>
                         </a>
                         </li>
 
@@ -302,6 +314,12 @@
                         </a>
                         </li>
 
+                        <li><a class="menu-item" href="{{ route('admin.maintenance.cards.index.cards',14) }}" data-i18n="nav.dash.crypto">سيارة
+                            <span class="badge badge badge-light badge-pill float-right mr-2">
+                                {{ App\Models\Admin\Card::where('name' , 'سيارة')->count() }}</span>
+                        </a>
+                        </li>
+
                     </ul>
                   </li>
               </ul>
@@ -391,6 +409,12 @@
                         <li><a class="menu-item" href="{{ route('admin.cost.cards.index.cards',13) }}" data-i18n="nav.dash.crypto">أطارات
                             <span class="badge badge badge-danger badge-pill float-right mr-2">
                                 {{ App\Models\Admin\Card::where('name' , 'أطارات')->count() }}</span>
+                        </a>
+                        </li>
+
+                        <li><a class="menu-item" href="{{ route('admin.cost.cards.index.cards',14) }}" data-i18n="nav.dash.crypto">سيارة
+                            <span class="badge badge badge-light badge-pill float-right mr-2">
+                                {{ App\Models\Admin\Card::where('name' , 'سيارة')->count() }}</span>
                         </a>
                         </li>
 

@@ -42,6 +42,9 @@ class HoursController extends Controller
         }elseif($id == 10){
             $cards = Card::where('name' , 'حضان')->get();
             $cards_name = 'حضان';
+        }elseif($id == 14){
+            $cards = Card::where('name' , 'سيارة')->get();
+            $cards_name = 'سيارة';
         }
         return view('admin.pages.hour.index_cards',compact(['cards','cards_name']));
     }
@@ -112,6 +115,9 @@ class HoursController extends Controller
         }
         else if($card->name == 'حضان'){
             return redirect()->route('admin.index.hour.cards',10)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
+        }
+        else if($card->name == 'سيارة'){
+            return redirect()->route('admin.index.hour.cards',14)->with(['success' => 'تم تحديث عداد المعدة بنجاح']);
         }
     }
      //////////////////// End Update Hours Card  /////////////////

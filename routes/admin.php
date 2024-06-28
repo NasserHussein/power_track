@@ -82,9 +82,6 @@ Route::group(['prefix'=>'Identification_Cards'],function(){
                 ###### Start Cards Oil Registration Route ######
     Route::post('/CardsOilRegistration/{id}','CardsController@oil_registration')->name('admin.cards.oil.registration');
                 ###### End Cards Oil Registration Route ######
-                ###### Start Cards Oil Gearbox Registration Route ######
-    Route::post('/CardsOilGearboxRegistration/{id}','CardsController@oil_registration_gearbox')->name('admin.cards.oil.gearbox.registration');
-                ###### End Cards Oil Gearbox Registration Route ######
 });
         ################################# End cards Route ###################################
         ################################# Start Customer_Card Route ###################################
