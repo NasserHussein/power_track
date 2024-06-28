@@ -423,6 +423,29 @@
                   </li>
               </ul>
           </li>
+          <li class="nav-item active"><a href=""><i class="icon-graph"></i>
+              <span class="menu-title" data-i18n="nav.dash.main">المصروفات التشغيلية</span>
+              <span style="color: red">&nbsp;&nbsp;<i class="icon-bar-chart"></i></span>
+            </a>
+              <ul class="menu-content">
+                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض المصروفات التشغيلية </a>
+                  </li>
+                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">إضافة مصروفات</a>
+                  </li>
+              </ul>
+          </li>
+          <li class="nav-item active"><a href=""><i class="la la-sort-amount-desc"></i>
+              <span class="menu-title" data-i18n="nav.dash.main">الخسائر</span>
+              <span style="color: #0059ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="ft-battery"></i></span>
+            </a>
+              <ul class="menu-content">
+                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض الخسائر </a>
+                  </li>
+                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">إضافة خسائر</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
   </div>
 </div>
