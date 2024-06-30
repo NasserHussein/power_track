@@ -428,9 +428,9 @@
               <span style="color: red">&nbsp;&nbsp;<i class="icon-bar-chart"></i></span>
             </a>
               <ul class="menu-content">
-                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض المصروفات التشغيلية </a>
+                  <li class=""><a class="menu-item" href="{{ route('admin.index.operating.expenses') }}" data-i18n="nav.dash.ecommerce"> عرض المصروفات التشغيلية </a>
                   </li>
-                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">إضافة مصروفات</a>
+                  <li class=""><a class="menu-item" href="{{ route('admin.create.operating.expenses') }}" data-i18n="nav.dash.ecommerce">إضافة مصروفات</a>
                   </li>
               </ul>
           </li>
@@ -440,9 +440,9 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="ft-battery"></i></span>
             </a>
               <ul class="menu-content">
-                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض الخسائر </a>
+                  <li class=""><a class="menu-item" href="{{ route('admin.index.Losses') }}" data-i18n="nav.dash.ecommerce"> عرض الخسائر </a>
                   </li>
-                  <li class=""><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">إضافة خسائر</a>
+                  <li class=""><a class="menu-item" href="{{ route('admin.create.Losses') }}" data-i18n="nav.dash.ecommerce">إضافة خسائر</a>
                   </li>
               </ul>
           </li>

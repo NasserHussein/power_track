@@ -139,11 +139,11 @@
                                                             تعديل
                                                         </a>
 
-                                                        <button type="button" data-toggle="modal" data-target="#delete" class="btn mr-1 mb-1 btn-outline-danger btn-sm">
+                                                        <button type="button" data-toggle="modal" data-target="#delete{{ $customer_maintenance->id }}" class="btn mr-1 mb-1 btn-outline-danger btn-sm">
                                                             حذف
                                                         </button>
                                                         {{-- ----Start Modal---- --}}
-                                                        <div class="modal animated bounceIn text-left" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel46" style="display: none;" aria-hidden="true">
+                                                        <div class="modal animated bounceIn text-left" id="delete{{ $customer_maintenance->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel46" style="display: none;" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
