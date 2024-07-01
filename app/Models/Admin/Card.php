@@ -29,6 +29,8 @@ class Card extends Model
         'oil_hours',
         'hours_used',
         'remaining_hours',
+        'hydraulic_system',
+        'notes',
         'created_at',
         'updated_at'
 ];

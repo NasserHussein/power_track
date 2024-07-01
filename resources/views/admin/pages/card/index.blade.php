@@ -140,6 +140,10 @@
                                                                                             <td>{{ $card->safety }}</td>
                                                                                         </tr>
                                                                                         <tr>
+                                                                                            <th scope="row">نظام الهيدروليك</th>
+                                                                                            <td>{{ $card->hydraulic_system }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
                                                                                             <th scope="row">بطارية</th>
                                                                                             <td>{{ $card->battery }}</td>
                                                                                         </tr>
@@ -150,6 +154,10 @@
                                                                                         <tr>
                                                                                             <th scope="row">فيشة شحن</th>
                                                                                             <td>{{ $card->charging_plug }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row">ملاحظات</th>
+                                                                                            <td>{{ $card->notes }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>

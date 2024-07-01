@@ -278,6 +278,32 @@ label[required]:after {content:'*';color:red;}
                                                                @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">نظام الهيدروليك</label>
+                                                        <input type="text" value="{{  $card->hydraulic_system }}" id="hydraulic_system"
+                                                               class="form-control"
+                                                               placeholder="أدخل نظام الهيدروليك"
+                                                               name="hydraulic_system">
+                                                               @error('hydraulic_system')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">ملاحظات</label>
+                                                        <input type="text" value="{{ $card->notes }}" id="notes"
+                                                               class="form-control"
+                                                               placeholder="أدخل ملاحظات"
+                                                               name="notes">
+                                                               @error('notes')
+                                                               <span class="text-danger">{{ $message }}</span>
+                                                               @enderror
+                                                    </div>
+                                                </div>
                                             </div>
                                         <div class="form-actions">
                                             <button type="button" class="btn btn-warning mr-1"

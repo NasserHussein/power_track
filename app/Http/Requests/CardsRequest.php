@@ -35,7 +35,9 @@ class CardsRequest extends FormRequest
             'safety' => 'max:255',
             'battery' => 'max:255',
             'charger' => 'max:255',
-            'charging_plug' => 'max:255'
+            'charging_plug' => 'max:255',
+            'hydraulic_system' => 'max:255',
+            'notes' => 'max:255'
         ];
     }
     public function messages()

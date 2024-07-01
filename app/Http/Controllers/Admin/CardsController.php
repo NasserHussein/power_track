@@ -84,7 +84,9 @@ class CardsController extends Controller
             'safety' => $request['safety'],
             'battery' => $request['battery'],
             'charger' => $request['charger'],
-            'charging_plug' => $request['charging_plug']
+            'charging_plug' => $request['charging_plug'],
+            'hydraulic_system' => $request['hydraulic_system'],
+            'notes' => $request['notes']
         ]);
         return redirect()->route('admin.index.cards')->with(['success' => 'تم تسجيل المعدة بنجاح']);
     }
@@ -114,7 +116,9 @@ class CardsController extends Controller
             'safety' => $request['safety'],
             'battery' => $request['battery'],
             'charger' => $request['charger'],
-            'charging_plug' => $request['charging_plug']
+            'charging_plug' => $request['charging_plug'],
+            'hydraulic_system' => $request['hydraulic_system'],
+            'notes' => $request['notes']
         ]);
         if($request['name'] == 'ستاكر كهراباء'){
             return redirect()->route('admin.types.cards',1)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);

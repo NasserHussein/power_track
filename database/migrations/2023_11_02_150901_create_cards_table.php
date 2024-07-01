@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('battery')->nullable();
             $table->string('charger')->nullable();
             $table->string('charging_plug')->nullable();
+            $table->string('hydraulic_system')->nullable();
+            $table->string('notes')->nullable();
             $table->string('card_hours')->nullable();
             $table->date('date_of_oil')->nullable();
             $table->string('oil_hours')->nullable();
