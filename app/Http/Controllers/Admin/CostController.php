@@ -70,9 +70,9 @@ class CostController extends Controller
         foreach($maintenances as $maintenance){
             $cards[] = $maintenance->card;
         }
-        $card_unique = array_unique($cards);
-        $count_cards = count($card_unique);
-        return view('admin.pages.cost.index_all_cost',compact(['start','end','maintenances','cost','count_cards']));
+        $cards_unique = array_unique($cards);
+        $count_cards = count($cards_unique);
+        return view('admin.pages.cost.index_all_cost',compact(['start','end','maintenances','cost','count_cards','cards_unique']));
     }
     public function cost_store(AdminCostRequest $request , $id){
         $card = Card::find($id);

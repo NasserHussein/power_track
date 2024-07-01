@@ -62,7 +62,47 @@
                                         <tbody>
                                                 <tr style="height: 50px">
                                                     <td><div style="word-wrap: break-word;width:150px;font-size: 18px;color: red">{{ $maintenances->count() }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:250px;font-size: 18px;color: blue">{{ $count_cards }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:250px;font-size: 18px;color: blue">
+
+                                                        <button type="button" class="btn mr-1 mb-1 btn-outline-info btn-sm" data-toggle="modal" data-target="#cards">
+                                                            {{ $count_cards }} معدات
+                                                        </button>
+                                                        {{-- ----Start Modal---- --}}
+                                                            <div class="modal fade text-left" id="cards" tabindex="-1" role="dialog" aria-labelledby="myModalLabel12" style="display: none;" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header bg-warning white">
+                                                                            <h4 class="modal-title white" id="myModalLabel12"><i class="icon-notebook"></i> أجمالي عدد المعدات التي تم صيانتها</h4>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">×</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <h5><i class="la la-arrow-right"></i> أجمالي عدد المعدات التي تم صيانتها</h5>
+                                                                            <div class="table-responsive">
+                                                                                <table class="table">
+                                                                                    <thead>
+                                                                                    <tbody>
+                                                                                        @isset($cards_unique)
+                                                                                        @foreach ($cards_unique as $card_unique)
+                                                                                        <tr>
+                                                                                            <th scope="row">{{ $card_unique->name }}</th>
+                                                                                            <td>معدة رقم ({{ $card_unique->card_no }}) <span style="font-size: 13px;color: red"> عدد الصيانات--> </span> {{ $card_unique->maintenances->count() }}</td>
+                                                                                        </tr>
+                                                                                        @endforeach
+                                                                                        @endisset
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">إغلاق</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {{-- ----End Modal---- --}}
+                                                    </div></td>
                                                     <td><div style="word-wrap: break-word;width:150px;font-size: 18px;color: orangered">{{ $start }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:150px;font-size: 18px;color: orange">{{ $end }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:150px;font-size: 18px;color: green">{{ $cost }} $</div></td>

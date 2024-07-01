@@ -193,11 +193,11 @@ label[required]:after {content:'*';color:red;}
                                                         </div>
                                                     </td>
                                                     <td><div style="word-wrap: break-word;width:70px;">
-                                                        <button type="button" class="btn mr-1 mb-1 btn-outline-warning btn-sm" data-toggle="modal" data-target="#Customer">
+                                                        <button type="button" class="btn mr-1 mb-1 btn-outline-warning btn-sm" data-toggle="modal" data-target="#Customer{{ $customer_card->id }}">
                                                             بيانات</br>العميل
                                                         </button>
                                                         {{-- ----Start Modal---- --}}
-                                                            <div class="modal fade text-left" id="Customer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel12" style="display: none;" aria-hidden="true">
+                                                            <div class="modal fade text-left" id="Customer{{ $customer_card->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel12" style="display: none;" aria-hidden="true">
                                                                 <div class="modal-dialog" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header bg-warning white">

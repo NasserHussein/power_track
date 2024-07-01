@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\Accounts_mirrorController;
 use App\Http\Controllers\Admin\CardsController;
 use App\Http\Controllers\Admin\CostController;
 use App\Http\Controllers\Admin\Customer_CardController;
@@ -167,6 +168,15 @@ Route::group(['prefix'=>'operating-expenses'],function(){
     Route::post('/determine-specific-operating-expenses-period','Operating_expenseController@determine_specific_loss_period')->name('admin.determine.specific.expense.period.expenses');
 });
         ################################# End Operating_expenses Route ###################################
+        ################################# Start mirror Route ###################################
+Route::group(['prefix'=>'accounts-mirror'],function(){
+    Route::get('/','Accounts_mirrorController@select')->name('admin.select.accounts.mirror');
+    Route::post('/index','Accounts_mirrorController@index')->name('admin.index.accounts.mirror');
+});
+        ################################# End mirror Route ###################################
+Route::get('/n',function(){
+    return view('admin.pages.all-expenses.index');
+});
 });
 
 
