@@ -7,3 +7,14 @@
     $admin->state= "1";
     $admin->photo = "15114265.jpt";
     $admin->save();
+
+
+    $admin = new App\Models\admin\Admin();
+    $admin->first_name = "Mahmoud";
+    $admin->last_name = "Reda";
+    $admin->phone_no = "000000000";
+    $admin->username = "mahmoud";
+    $admin->password = bcrypt("102030987");
+    $admin->state= "1";
+    $admin->photo = "15114265.jpt";
+    $admin->save();
