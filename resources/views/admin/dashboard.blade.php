@@ -72,7 +72,7 @@
                                 <h6 class="text-muted">Card ID</h6>
                             </div>
                             <div class="col-5 text-right">
-                                <h2>{{ App\Models\Admin\Card::count() }}</h2>
+                                <h2>{{ App\Models\Admin\Card::where('type_card' , '0')->get()->count() }}</h2>
 
                             </div>
                         </div>
@@ -180,10 +180,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h1 style="font-size: 20px"  class="card-title">تكلفة صيانة المعداد</h1>
+                    <h1 style="font-size: 20px"  class="card-title">تكلفة صيانة معدات باور تراك</h1>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div style="font-size: 20px" class="heading-elements">
-                        <p class="text-muted">اجمالي تكلفة الصيانة للمعداد: <span style="color: red">{{ App\Models\Admin\Maintenance::sum('cost') }}$</span></p>
+                        <p class="text-muted">اجمالي تكلفة الصيانة للمعداد: <span style="color: red">{{ App\Models\Admin\Maintenance::whereHas('card',function($q){$q->where('type_card','0');})->sum('cost') }}$</span></p>
                     </div>
                 </div>
                 <div class="card-content">
@@ -200,7 +200,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\Admin\Card::all() as $card_cost)
+                                @foreach (App\Models\Admin\Card::where('type_card','0')->get() as $card_cost)
                                 @if($card_cost->Maintenances->sum('cost') !== 0)
                             <tr>
                                 <td style="color: blue"><div style="word-wrap: break-word;width:110px;">{{ $card_cost->name }}</div></td>
@@ -217,113 +217,53 @@
                     </div>
                 </div>
             </div>
-{{--
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Active Order</h4>
+                    <h1 style="font-size: 20px"  class="card-title">تكلفة صيانة معدات الشركات</h1>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <td>
-                            <button class="btn btn-sm round btn-danger btn-glow"><i class="la la-close font-medium-1"></i> Cancel all</button>
-                        </td>
+                    <div style="font-size: 20px" class="heading-elements">
+                        <p class="text-muted">اجمالي تكلفة الصيانة للمعداد: <span style="color: red">{{ App\Models\Admin\Maintenance::whereHas('card',function($q){$q->where('type_card','1');})->sum('cost') }}$</span></p>
                     </div>
                 </div>
                 <div class="card-content">
                     <div class="table-responsive">
-                        <table class="table table-de mb-0">
+                        <table class="display nowrap table-striped table-bordered scroll-horizontal table table-de mb-0" style="width:auto;text-align: center">
                             <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Amount BTC</th>
-                                <th>BTC Remaining</th>
-                                <th>Price</th>
-                                <th>USD</th>
-                                <th>Fee (%)</th>
-                                <th>Cancel</th>
+                                <th>نوع المعدة</th>
+                                <th>رقم المعدة</th>
+                                <th>رقم الشاسية</th>
+                                <th>بداية تاريخ المحاسبة</th>
+                                <th>نهاية تاريخ المحاسبة</th>
+                                <th>التكلفة الكلية<br>لصيانة المعدة</th>
                             </tr>
                             </thead>
                             <tbody>
+                                @foreach (App\Models\Admin\Card::where('type_card','1')->get() as $card_cost)
+                                @if($card_cost->Maintenances->sum('cost') !== 0)
                             <tr>
-                                <td>2018-01-31 06:51:51</td>
-                                <td class="success">Buy</td>
-                                <td><i class="cc BTC-alt"></i> 0.58647</td>
-                                <td><i class="cc BTC-alt"></i> 0.58647</td>
-                                <td>11900.12</td>
-                                <td>$ 6979.78</td>
-                                <td>0.2</td>
-                                <td>
-                                    <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
-                                </td>
+                                <td style="color: blue"><div style="word-wrap: break-word;width:110px;">{{ $card_cost->name }}</div></td>
+                                <td style="font-size: 20px" class="warning"><div style="word-wrap: break-word;width:40px;">{{ $card_cost->card_no }}</div></td>
+                                <td style="font-size: 18px" class="success"><div style="word-wrap: break-word;width:110px;">{{ $card_cost->chassis_no }}</div></td>
+                                <td style="font-size: 20px" class="info">{{ $card_cost->Maintenances->min('date') }}</td>
+                                <td style="font-size: 20px" class="info">{{ $card_cost->Maintenances->max('date') }}</td>
+                                <td style="font-size: 20px" class="danger">{{ $card_cost->Maintenances->sum('cost') }} $</td>
                             </tr>
-                            <tr>
-                                <td>2018-01-31 06:50:50</td>
-                                <td class="danger">Sell</td>
-                                <td><i class="cc BTC-alt"></i> 1.38647</td>
-                                <td><i class="cc BTC-alt"></i> 0.38647</td>
-                                <td>11905.09</td>
-                                <td>$ 4600.97</td>
-                                <td>0.2</td>
-                                <td>
-                                    <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2018-01-31 06:49:51</td>
-                                <td class="success">Buy</td>
-                                <td><i class="cc BTC-alt"></i> 0.45879</td>
-                                <td><i class="cc BTC-alt"></i> 0.45879</td>
-                                <td>11901.85</td>
-                                <td>$ 5460.44</td>
-                                <td>0.2</td>
-                                <td>
-                                    <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2018-01-31 06:51:51</td>
-                                <td class="success">Buy</td>
-                                <td><i class="cc BTC-alt"></i> 0.89877</td>
-                                <td><i class="cc BTC-alt"></i> 0.89877</td>
-                                <td>11899.25</td>
-                                <td>$ 10694.6</td>
-                                <td>0.2</td>
-                                <td>
-                                    <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2018-01-31 06:51:51</td>
-                                <td class="danger">Sell</td>
-                                <td><i class="cc BTC-alt"></i> 0.45712</td>
-                                <td><i class="cc BTC-alt"></i> 0.45712</td>
-                                <td>11908.58</td>
-                                <td>$ 5443.65</td>
-                                <td>0.2</td>
-                                <td>
-                                    <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2018-01-31 06:51:51</td>
-                                <td class="success">Buy</td>
-                                <td><i class="cc BTC-alt"></i> 0.58647</td>
-                                <td><i class="cc BTC-alt"></i> 0.58647</td>
-                                <td>11900.12</td>
-                                <td>$ 6979.78</td>
-                                <td>0.2</td>
-                                <td>
-                                    <button class="btn btn-sm round btn-outline-danger"> Cancel</button>
-                                </td>
-                            </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-  --}}
         </div>
     </div>
+
     <div class="row">
         <div class="col-12">
             <div class="card">

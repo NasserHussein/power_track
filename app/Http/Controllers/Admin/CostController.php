@@ -58,21 +58,27 @@ class CostController extends Controller
         }
         return view('admin.pages.cost.cards.card_index',compact(['cards','cards_name']));
     }
-    public function determine_the_duration_of_all_maintenance(){
-        return view('admin.pages.cost.determine_the_duration_of_all_maintenance');
+    public function determine_the_duration_of_all_maintenance($id){
+        $id = $id;
+        return view('admin.pages.cost.determine_the_duration_of_all_maintenance',compact('id'));
     }
     public function maintenance_cost_determine(AdminCostRequest $request){
+        $id = $request['id'];
         $cards = [];
         $start = $request['start'];
         $end = $request['end'];
-        $maintenances = Maintenance::whereBetween('date', [$start, $end])->get();
+        if($request['id'] == 0){
+        $maintenances = Maintenance::whereHas('card',function($q){$q->where('type_card', '0');})->whereBetween('date', [$start, $end])->get();
+        }elseif($request['id'] == 1){
+        $maintenances = Maintenance::whereHas('card',function($q){$q->where('type_card', '1');})->whereBetween('date', [$start, $end])->get();
+        }
         $cost = $maintenances->sum('cost');
         foreach($maintenances as $maintenance){
             $cards[] = $maintenance->card;
         }
         $cards_unique = array_unique($cards);
         $count_cards = count($cards_unique);
-        return view('admin.pages.cost.index_all_cost',compact(['start','end','maintenances','cost','count_cards','cards_unique']));
+        return view('admin.pages.cost.index_all_cost',compact(['start','end','maintenances','cost','count_cards','cards_unique','id']));
     }
     public function cost_store(AdminCostRequest $request , $id){
         $card = Card::find($id);

@@ -117,7 +117,9 @@
                                                         </div>
                                                         {{-- ----End Modal---- --}}
                                                         @endif
+                                                        @if($card->name == 'سيارة')
                                                         صيانة خارجية
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <div class="btn-group" role="group"

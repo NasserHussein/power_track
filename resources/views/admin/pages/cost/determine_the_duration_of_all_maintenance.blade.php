@@ -106,6 +106,7 @@ label[required]:after {content:'*';color:red;}
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="id" value="{{ $id }}">
                                         <div class="form-actions">
                                             <button type="button" class="btn btn-warning mr-1"
                                                     onclick="history.back();">

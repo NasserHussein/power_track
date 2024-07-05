@@ -4,6 +4,8 @@
 @endsection
 @section('content')
 <div class="app-content content">
+
+
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
@@ -13,7 +15,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.determine_the_duration.cards') }}">تفاصيل عن تكلفة الصيانة</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.determine_the_duration.cards',0) }}">تفاصيل عن تكلفة الصيانة</a>
                             </li>
                             <li class="breadcrumb-item active">تكاليف الصيانة
                             </li>
@@ -42,6 +44,46 @@
             </section>
         </div>
     </div>
+
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left mb-2">
+                <h4 class="content-header-title">تكاليف صيانة الشركات من يوم <span style="color: red">{{ $start }}</span> الي يوم <span style="color: red">{{ $end }}</span></h4>
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.determine_the_duration.cards',1) }}">تفاصيل عن تكلفة صيانة الشركات</a>
+                            </li>
+                            <li class="breadcrumb-item active">تكاليف الصيانة
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- DOM - jQuery events table -->
+            <section id="dom">
+                <div class="card-body card-dashboard">
+                    <table class="display nowrap table-striped table-bordered "  style="width:900px;height: 100px;text-align: center">
+                        <thead>
+                        <tr style="height: 40px" class="bg-primary white">
+                            <th>اجمالي تكلفة الصيانة في هذه المدة</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div style="font-size: 30px;color: rgb(15, 73, 3)">{{ $maintenances_companies_sum }} ج.م</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
@@ -188,7 +230,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><div style="font-size: 30px;color: rgb(15, 73, 3)">{{ $operating_expenses_sum + $maintenances_sum + $losses_sum }} ج.م</div></td>
+                                <td><div style="font-size: 30px;color: rgb(15, 73, 3)">{{ $operating_expenses_sum + $maintenances_sum + $losses_sum + $maintenances_companies_sum }} ج.م</div></td>
                             </tr>
                         </tbody>
                     </table>

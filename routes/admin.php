@@ -143,7 +143,7 @@ Route::group(['prefix'=>'Cost_Equipments'],function(){
     Route::get('/index/{id}','CostController@index_cards')->name('admin.cost.cards.index.cards');
     Route::post('/store/{id}','CostController@cost_store')->name('dmin.cost.cards.store.maintenance');
                             /////////////////////all/////////////////
-    Route::get('/determine-the-duration','CostController@determine_the_duration_of_all_maintenance')->name('admin.cost.cards.determine_the_duration.cards');
+    Route::get('/determine-the-duration/{id}','CostController@determine_the_duration_of_all_maintenance')->name('admin.cost.cards.determine_the_duration.cards');
     Route::post('/maintenance-cost-determine','CostController@maintenance_cost_determine')->name('admin.cost.cards.maintenance_cost_determine.maintenance');
 });
         ################################# End Cost cards Route ###################################

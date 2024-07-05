@@ -16,7 +16,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.determine_the_duration.cards') }}">تحديد مدة اخري</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.cost.cards.determine_the_duration.cards',$id) }}">تحديد مدة اخري</a>
                             </li>
                             <li class="breadcrumb-item active">حساب تكلفة الصيانة
                             </li>

@@ -363,7 +363,9 @@
               <ul class="menu-content">
                   <li class=""><a class="menu-item" href="{{ route('admin.select.accounts.mirror') }}" data-i18n="nav.dash.ecommerce">مراية الحسابات</a>
                   </li>
-                  <li class=""><a class="menu-item" href="{{ route('admin.cost.cards.determine_the_duration.cards') }}" data-i18n="nav.dash.ecommerce">حساب اجمالي تكلفة الصيانة</a>
+                  <li class=""><a class="menu-item" href="{{ route('admin.cost.cards.determine_the_duration.cards',0) }}" data-i18n="nav.dash.ecommerce">اجمالي تكلفة الصيانة</a>
+                  </li>
+                  <li class=""><a class="menu-item" href="{{ route('admin.cost.cards.determine_the_duration.cards',1) }}" data-i18n="nav.dash.ecommerce">اجمالي تكلفة الصيانة للشركات</a>
                   </li>
                     <li class="nav-item"><a href=""><i class="icon-list"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">أختر نوع المعدة</span>

@@ -108,7 +108,9 @@
                                alt="avatar"><i></i></span>
                                         </div>
                                         <div class="media-body">
-                                            <h6 class="media-heading">{{ $notifie->maintenance->card->name }} رقم {{ $notifie->maintenance->card->card_no }}</h6>
+                                            @if($notifie->maintenance->card->type_card == '0')<h8 style="color: red">معدات شركة باور تراك</h8>@endif
+                                            @if($notifie->maintenance->card->type_card == '1')<h8 style="color: red">معدات شركات</h8>@endif
+                                            <h6 class="media-heading">{{ $notifie->maintenance->card->name }} رقم {{ $notifie->maintenance->card->card_no }} في شركة {{ $notifie->maintenance->card->part }}</h6>
                                             <p class="notification-text font-small-3 text-muted"><div style="font-size: 17px;word-wrap: break-word;width:260px;">يحتاج لتغيير {{ $notifie->spare_parts }}</div></p>
                                             <small>
                                                 <time class="media-meta text-muted"
