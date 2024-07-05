@@ -75,6 +75,7 @@ Route::group(['prefix'=>'Accounts'],function(){
 Route::group(['prefix'=>'Identification_Cards'],function(){
     Route::get('/','CardsController@index')->name('admin.index.cards');
     Route::get('/create','CardsController@create')->name('admin.create.cards');
+    Route::get('/create-company-card','CardsController@create_company_card')->name('admin.create.company.car.cards');
     Route::post('/store','CardsController@store')->name('admin.store.cards');
     Route::get('/edit/{id}','CardsController@edit')->name('admin.edit.cards');
     Route::post('/update/{id}','CardsController@update')->name('admin.update.cards');

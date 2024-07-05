@@ -15,11 +15,13 @@ class CardsController extends Controller
     public function index(){
         $cards = Card::where('type_card' , '0')->get();
         $name = 0;
-        return view('admin.pages.card.index',compact(['cards','name']));
+        $code = '0';
+        return view('admin.pages.card.index',compact(['cards','name','code']));
     }
     //////////////////// Start Cards Types /////////////////
     public function index_types($id){
         $name = 1;
+        $code = 0;
         if($id == 1){
             $cards = Card::where(['name' => 'ستاكر كهراباء' , 'type_card' => '0'])->get();
             $cards_name = 'ستاكر كهراباء';
@@ -65,12 +67,16 @@ class CardsController extends Controller
         }elseif($id == 15){
             $cards = Card::where('type_card' , '1')->get();
             $cards_name = 'معدات الشركات';
+            $code = 1;
         }
-        return view('admin.pages.card.index',compact(['cards','name','cards_name']));
+        return view('admin.pages.card.index',compact(['cards','name','cards_name','code']));
     }
     //////////////////// End Cards Types /////////////////
     public function create(){
         return view('admin.pages.card.create');
+    }
+    public function create_company_card(){
+        return view('admin.pages.companies_cards.create');
     }
     public function store(CardsRequest $request){
         Card::create([

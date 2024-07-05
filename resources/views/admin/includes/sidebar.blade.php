@@ -133,7 +133,7 @@
               <ul class="menu-content">
                   <li class=""><a class="menu-item" href="{{ route('admin.types.cards',15) }}" data-i18n="nav.dash.ecommerce"> عرض كل معدات الشركات </a>
                   </li>
-                  <li class=""><a class="menu-item" href="{{ route('admin.create.customer.Card') }}" data-i18n="nav.dash.ecommerce">إضافة معدة</a>
+                  <li class=""><a class="menu-item" href="{{ route('admin.create.company.car.cards') }}" data-i18n="nav.dash.ecommerce">إضافة معدة</a>
                   </li>
               </ul>
           </li>
@@ -244,7 +244,7 @@
             </a>
               <ul class="menu-content">
 
-                    <li><a class="menu-item" href="{{ route('admin.maintenance.cards.index.cards',15) }}" data-i18n="nav.dash.crypto">ستاكر كهراباء
+                    <li><a class="menu-item" href="{{ route('admin.maintenance.cards.index.cards',15) }}" data-i18n="nav.dash.crypto">معدات شركات
                         <span class="badge badge badge-primary  badge-pill float-right mr-2">
                             {{ App\Models\Admin\Card::where('type_card' , '1')->count() }}</span>
                     </a>

@@ -18,7 +18,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.create.cards') }}">إضافة معدة</a>
+                            <li class="breadcrumb-item"><a href="@if($code == '0'){{ route('admin.create.cards') }} @endif @if($code == '1') {{ route('admin.create.company.car.cards') }} @endif">إضافة معدة</a>
                             </li>
                             <li class="breadcrumb-item active"> المعدات
                             </li>
