@@ -13,60 +13,64 @@ class MaintenanceController extends Controller
 {
     public function index_cards($id){
         if($id == 1){
-            $cards = Card::where('name' , 'ستاكر كهراباء')->get();
+            $cards = Card::where(['name' => 'ستاكر كهراباء' , 'type_card' => '0'])->get();
             $cards_name = 'ستاكر كهراباء';
             $technicians = Technician::all();
         }elseif($id == 2){
-            $cards = Card::where('name' , 'باور بالت')->get();
+            $cards = Card::where(['name' => 'باور بالت' , 'type_card' => '0'])->get();
             $cards_name = 'باور بالت';
             $technicians = Technician::all();
         }elseif($id == 3){
-            $cards = Card::where('name' , 'ريتش تراك')->get();
+            $cards = Card::where(['name' => 'ريتش تراك' , 'type_card' => '0'])->get();
             $cards_name = 'ريتش تراك';
             $technicians = Technician::all();
         }elseif($id == 4){
-            $cards = Card::where('name' , 'هاند بالت')->get();
+            $cards = Card::where(['name' => 'هاند بالت' , 'type_card' => '0'])->get();
             $cards_name ='هاند بالت';
             $technicians = Technician::all();
         }elseif($id == 5){
-            $cards = Card::where('name' , 'ونش شوكة كهرباء')->get();
+            $cards = Card::where(['name' => 'ونش شوكة كهرباء' , 'type_card' => '0'])->get();
             $cards_name = 'ونش شوكة كهرباء';
             $technicians = Technician::all();
         }elseif($id == 6){
-            $cards = Card::where('name' , 'ونش شوكة ديزل')->get();
+            $cards = Card::where(['name' => 'ونش شوكة ديزل' , 'type_card' => '0'])->get();
             $cards_name = 'ونش شوكة ديزل';
             $technicians = Technician::all();
         }elseif($id == 7){
-            $cards = Card::where('name' , 'أوردر بيكر')->get();
+            $cards = Card::where(['name' => 'أوردر بيكر' , 'type_card' => '0'])->get();
             $cards_name = 'أوردر بيكر';
             $technicians = Technician::all();
         }elseif($id == 8){
-            $cards = Card::where('name' , 'سيزر ليفت')->get();
+            $cards = Card::where(['name' => 'سيزر ليفت' , 'type_card' => '0'])->get();
             $cards_name = 'سيزر ليفت';
             $technicians = Technician::all();
         }elseif($id == 9){
-            $cards = Card::where('name' , 'مان ليفت')->get();
+            $cards = Card::where(['name' => 'مان ليفت' , 'type_card' => '0'])->get();
             $cards_name = 'مان ليفت';
             $technicians = Technician::all();
         }elseif($id == 10){
-            $cards = Card::where('name' , 'حضان')->get();
+            $cards = Card::where(['name' => 'حضان' , 'type_card' => '0'])->get();
             $cards_name = 'حضان';
             $technicians = Technician::all();
         }elseif($id == 11){
-            $cards = Card::where('name' , 'بطاريات')->get();
+            $cards = Card::where(['name' => 'بطاريات' , 'type_card' => '0'])->get();
             $cards_name = 'بطاريات';
             $technicians = Technician::all();
         }elseif($id == 12){
-            $cards = Card::where('name' , 'تنجر شحن')->get();
+            $cards = Card::where(['name' => 'تنجر شحن' , 'type_card' => '0'])->get();
             $cards_name = 'تنجر شحن';
             $technicians = Technician::all();
         }elseif($id == 13){
-            $cards = Card::where('name' , 'أطارات')->get();
+            $cards = Card::where(['name' => 'أطارات' , 'type_card' => '0'])->get();
             $cards_name = 'أطارات';
             $technicians = Technician::all();
         }elseif($id == 14){
-            $cards = Card::where('name' , 'سيارة')->get();
+            $cards = Card::where(['name' => 'سيارة' , 'type_card' => '0'])->get();
             $cards_name = 'سيارة';
+            $technicians = Technician::all();
+        }elseif($id == 15){
+            $cards = Card::where('type_card' , '1')->get();
+            $cards_name = 'معدات شركات';
             $technicians = Technician::all();
         }else{
             return abort(404);
@@ -89,34 +93,36 @@ class MaintenanceController extends Controller
     public function index_maintenance($id){
         $card = Card::find($id);
         $technician1s = Technician::all();
-        if($card->name == 'ستاكر كهراباء'){
+        if($card->type_card == '0' && $card->name == 'ستاكر كهراباء'){
             $code = 1;
-        }elseif($card->name == 'باور بالت'){
+        }elseif($card->type_card == '0' && $card->name == 'باور بالت'){
             $code = 2;
-        }elseif($card->name == 'ريتش تراك'){
+        }elseif($card->type_card == '0' && $card->name == 'ريتش تراك'){
             $code = 3;
-        }elseif($card->name == 'هاند بالت'){
+        }elseif($card->type_card == '0' && $card->name == 'هاند بالت'){
             $code = 4;
-        }elseif($card->name == 'ونش شوكة كهرباء'){
+        }elseif($card->type_card == '0' && $card->name == 'ونش شوكة كهرباء'){
             $code = 5;
-        }elseif($card->name == 'ونش شوكة ديزل'){
+        }elseif($card->type_card == '0' && $card->name == 'ونش شوكة ديزل'){
             $code = 6;
-        }elseif($card->name == 'أوردر بيكر'){
+        }elseif($card->type_card == '0' && $card->name == 'أوردر بيكر'){
             $code = 7;
-        }elseif($card->name == 'سيزر ليفت'){
+        }elseif($card->type_card == '0' && $card->name == 'سيزر ليفت'){
             $code = 8;
-        }elseif($card->name == 'مان ليفت'){
+        }elseif($card->type_card == '0' && $card->name == 'مان ليفت'){
             $code = 9;
-        }elseif($card->name == 'حضان'){
+        }elseif($card->type_card == '0' && $card->name == 'حضان'){
             $code = 10;
-        }elseif($card->name == 'بطاريات'){
+        }elseif($card->type_card == '0' && $card->name == 'بطاريات'){
             $code = 11;
-        }elseif($card->name == 'تنجر شحن'){
+        }elseif($card->type_card == '0' && $card->name == 'تنجر شحن'){
             $code = 12;
-        }elseif($card->name == 'أطارات'){
+        }elseif($card->type_card == '0' && $card->name == 'أطارات'){
             $code = 13;
-        }elseif($card->name == 'سيارة'){
+        }elseif($card->type_card == '0' && $card->name == 'سيارة'){
             $code = 14;
+        }elseif($card->type_card == '1'){
+            $code = 15;
         }
         $maintenances = Maintenance::where('card_id' , $id)->get()->sortByDesc('date');
         return view('admin.pages.maintenance.index',compact(['card','maintenances','code','technician1s']));

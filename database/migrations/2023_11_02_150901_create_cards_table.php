@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('oil_hours')->nullable();
             $table->integer('hours_used')->nullable();
             $table->integer('remaining_hours')->nullable();
+            $table->enum('type_card',['0','1']);
             $table->timestamps();
         });
     }

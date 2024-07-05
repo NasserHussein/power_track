@@ -12,46 +12,46 @@ class CostController extends Controller
 {
     public function index_cards($id){
         if($id == 1){
-            $cards = Card::where('name' , 'ستاكر كهراباء')->get();
+            $cards = Card::where(['name' => 'ستاكر كهراباء' , 'type_card' => '0'])->get();
             $cards_name = 'ستاكر كهراباء';
         }elseif($id == 2){
-            $cards = Card::where('name' , 'باور بالت')->get();
+            $cards = Card::where(['name' => 'باور بالت' , 'type_card' => '0'])->get();
             $cards_name = 'باور بالت';
         }elseif($id == 3){
-            $cards = Card::where('name' , 'ريتش تراك')->get();
+            $cards = Card::where(['name' => 'ريتش تراك' , 'type_card' => '0'])->get();
             $cards_name = 'ريتش تراك';
         }elseif($id == 4){
-            $cards = Card::where('name' , 'هاند بالت')->get();
+            $cards = Card::where(['name' => 'هاند بالت' , 'type_card' => '0'])->get();
             $cards_name ='هاند بالت';
         }elseif($id == 5){
-            $cards = Card::where('name' , 'ونش شوكة كهرباء')->get();
+            $cards = Card::where(['name' => 'ونش شوكة كهرباء' , 'type_card' => '0'])->get();
             $cards_name = 'ونش شوكة كهرباء';
         }elseif($id == 6){
-            $cards = Card::where('name' , 'ونش شوكة ديزل')->get();
+            $cards = Card::where(['name' => 'ونش شوكة ديزل' , 'type_card' => '0'])->get();
             $cards_name = 'ونش شوكة ديزل';
         }elseif($id == 7){
-            $cards = Card::where('name' , 'أوردر بيكر')->get();
+            $cards = Card::where(['name' => 'أوردر بيكر' , 'type_card' => '0'])->get();
             $cards_name = 'أوردر بيكر';
         }elseif($id == 8){
-            $cards = Card::where('name' , 'سيزر ليفت')->get();
+            $cards = Card::where(['name' => 'سيزر ليفت' , 'type_card' => '0'])->get();
             $cards_name = 'سيزر ليفت';
         }elseif($id == 9){
-            $cards = Card::where('name' , 'مان ليفت')->get();
+            $cards = Card::where(['name' => 'مان ليفت' , 'type_card' => '0'])->get();
             $cards_name = 'مان ليفت';
         }elseif($id == 10){
-            $cards = Card::where('name' , 'حضان')->get();
+            $cards = Card::where(['name' => 'حضان' , 'type_card' => '0'])->get();
             $cards_name = 'حضان';
         }elseif($id == 11){
-            $cards = Card::where('name' , 'بطاريات')->get();
+            $cards = Card::where(['name' => 'بطاريات' , 'type_card' => '0'])->get();
             $cards_name = 'بطاريات';
         }elseif($id == 12){
-            $cards = Card::where('name' , 'تنجر شحن')->get();
+            $cards = Card::where(['name' => 'تنجر شحن' , 'type_card' => '0'])->get();
             $cards_name = 'تنجر شحن';
         }elseif($id == 13){
-            $cards = Card::where('name' , 'أطارات')->get();
+            $cards = Card::where(['name' => 'أطارات' , 'type_card' => '0'])->get();
             $cards_name = 'أطارات';
         }elseif($id == 14){
-            $cards = Card::where('name' , 'سيارة')->get();
+            $cards = Card::where(['name' => 'سيارة' , 'type_card' => '0'])->get();
             $cards_name = 'سيارة';
         }else{
             return abort(404);

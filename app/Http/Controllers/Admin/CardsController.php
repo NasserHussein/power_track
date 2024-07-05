@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class CardsController extends Controller
 {
     public function index(){
-        $cards = Card::all();
+        $cards = Card::where('type_card' , '0')->get();
         $name = 0;
         return view('admin.pages.card.index',compact(['cards','name']));
     }
@@ -21,47 +21,50 @@ class CardsController extends Controller
     public function index_types($id){
         $name = 1;
         if($id == 1){
-            $cards = Card::where('name' , 'ستاكر كهراباء')->get();
+            $cards = Card::where(['name' => 'ستاكر كهراباء' , 'type_card' => '0'])->get();
             $cards_name = 'ستاكر كهراباء';
         }elseif($id == 2){
-            $cards = Card::where('name' , 'باور بالت')->get();
+            $cards = Card::where(['name' => 'باور بالت' , 'type_card' => '0'])->get();
             $cards_name = 'باور بالت';
         }elseif($id == 3){
-            $cards = Card::where('name' , 'ريتش تراك')->get();
+            $cards = Card::where(['name' => 'ريتش تراك' , 'type_card' => '0'])->get();
             $cards_name = 'ريتش تراك';
         }elseif($id == 4){
-            $cards = Card::where('name' , 'هاند بالت')->get();
+            $cards = Card::where(['name' => 'هاند بالت' , 'type_card' => '0'])->get();
             $cards_name ='هاند بالت';
         }elseif($id == 5){
-            $cards = Card::where('name' , 'ونش شوكة كهرباء')->get();
+            $cards = Card::where(['name' => 'ونش شوكة كهرباء' , 'type_card' => '0'])->get();
             $cards_name = 'ونش شوكة كهرباء';
         }elseif($id == 6){
-            $cards = Card::where('name' , 'ونش شوكة ديزل')->get();
+            $cards = Card::where(['name' => 'ونش شوكة ديزل' , 'type_card' => '0'])->get();
             $cards_name = 'ونش شوكة ديزل';
         }elseif($id == 7){
-            $cards = Card::where('name' , 'أوردر بيكر')->get();
+            $cards = Card::where(['name' => 'أوردر بيكر' , 'type_card' => '0'])->get();
             $cards_name = 'أوردر بيكر';
         }elseif($id == 8){
-            $cards = Card::where('name' , 'سيزر ليفت')->get();
+            $cards = Card::where(['name' => 'سيزر ليفت' , 'type_card' => '0'])->get();
             $cards_name = 'سيزر ليفت';
         }elseif($id == 9){
-            $cards = Card::where('name' , 'مان ليفت')->get();
+            $cards = Card::where(['name' => 'مان ليفت' , 'type_card' => '0'])->get();
             $cards_name = 'مان ليفت';
         }elseif($id == 10){
-            $cards = Card::where('name' , 'حضان')->get();
+            $cards = Card::where(['name' => 'حضان' , 'type_card' => '0'])->get();
             $cards_name = 'حضان';
         }elseif($id == 11){
-            $cards = Card::where('name' , 'بطاريات')->get();
+            $cards = Card::where(['name' => 'بطاريات' , 'type_card' => '0'])->get();
             $cards_name = 'بطاريات';
         }elseif($id == 12){
-            $cards = Card::where('name' , 'تنجر شحن')->get();
+            $cards = Card::where(['name' => 'تنجر شحن' , 'type_card' => '0'])->get();
             $cards_name = 'تنجر شحن';
         }elseif($id == 13){
-            $cards = Card::where('name' , 'أطارات')->get();
+            $cards = Card::where(['name' => 'أطارات' , 'type_card' => '0'])->get();
             $cards_name = 'أطارات';
         }elseif($id == 14){
-            $cards = Card::where('name' , 'سيارة')->get();
+            $cards = Card::where(['name' => 'سيارة' , 'type_card' => '0'])->get();
             $cards_name = 'سيارة';
+        }elseif($id == 15){
+            $cards = Card::where('type_card' , '1')->get();
+            $cards_name = 'معدات الشركات';
         }
         return view('admin.pages.card.index',compact(['cards','name','cards_name']));
     }
@@ -86,8 +89,12 @@ class CardsController extends Controller
             'charger' => $request['charger'],
             'charging_plug' => $request['charging_plug'],
             'hydraulic_system' => $request['hydraulic_system'],
-            'notes' => $request['notes']
+            'notes' => $request['notes'],
+            'type_card' => $request['type_card']
         ]);
+        if($request['type_card'] == '1'){
+            return redirect()->route('admin.types.cards',15)->with(['success' => 'تم تسجيل المعدة بنجاح']);
+        }
         return redirect()->route('admin.index.cards')->with(['success' => 'تم تسجيل المعدة بنجاح']);
     }
     public function edit($id){
@@ -120,45 +127,47 @@ class CardsController extends Controller
             'hydraulic_system' => $request['hydraulic_system'],
             'notes' => $request['notes']
         ]);
-        if($request['name'] == 'ستاكر كهراباء'){
+        if($request['type_card'] == '0' && $request['name'] == 'ستاكر كهراباء'){
             return redirect()->route('admin.types.cards',1)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
-        }else if($request['name'] == 'باور بالت'){
+        }else if($request['type_card'] == '0' && $request['name'] == 'باور بالت'){
             return redirect()->route('admin.types.cards',2)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'ريتش تراك'){
+        else if($request['type_card'] == '0' && $request['name'] == 'ريتش تراك'){
             return redirect()->route('admin.types.cards',3)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'هاند بالت'){
+        else if($request['type_card'] == '0' && $request['name'] == 'هاند بالت'){
             return redirect()->route('admin.types.cards',4)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'ونش شوكة كهرباء'){
+        else if($request['type_card'] == '0' && $request['name'] == 'ونش شوكة كهرباء'){
             return redirect()->route('admin.types.cards',5)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'ونش شوكة ديزل'){
+        else if($request['type_card'] == '0' && $request['name'] == 'ونش شوكة ديزل'){
             return redirect()->route('admin.types.cards',6)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'أوردر بيكر'){
+        else if($request['type_card'] == '0' && $request['name'] == 'أوردر بيكر'){
             return redirect()->route('admin.types.cards',7)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'سيزر ليفت'){
+        else if($request['type_card'] == '0' && $request['name'] == 'سيزر ليفت'){
             return redirect()->route('admin.types.cards',8)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'مان ليفت'){
+        else if($request['type_card'] == '0' && $request['name'] == 'مان ليفت'){
             return redirect()->route('admin.types.cards',9)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'حضان'){
+        else if($request['type_card'] == '0' && $request['name'] == 'حضان'){
             return redirect()->route('admin.types.cards',10)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'بطاريات'){
+        else if($request['type_card'] == '0' && $request['name'] == 'بطاريات'){
             return redirect()->route('admin.types.cards',11)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'تنجر شحن'){
+        else if($request['type_card'] == '0' && $request['name'] == 'تنجر شحن'){
             return redirect()->route('admin.types.cards',12)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['name'] == 'أطارات'){
+        else if($request['type_card'] == '0' && $request['name'] == 'أطارات'){
             return redirect()->route('admin.types.cards',13)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
-        }else if($request['name'] == 'سيارة'){
+        }else if($request['type_card'] == '0' && $request['name'] == 'سيارة'){
             return redirect()->route('admin.types.cards',14)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
+        }else if($card->type_card == '1'){
+            return redirect()->route('admin.types.cards',15)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
     }
     public function delete($id){
@@ -167,46 +176,49 @@ class CardsController extends Controller
             return abort(403);
         }
         $card->delete();
-        if($card->name == 'ستاكر كهراباء'){
+        if($card->type_card == '0' && $card->name == 'ستاكر كهراباء'){
             return redirect()->route('admin.types.cards',1)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
-        }else if($card->name == 'باور بالت'){
+        }else if($card->type_card == '0' && $card->name == 'باور بالت'){
             return redirect()->route('admin.types.cards',2)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'ريتش تراك'){
+        else if($card->type_card == '0' && $card->name == 'ريتش تراك'){
             return redirect()->route('admin.types.cards',3)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'هاند بالت'){
+        else if($card->type_card == '0' && $card->name == 'هاند بالت'){
             return redirect()->route('admin.types.cards',4)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'ونش شوكة كهرباء'){
+        else if($card->type_card == '0' && $card->name == 'ونش شوكة كهرباء'){
             return redirect()->route('admin.types.cards',5)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'ونش شوكة ديزل'){
+        else if($card->type_card == '0' && $card->name == 'ونش شوكة ديزل'){
             return redirect()->route('admin.types.cards',6)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'أوردر بيكر'){
+        else if($card->type_card == '0' && $card->name == 'أوردر بيكر'){
             return redirect()->route('admin.types.cards',7)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'سيزر ليفت'){
+        else if($card->type_card == '0' && $card->name == 'سيزر ليفت'){
             return redirect()->route('admin.types.cards',8)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'مان ليفت'){
+        else if($card->type_card == '0' && $card->name == 'مان ليفت'){
             return redirect()->route('admin.types.cards',9)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'حضان'){
+        else if($card->type_card == '0' && $card->name == 'حضان'){
             return redirect()->route('admin.types.cards',10)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'بطاريات'){
+        else if($card->type_card == '0' && $card->name == 'بطاريات'){
             return redirect()->route('admin.types.cards',11)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'تنجر شحن'){
+        else if($card->type_card == '0' && $card->name == 'تنجر شحن'){
             return redirect()->route('admin.types.cards',12)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'أطارات'){
+        else if($card->type_card == '0' && $card->name == 'أطارات'){
             return redirect()->route('admin.types.cards',13)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
-        else if($card->name == 'سيارة'){
+        else if($card->type_card == '0' && $card->name == 'سيارة'){
             return redirect()->route('admin.types.cards',14)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
+        }
+        else if($card->type_card == '1'){
+            return redirect()->route('admin.types.cards',15)->with(['success' => 'تم حذف سجل المعدة بنجاح']);
         }
     }
     ////////////////Cards Oil Registration/////////////////
@@ -244,6 +256,10 @@ class CardsController extends Controller
         'hours_used' => 0,
         'remaining_hours' => $duration_of_oil
     ]);
+    if($card->type_card == '0'){
         return redirect()->route('admin.types.cards',6)->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
+    }elseif($card->type_card == '1'){
+        return redirect()->route('admin.types.cards',15)->with(['success' => 'تم تسجيل بيانات تغيير الزيت الجديدة']);
+    }
     }
 }

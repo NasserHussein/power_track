@@ -24,13 +24,14 @@ class Card extends Model
         'battery',
         'charger',
         'charging_plug',
+        'hydraulic_system',
+        'notes',
         'card_hours',
         'date_of_oil',
         'oil_hours',
         'hours_used',
         'remaining_hours',
-        'hydraulic_system',
-        'notes',
+        'type_card',
         'created_at',
         'updated_at'
 ];

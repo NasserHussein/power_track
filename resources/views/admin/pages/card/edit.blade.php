@@ -45,7 +45,7 @@ label[required]:after {content:'*';color:red;}
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index.cards') }}">المعدات</a>
+                            <li class="breadcrumb-item"><a href="@if($card->type_card == '0') {{ route('admin.index.cards') }} @endif @if($card->type_card == '1') {{ route('admin.types.cards',15) }} @endif">المعدات</a>
                             </li>
                             <li class="breadcrumb-item active">تعديل بيانات المعدة
                             </li>

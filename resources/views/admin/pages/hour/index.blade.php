@@ -13,6 +13,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
+                            @if($card->type_card == '0')
                             <li class="breadcrumb-item"><a href="
                                         @if($card->name == 'ستاكر كهراباء')
                                             {{ route('admin.index.hour.cards',1) }}
@@ -47,6 +48,11 @@
 
                                 ">تحديث عداد ال{{ $card->name }}</a>
                             </li>
+                            @endif
+                            @if($card->type_card == '1')
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index.hour.cards',15) }}">تحديث عداد ال{{ $card->name }}</a>
+                            </li>
+                            @endif
                             <li class="breadcrumb-item active"> فترة تشغيل ال{{ $card->name }}
                             </li>
                         </ol>

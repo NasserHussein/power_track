@@ -45,7 +45,7 @@ label[required]:after {content:'*';color:red;}
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index.cards') }}">المعدات</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.types.cards',15) }}">المعدات</a>
                             </li>
                             <li class="breadcrumb-item active">أضافة معدة
                             </li>
@@ -305,7 +305,7 @@ label[required]:after {content:'*';color:red;}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="type_card" value="0">
+                                            <input type="hidden" name="type_card" value="1">
 
                                         <div class="form-actions">
                                             <button type="button" class="btn btn-warning mr-1"
