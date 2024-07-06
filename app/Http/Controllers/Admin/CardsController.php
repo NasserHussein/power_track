@@ -133,44 +133,44 @@ class CardsController extends Controller
             'hydraulic_system' => $request['hydraulic_system'],
             'notes' => $request['notes']
         ]);
-        if($request['type_card'] == '0' && $request['name'] == 'ستاكر كهراباء'){
+        if($card->type_card == '0' && $request['name'] == 'ستاكر كهراباء'){
             return redirect()->route('admin.types.cards',1)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
-        }else if($request['type_card'] == '0' && $request['name'] == 'باور بالت'){
+        }else if($card->type_card == '0' && $request['name'] == 'باور بالت'){
             return redirect()->route('admin.types.cards',2)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'ريتش تراك'){
+        else if($card->type_card == '0' && $request['name'] == 'ريتش تراك'){
             return redirect()->route('admin.types.cards',3)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'هاند بالت'){
+        else if($card->type_card == '0' && $request['name'] == 'هاند بالت'){
             return redirect()->route('admin.types.cards',4)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'ونش شوكة كهرباء'){
+        else if($card->type_card == '0' && $request['name'] == 'ونش شوكة كهرباء'){
             return redirect()->route('admin.types.cards',5)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'ونش شوكة ديزل'){
+        else if($card->type_card == '0' && $request['name'] == 'ونش شوكة ديزل'){
             return redirect()->route('admin.types.cards',6)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'أوردر بيكر'){
+        else if($card->type_card == '0' && $request['name'] == 'أوردر بيكر'){
             return redirect()->route('admin.types.cards',7)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'سيزر ليفت'){
+        else if($card->type_card == '0' && $request['name'] == 'سيزر ليفت'){
             return redirect()->route('admin.types.cards',8)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'مان ليفت'){
+        else if($card->type_card == '0' && $request['name'] == 'مان ليفت'){
             return redirect()->route('admin.types.cards',9)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'حضان'){
+        else if($card->type_card == '0' && $request['name'] == 'حضان'){
             return redirect()->route('admin.types.cards',10)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'بطاريات'){
+        else if($card->type_card == '0' && $request['name'] == 'بطاريات'){
             return redirect()->route('admin.types.cards',11)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'تنجر شحن'){
+        else if($card->type_card == '0' && $request['name'] == 'تنجر شحن'){
             return redirect()->route('admin.types.cards',12)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }
-        else if($request['type_card'] == '0' && $request['name'] == 'أطارات'){
+        else if($card->type_card == '0' && $request['name'] == 'أطارات'){
             return redirect()->route('admin.types.cards',13)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
-        }else if($request['type_card'] == '0' && $request['name'] == 'سيارة'){
+        }else if($card->type_card == '0' && $request['name'] == 'سيارة'){
             return redirect()->route('admin.types.cards',14)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
         }else if($card->type_card == '1'){
             return redirect()->route('admin.types.cards',15)->with(['success' => 'تم تعديل بيانات المعدة بنجاح']);
