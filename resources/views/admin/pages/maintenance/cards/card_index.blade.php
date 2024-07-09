@@ -59,8 +59,20 @@
                                         <tr>
 
                                             <th>رقم المعدة</th>
-                                            <th>موديل المعدة</th>
+                                            <th>
+                                                @if($code == '0')
+                                                موديل المعدة
+                                                @endif
+                                                @if($code == '1')
+                                                نوع المعدة
+                                                @endif
+                                            </th>
+                                                @if($code == '0')
                                             <th>الرقم الشاسية</th>
+                                                @endif
+                                                @if($code == '1')
+                                            <th>الموقع</th>
+                                                @endif
                                             <th>التكلفة الاجمالية للصيانات</th>
                                             <th>سجل حياة الماكينة</th>
                                             <th>تسجيل صيانة جديدة</th>
@@ -71,8 +83,18 @@
                                             @foreach ($cards as $card)
                                                 <tr>
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_no }}</div></td>
+                                                @if($code == '0')
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_model }}</div></td>
+                                                @endif
+                                                @if($code == '1')
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->name }}</div></td>
+                                                @endif
+                                                @if($code == '0')
                                                     <td><div style="word-wrap: break-word;width:180px">{{ $card->chassis_no }}</div></td>
+                                                @endif
+                                                @if($code == '1')
+                                                    <td><div style="word-wrap: break-word;width:180px">{{ $card->part }}</div></td>
+                                                @endif
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ App\Models\Admin\Maintenance::where('card_id',$card->id)->sum('cost') }}</div></td>
                                                     <td style="width:170px">
                                                         <a href="{{ route('admin.maintenance.cards.index.maintenance',$card->id) }}" class="btn btn-info btn-min-width box-shadow-3 mr-1 mb-1">
@@ -186,9 +208,13 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1" data-dismiss="modal">إغلاق</button>
-                                                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">حفظ البيانات المطلوبة <i class="ft-save"></i>
+                                                                            <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1 button-prevent-multiple-submits">
+                                                                           حفظ البيانات المطلوبة <i class="ft-save"></i>
                                                                                 <i style="display: none" class="spinner-button fa fa-spinner fa-spin"></i>
                                                                             </button>
+
+
+
                                                                         </div>
                                                                         </div>
 

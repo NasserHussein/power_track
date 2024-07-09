@@ -45,7 +45,7 @@ label[required]:after {content:'*';color:red;}
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">عرض كل الاخطارت الغير نشطة</a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.maintenance_Notifie.index_de') }}">عرض كل الاخطارت الغير نشطة</a>
                             </li>
                             <li class="breadcrumb-item active">تعديل الأخطار بالصيانة
                             </li>

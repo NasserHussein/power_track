@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class MaintenanceController extends Controller
 {
     public function index_cards($id){
+        $code = '0';
         if($id == 1){
             $cards = Card::where(['name' => 'ستاكر كهراباء' , 'type_card' => '0'])->get();
             $cards_name = 'ستاكر كهراباء';
@@ -72,10 +73,11 @@ class MaintenanceController extends Controller
             $cards = Card::where('type_card' , '1')->get();
             $cards_name = 'معدات شركات';
             $technicians = Technician::all();
+            $code = '1';
         }else{
             return abort(404);
         }
-        return view('admin.pages.maintenance.cards.card_index',compact(['cards','cards_name','technicians']));
+        return view('admin.pages.maintenance.cards.card_index',compact(['cards','cards_name','technicians','code']));
     }
     public function maintenanc_store(AdminMaintenanceRequest $request , $id){
             $maintenance_save = Maintenance::create([

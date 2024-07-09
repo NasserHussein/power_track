@@ -59,7 +59,12 @@
                                         <tr>
                                             <th>رقم المعدة</th>
                                             <th>إسم المعدة</th>
+                                            @if($code == '0')
                                             <th>موديل المعدة</th>
+                                            @endif
+                                            @if($code == '1')
+                                            <th>الموقع</th>
+                                            @endif
                                             <th>رقم الشاسية</th>
                                             <th>حمولة المعدة</th>
                                             <th>تفاصيل</th>
@@ -72,7 +77,12 @@
                                                 <tr>
                                                     <td><div style="word-wrap: break-word;width:90px;">{{ $card->card_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:150px;">{{ $card->name }}</div></td>
+                                                    @if($code == '0')
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_model }}</div></td>
+                                                    @endif
+                                                    @if($code == '1')
+                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $card->part }}</div></td>
+                                                    @endif
                                                     <td><div style="word-wrap: break-word;width:150px">{{ $card->chassis_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ $card->card_load }}</div></td>
                                                     <td>

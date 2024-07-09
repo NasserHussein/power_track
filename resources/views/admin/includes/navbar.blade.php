@@ -97,15 +97,15 @@
                                 <span
                                     class="notification-tag badge badge-default badge-success float-right m-0">جديد</span>
                             </li>
+                            <li class="scrollable-container media-list w-100">
                             @if(App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->get()->sortBy('notification_date')->count() > '0')
                             @foreach (App\Models\Admin\Notifie::where('status' , '1' )->where('notification_date' , '<=' ,Carbon\Carbon::now('Asia/Baghdad')->subDays(-1)->toDateString())->get()->sortBy('notification_date') as $notifie)
-                            <li class="scrollable-container media-list w-100">
                                 <a href="{{ route('admin.maintenance_Notifie.edit',$notifie->id) }}">
                                     <div class="media">
                                         <div class="media-left">
-                        <span style="width: 55px !important;"  class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{ asset('assets/admin/images/chatboot.png') }}"
-                               alt="avatar"><i></i></span>
+                                            <span style="width: 55px !important;"  class="avatar avatar-sm avatar-online rounded-circle">
+                                            <img src="{{ asset('assets/admin/images/chatboot.png') }}"
+                                                alt="avatar"><i></i></span>
                                         </div>
                                         <div class="media-body">
                                             @if($notifie->maintenance->card->type_card == '0')<h8 style="color: red">معدات شركة باور تراك</h8>@endif
@@ -119,9 +119,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
                             @endforeach
                             @endif
+                            </li>
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
                                     href="{{ route('admin.maintenance_Notifie.index_de') }}">عرض كل الرسائل الغير نشطة</a></li>
                         </ul>
