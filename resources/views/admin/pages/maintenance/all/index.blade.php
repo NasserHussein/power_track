@@ -52,13 +52,13 @@
                                         <thead>
                                         <tr>
 
-                                            <th>رقم المعدة</th>
+                                            <th>رقم<br>المعدة</th>
                                             <th>نوع المعدة</th>
-                                            <th>حالة المعدة</th>
+                                            <th>حالة<br>المعدة</th>
                                             <th>مكان المعدة</th>
                                             <th>ما تم في الصيانة</th>
-                                            <th>قطع الغيار المستخدمة</th>
-                                            <th>تكلفة الصيانة</th>
+                                            <th>قطع الغيار</th>
+                                            <th>تكلفة<br>الصيانة</th>
                                             <th>تاريخ الصيانة</th>
                                             <th>القائم<br>بالإصلاح</th>
                                             <th>الإجرائات</th>
@@ -70,10 +70,10 @@
                                                 <tr>
                                                     <td><div style="word-wrap: break-word;width:50px;">{{ $maintenance->card->card_no }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:70px;">{{ $maintenance->card->name }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:50px;">@if($maintenance->card->type_card == '0') معدات باور تراك @endif @if($maintenance->card->type_card == '1') معدات شركات @endif</div></td>
-                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $maintenance->card->part }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:60px;">@if($maintenance->card->type_card == '0') معدات باور تراك @endif @if($maintenance->card->type_card == '1') معدات شركات @endif</div></td>
+                                                    <td><div style="word-wrap: break-word;width:95px;">{{ $maintenance->card->part }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:140px;">{{ $maintenance->maintenance }}</div></td>
-                                                    <td><div style="word-wrap: break-word;width:100px;">{{ $maintenance->spare_parts }}</div></td>
+                                                    <td><div style="word-wrap: break-word;width:90px;">{{ $maintenance->spare_parts }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:50px">{{ $maintenance->cost }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px">{{ $maintenance->date }}</div></td>
                                                     <td>
