@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminCostRequest;
 use App\Http\Requests\AdminMaintenanceRequest;
 use App\Models\Admin\Card;
 use App\Models\Admin\Maintenance;
@@ -128,6 +129,22 @@ class MaintenanceController extends Controller
         }
         $maintenances = Maintenance::where('card_id' , $id)->get()->sortByDesc('date');
         return view('admin.pages.maintenance.index',compact(['card','maintenances','code','technician1s']));
+    }
+    public function maintenance_determine(){
+        return view('admin.pages.maintenance.all.determine_the_duration_of_all_maintenance');
+    }
+    public function maintenance_determine_index(AdminCostRequest $request){
+        $start = $request['start'];
+        $end = $request['end'];
+        $technicians = Technician::all();
+        if($request['card_type'] == '0'){
+            $maintenances = Maintenance::whereHas('card',function($q){$q->where('type_card' , '0');})->whereBetween('date', [$start, $end])->get();
+        }elseif($request['card_type'] == '1'){
+            $maintenances = Maintenance::whereHas('card',function($q){$q->where('type_card' , '1');})->whereBetween('date', [$start, $end])->get();
+        }else{
+            $maintenances = Maintenance::whereBetween('date', [$start, $end])->get();
+        }
+        return view('admin.pages.maintenance.all.index',compact(['maintenances','technicians','start','end']));
     }
     public function maintenanc_edit($id){
         $maintenance = Maintenance::find($id);

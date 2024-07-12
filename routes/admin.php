@@ -126,6 +126,8 @@ Route::group(['prefix'=>'Maintenance_Equipments'],function(){
     Route::get('/edit/{id}','MaintenanceController@maintenanc_edit')->name('admin.maintenance.cards.edit.maintenance');
     Route::post('/update/{id}','MaintenanceController@maintenanc_update')->name('admin.maintenance.cards.update.maintenance');
     Route::get('/delete/{id}','MaintenanceController@maintenanc_delete')->name('admin.maintenance.cards.delete.maintenance');
+    Route::get('/maintenance-determine/all','MaintenanceController@maintenance_determine')->name('admin.maintenance.cards.maintenance.determine');
+    Route::post('/maintenance-determine/index','MaintenanceController@maintenance_determine_index')->name('admin.maintenance.cards.maintenance.determine.index');
 });
         ################################# End Maintenance cards Route ###################################
         ################################# Start Notifie cards Route ###################################
