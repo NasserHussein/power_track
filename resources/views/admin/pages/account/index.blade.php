@@ -88,7 +88,7 @@
                                                     <td><div style="word-wrap: break-word;width:100px;">{{ $customer->company_name }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:80px;">{{ $account->invoice_number }}</div></td>
                                                     <td><div style="word-wrap: break-word;width:120px">{{ $account->description }}</div></td>
-                                                    <td>@if(($account->status == 1)) <span style="color: blue">تم تحصيل الرسوم</span>  </br> @endif @if($account->status == 1) <s style="font-size: 18px" @endif @if($account->status == 0) <div @endif style="word-wrap: break-word;width:80px;">{{ $account->invoice_value }} ج.م @if(($account->status == 0)) </div> @endif @if(($account->status == 1)) </s> @endif @if(($account->status == 1)) </br> <span style="color: blue">تم تحصيل الرسوم</span> @endif</td>
+                                                    <td>@if(($account->status == 1)) <span style="color: blue">تم تحصيل الرسوم</span>  </br> @endif @if($account->status == 1) <s style="font-size: 18px" @endif @if($account->status == 0) <div @endif style="word-wrap: break-word;width:80px;">{{ $account->invoice_value }} ج.م @if(($account->status == 0)) </div> @endif @if(($account->status == 1)) </s> @endif</td>
                                                     <td><div style="word-wrap: break-word;width:120px;">
                                                     <button type="button" class="btn mr-1 mb-1 btn-success btn-sm" data-toggle="modal" data-target="#pulse{{ $account->id }}">
                                                         عرض بيانات</br></br>الفاتورة
